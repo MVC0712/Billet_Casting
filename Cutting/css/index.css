@@ -1,3 +1,38 @@
-a {
-  color: rgb(255, 0, 0);
+#data__table {
+  width: 800px;
+}
+
+#data__table tbody {
+  /* height: 300px; */
+  /* overflow: hidden; */
+}
+
+#data__table tbody #selected__row {
+  background-color: #6db8ff;
+}
+
+#data__table tr th:nth-child(1),
+#data__table tr td:nth-child(1) {
+  display: none;
+}
+#data__table tr th:nth-child(2),
+#data__table tr td:nth-child(2) {
+  width: 100px;
+  text-align: left;
+}
+#data__table tr th:nth-child(n+3),
+#data__table tr td:nth-child(n+3) {
+  width: 40px;
+  text-align: center;
+}
+#data__table tr td:nth-child(n+3) input {
+  width: 38px;
+  text-align: center;
+  /* border: none; */
+  padding: 0;
+}
+#data__table tr td:nth-child(n+3) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

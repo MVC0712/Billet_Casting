@@ -28,11 +28,7 @@ const myAjax = {
 };
 
 $(function () {
-  // test ボタンの表示
-  $("#test__button").hide();
-  setSummaryTable();
-  ErrorCode();
-  $("#machine-number__select").val(1).removeClass("no-input").addClass("complete-input");
+ 
 });
 // *****************************************************
 // *****************************************************

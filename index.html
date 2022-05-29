@@ -3,14 +3,28 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <title>Home Page</title>
   </head>
   <body>
-    <div class="container">
+    <header>Home Page</header>
       <div class="row">
-        <div class="col-md-12">
-          <h1>Welcome to the Home Page</h1>
-        </div>
+          <div>
+            <input type="button" value="Daily Input" id="daily_input">
+            <input type="button" value="Homogenizing Input" id="homogenizing_input">
+            <input type="button" value="Cutting Input" id="cutting_input">
+            <input type="button" value="Warehouse Input" id="warehouse_input">
+          </div>
       </div>
-    </div>
+      <div>
+        <table id="summary_table">
+          <thead>
+            <tr>
+              
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <script src="./lib/jquery.min.js"></script>
+      <script src="./lib/index.js"></script>
 </html>
