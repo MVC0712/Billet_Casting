@@ -5,13 +5,13 @@
 .no-input {
   background-color: #edff85;
 }
-.input__title {
+.input_title {
   flex-direction: row;
   display: flex;
   align-items: center;
   justify-content: right;
 }
-.input__title input {
+.input_title input {
   height: 20px;
 }
 .title {
@@ -32,13 +32,17 @@
 #gas_end {
   width: 40px;
 }
+#homo_start,
+#homo_end {
+  width: 160px;
+}
 #data__table {
-  width: 460px;
+  width: 410px;
 }
 
 #data__table tbody {
-  /* height: 300px; */
-  /* overflow: hidden; */
+  height: 180px;
+  overflow: hidden;
 }
 
 #data__table tbody #selected__row {
@@ -51,7 +55,7 @@
 }
 #data__table tr th:nth-child(2),
 #data__table tr td:nth-child(2) {
-  width: 100px;
+  width: 50px;
   text-align: left;
 }
 #data__table tr th:nth-child(n+3),

@@ -4,15 +4,359 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cutting Page</title>
-    <link rel="stylesheet" href="./css/main.css" />
+    <title>DailyReport Page</title>
+    <link rel="stylesheet" href="../Lib/main.css" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
-
   <body>
-    <header>Cutting Page</header>
+    <header>DailyReport Page</header>
+      <div class="top__wrapper">
+        <div class="top_left__wrapper">
+        <div class="input-block__outer code_outer">
+          <div class="input__title code_title">
+            Code
+          </div>
+          <div>
+            <input type="text" id="code">
+          </div>
+        </div>
+        <div class="input-block__outer product_date_outer">
+          <div class="input__title product_date_title">
+            Product date
+          </div>
+          <div>
+            <input type="datetime-local" id="product_date">
+          </div>
+        </div>
+        <div class="input-block__outer product_type_outer">
+          <div class="input__title product_type_title">
+            Product Type
+          </div>
+          <div>
+            <select id="product_type">
+              <option value="">--</option>
+              <option value="1">6063</option>
+              <option value="2">6061</option>
+              <option value="3">6N01A</option>
+              <option value="4">6N01</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-block__outer product_dim_outer">
+          <div class="input__title product_dim_title">
+            Product Dim
+          </div>
+          <div>
+            <select id="product_dim">
+              <option value="">--</option>
+              <option value="1">9 inch</option>
+              <option value="2">14 inch</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="top_right__wrapper">
+        <div class="input-block__outer extrusion_scrap_outer">
+          <div class="input__title extrusion_scrap_title">
+            Extrusions Scrap
+          </div>
+          <div>
+            <input type="text" id="extrusion_scrap">
+          </div>
+        </div>
+        <div class="input-block__outer casting_scrap_outer">
+          <div class="input__title casting_scrap_title">
+            Casting Scrap
+          </div>
+          <div>
+            <input type="text" id="casting_scrap">
+          </div>
+        </div>
+        <div class="input-block__outer aluminium_ingot_outer">
+          <div class="input__title aluminium_ingot_title">
+            Al 99.7%
+          </div>
+          <div>
+            <input type="text" id="aluminium_ingot">
+          </div>
+        </div>
+        <div class="input-block__outer aluminium_orther_outer">
+          <div class="input__title aluminium_orther_title">
+            Al Orther
+          </div>
+          <div>
+            <input type="text" id="aluminium_orther">
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="material__wrapper">
+        <div class="left__material">
+        <div>
+          <table id="add_material_table">
+            <thead>
+              <tr>
+                <th>Material</th>
+                <th>Material Type</th>
+                <th>Weight</th>
+                <th><button id="add_material">Save</button></th>
+              </tr>
+              <tr>
+                <th>
+                  <select id="material" class="no-input">
+                  </select>
+                </th>
+                <th>
+                  <select id="material_type" class="no-input">
+                  </select>
+                </th>
+                <th><input type="text" id="material_weight" class="no-input"/></th>
+                <th><input type="text" id="material_note"/></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <br>
+        <div>
+          <table id="material_table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Material</th>
+                <th>Material Type</th>
+                <th>Weight</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="right__material">
+        <table id="melting_table">
+          <thead>
+            <tr>
+              <th colspan="2">Melting Data</th>
+            </tr>
+            <tr>
+              <th>Melting Start</th>
+              <th><input type="datetime-local" id="melting_start"></th>
+            </tr>
+            <tr>
+              <th>Melting End</th>
+              <th><input type="datetime-local"id="melting_end"></th>
+            </tr>
+            <tr>
+              <th>Gas Start</th>
+              <th><input type="text" id="melting_gas_start"></th>
+            </tr>
+            <tr>
+              <th>Gas End</th>
+              <th><input type="text" id="melting_gas_end"></th>
+            </tr>
+            <tr>
+              <th>Break Time</th>
+              <th><input type="text" id="break_time"></th>
+            </tr>
+            <tr>
+              <th>Melting Temp</th>
+              <th><input type="text" id="melting_temp"></th>
+            </tr>
+            <tr>
+              <th>Refined Time 1</th>
+              <th><input type="text" id="refined_time_1"></th>
+            </tr>
+            <tr>
+              <th>Refined Time 2</th>
+              <th><input type="text" id="refined_time_2"></th>
+            </tr>
+          </thead>
+          <!-- <tbody>
 
-    <script src="../lib/jquery.min.js"></script>
-    <!-- <script src="./scr/index.js"></script> -->
+          </tbody> -->
+        </table>
+      </div>
+    </div>
+      <div class="element__wrapper">
+        <div>
+          <table id="element_table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th rowspan="2">Tiêu chuẩn</th>
+                <th>Al-Si(%Si)</th>
+                <th>Mg(%Mg)</th>
+                <th>Al-Mn(%Mn)</th>
+                <th>Al-Cr(%Cr)</th>
+                <th>Al-Cu(%Cu)</th>
+                <th>Al-Fe(%Fe)</th>
+                <th>Al-Zn(%Zn)</th>
+                <th>Al-Ti-B</th>
+                <th rowspan="2">Flux(Kg)</th>
+              </tr>
+              <tr>
+                <th>id</th>
+                <th>Al-Si</th>
+                <th>Mg</th>
+                <th>Al-Mn</th>
+                <th>Al-Cr</th>
+                <th>Al-Cu</th>
+                <th>Al-Fe</th>
+                <th>Al-Zn</th>
+                <th>Al-Ti-B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Đo lần 1(%)</td>
+                <td>Al-Si</td>
+                <td>Mg</td>
+                <td>Al-Mn</td>
+                <td>Al-Cr</td>
+                <td>Al-Cu</td>
+                <td>Al-Fe</td>
+                <td>Al-Zn</td>
+                <td>Al-Ti-B</td>
+                <td rowspan="2">Flux</td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>KLHK1(Kg)</td>
+                <td>Al-Si</td>
+                <td>Mg</td>
+                <td>Al-Mn</td>
+                <td>Al-Cr</td>
+                <td>Al-Cu</td>
+                <td>Al-Fe</td>
+                <td>Al-Zn</td>
+                <td>Al-Ti-B</td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Đo lần 2(%)</td>
+                <td>Al-Si</td>
+                <td>Mg</td>
+                <td>Al-Mn</td>
+                <td>Al-Cr</td>
+                <td>Al-Cu</td>
+                <td>Al-Fe</td>
+                <td>Al-Zn</td>
+                <td>Al-Ti-B</td>
+                <td rowspan="2">Flux</td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>KLHK2(Kg)</td>
+                <td>Al-Si</td>
+                <td>Mg</td>
+                <td>Al-Mn</td>
+                <td>Al-Cr</td>
+                <td>Al-Cu</td>
+                <td>Al-Fe</td>
+                <td>Al-Zn</td>
+                <td>Al-Ti-B</td>
+              </tr>
+              <td>id</td>
+                <td>Đo lần 3(%)</td>
+                <td>Al-Si</td>
+                <td>Mg</td>
+                <td>Al-Mn</td>
+                <td>Al-Cr</td>
+                <td>Al-Cu</td>
+                <td>Al-Fe</td>
+                <td>Al-Zn</td>
+                <td>Al-Ti-B</td>
+                <td>Flux</td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="melting__wrapper">
+        
+      </div>
+      <div class="casting__wrapper">
+        <div class="left__material">
+        <table id="casting_table">
+          <thead>
+            <tr>
+              <th colspan="5">Casting Data</th>
+            </tr>
+            <tr>
+              <th>Casting Start</th>
+              <th><input type="datetime-local" id="casting_start"></th>
+              <th>Al Temp Gate</th>
+              <th><input type="text" id="al_temp_gate"></th>
+            </tr>
+            <tr>
+              <th>Casting End</th>
+              <th><input type="datetime-local"id="casting_end"></th>
+              <th>Al Temp Cast</th>
+              <th><input type="text" id="al_temp_cast"></th>
+            </tr>
+            <tr>
+              <th>Air pressure</th>
+              <th><input type="text" id="air_pressure"></th>
+            <!-- </tr>
+            <tr> -->
+              <th>Water Temp</th>
+              <th><input type="text" id="water_temp"></th>
+            </tr>
+            <tr>
+              <th>Oil pressure</th>
+              <th><input type="text" id="refined_time_1"></th>
+            <!-- </tr>
+            <tr> -->
+              <th>Casting Speed</th>
+              <th><input type="text" id="refined_time_2"></th>
+            </tr>
+          </thead>
+          <!-- <tbody>
+
+          </tbody> -->
+        </table>
+      </div>
+      <div class="right__material">
+        <table id="hydro_table">
+          <thead>
+            <tr>
+              <th colspan="5">Hydro Data</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Time</th>
+              <th><input type="text" id="casting_start"></th>
+              <th>Percent</th>
+              <th><input type="text" id="al_temp_gate"></th>
+            </tr>
+            <tr>
+              <th>2</th>
+              <th>Time</th>
+              <th><input type="text" id="casting_start"></th>
+              <th>Percent</th>
+              <th><input type="text" id="al_temp_gate"></th>
+            </tr>
+            <tr>
+              <th>3</th>
+              <th>Time</th>
+              <th><input type="text" id="casting_start"></th>
+              <th>Percent</th>
+              <th><input type="text" id="al_temp_gate"></th>
+            </tr>
+            <tr>
+              <th>4</th>
+              <th>Time</th>
+              <th><input type="text" id="casting_start"></th>
+              <th>Percent</th>
+              <th><input type="text" id="al_temp_gate"></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      </div>
+
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
   </body>
 </html>

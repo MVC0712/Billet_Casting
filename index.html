@@ -4,19 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home Page</title>
+  <link rel="stylesheet" href="./Lib/main.css" />
   </head>
   <body>
     <header>Home Page</header>
-      <div class="row">
-          <div>
-            <input type="button" value="Daily Input" id="daily_input">
-            <input type="button" value="Homogenizing Input" id="homogenizing_input">
-            <input type="button" value="Cutting Input" id="cutting_input">
-            <input type="button" value="Warehouse Input" id="warehouse_input">
-          </div>
+      <div style="flex-direction: row; display:flex;">
+            <button id="daily_input">Daily Input</button>
+            <button id="homogenizing_input">Homogenizing Input</button>
+            <button id="cutting_input">Cutting Input</button>
+            <button id="warehouse_input">Warehouse Input</button>
       </div>
       <div>
-        <table id="summary_table">
+        <table id="summary_table" style="heigh: 450px;">
           <thead>
             <tr>
               
@@ -26,5 +25,20 @@
         </table>
       </div>
       <script src="./lib/jquery.min.js"></script>
-      <script src="./lib/index.js"></script>
+      <script>
+      $(document).on("click", "#daily_input", function () {
+        window.open("/Billet_Casting/DailyReport");
+      });
+
+      $(document).on("click", "#homogenizing_input", function () {
+        window.open("/Billet_Casting/Homo");
+      });
+
+      $(document).on("click", "#cutting_input", function () {
+        window.open("/Billet_Casting/Cutting");
+      });
+      $(document).on("click", "#warehouse_input", function () {
+        window.open("/Billet_Casting/Warehouse");
+      });
+      </script>
 </html>

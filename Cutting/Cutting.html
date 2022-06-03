@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cutting Page</title>
-    <!-- <link rel="stylesheet" href="./css/main.css" /> -->
+    <link rel="stylesheet" href="../lib/main.css" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
 
@@ -17,7 +17,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Process</th>
+        <th colspan="2">Process</th>
+        <th>Pos</th>
         <th>A2</th>
         <th>A3</th>
         <th>B1</th>
@@ -35,7 +36,8 @@
     <tbody>
       <tr>
         <td>ID</td>
-        <td>Crack: Head/End</td>
+        <td>Crack</td>
+        <td><div>Head</div><div>End</div></td>
         <td><input id="A2" type="text"><input id="A2" type="text"></td>
         <td><input id="A3" type="text"><input id="A3" type="text"></td>
         <td><input id="B1" type="text"><input id="B1" type="text"></td>
@@ -51,7 +53,7 @@
       </tr>
       <tr>
         <td>ID</td>
-        <td>Diameter</td>
+        <td colspan="2">Surface</td>
         <td><input id="A2" type="text"></td>
         <td><input id="A3" type="text"></td>
         <td><input id="B1" type="text"></td>
@@ -67,7 +69,7 @@
       </tr>
       <tr>
         <td>ID</td>
-        <td>Process</td>
+        <td colspan="2">Length</td>
         <td><input id="A2" type="text"></td>
         <td><input id="A3" type="text"></td>
         <td><input id="B1" type="text"></td>
@@ -83,39 +85,8 @@
       </tr>
       <tr>
         <td>ID</td>
-        <td>Process</td>
-        <td><input id="A2" type="text"></td>
-        <td><input id="A3" type="text"></td>
-        <td><input id="B1" type="text"></td>
-        <td><input id="B2" type="text"></td>
-        <td><input id="B3" type="text"></td>
-        <td><input id="B4" type="text"></td>
-        <td><input id="C1" type="text"></td>
-        <td><input id="C2" type="text"></td>
-        <td><input id="C3" type="text"></td>
-        <td><input id="C4" type="text"></td>
-        <td><input id="D2" type="text"></td>
-        <td><input id="D3" type="text"></td>
-      </tr>
-      <tr>
-        <td>ID</td>
-        <td>Process</td>
-        <td><input id="A2" type="text"></td>
-        <td><input id="A3" type="text"></td>
-        <td><input id="B1" type="text"></td>
-        <td><input id="B2" type="text"></td>
-        <td><input id="B3" type="text"></td>
-        <td><input id="B4" type="text"></td>
-        <td><input id="C1" type="text"></td>
-        <td><input id="C2" type="text"></td>
-        <td><input id="C3" type="text"></td>
-        <td><input id="C4" type="text"></td>
-        <td><input id="D2" type="text"></td>
-        <td><input id="D3" type="text"></td>
-      </tr>
-      <tr>
-        <td>ID</td>
-        <td>NaOH: Head/End</td>
+        <td>NaOH</td>
+        <td><div>Head</div><div>End</div></td>
         <td><input id="A2" type="text"><input id="A2" type="text"></td>
         <td><input id="A3" type="text"><input id="A3" type="text"></td>
         <td><input id="B1" type="text"><input id="B1" type="text"></td>
@@ -128,6 +99,56 @@
         <td><input id="C4" type="text"><input id="C4" type="text"></td>
         <td><input id="D2" type="text"><input id="D2" type="text"></td>
         <td><input id="D3" type="text"><input id="D3" type="text"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>Cut</td>
+        <td><div>Head</div><div>End</div></td>
+        <td><input id="A2" type="text"><input id="A2" type="text"></td>
+        <td><input id="A3" type="text"><input id="A3" type="text"></td>
+        <td><input id="B1" type="text"><input id="B1" type="text"></td>
+        <td><input id="B2" type="text"><input id="B2" type="text"></td>
+        <td><input id="B3" type="text"><input id="B3" type="text"></td>
+        <td><input id="B4" type="text"><input id="B4" type="text"></td>
+        <td><input id="C1" type="text"><input id="C1" type="text"></td>
+        <td><input id="C2" type="text"><input id="C2" type="text"></td>
+        <td><input id="C3" type="text"><input id="C3" type="text"></td>
+        <td><input id="C4" type="text"><input id="C4" type="text"></td>
+        <td><input id="D2" type="text"><input id="D2" type="text"></td>
+        <td><input id="D3" type="text"><input id="D3" type="text"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>Qty</td>
+        <td><div>1200</div><div>600</div></td>
+        <td><input id="A2" type="text"><input id="A2" type="text"></td>
+        <td><input id="A3" type="text"><input id="A3" type="text"></td>
+        <td><input id="B1" type="text"><input id="B1" type="text"></td>
+        <td><input id="B2" type="text"><input id="B2" type="text"></td>
+        <td><input id="B3" type="text"><input id="B3" type="text"></td>
+        <td><input id="B4" type="text"><input id="B4" type="text"></td>
+        <td><input id="C1" type="text"><input id="C1" type="text"></td>
+        <td><input id="C2" type="text"><input id="C2" type="text"></td>
+        <td><input id="C3" type="text"><input id="C3" type="text"></td>
+        <td><input id="C4" type="text"><input id="C4" type="text"></td>
+        <td><input id="D2" type="text"><input id="D2" type="text"></td>
+        <td><input id="D3" type="text"><input id="D3" type="text"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td colspan="2">SP Length</td>
+        <td><input id="A2" type="text"></td>
+        <td><input id="A3" type="text"></td>
+        <td><input id="B1" type="text"></td>
+        <td><input id="B2" type="text"></td>
+        <td><input id="B3" type="text"></td>
+        <td><input id="B4" type="text"></td>
+        <td><input id="C1" type="text"></td>
+        <td><input id="C2" type="text"></td>
+        <td><input id="C3" type="text"></td>
+        <td><input id="C4" type="text"></td>
+        <td><input id="D2" type="text"></td>
+        <td><input id="D3" type="text"></td>
       </tr>
     </tbody>
   </table>

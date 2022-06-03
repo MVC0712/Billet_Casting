@@ -6,8 +6,7 @@ if ($dbh->getInstance() === null) {
 }
 $datetime = date("Y-m-d H:i:s");
 try {
-    $sql = "SELECT * FROM m_dies;
-    )";
+    $sql = "SELECT * FROM billet_casting.m_material_name;)";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
