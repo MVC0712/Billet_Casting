@@ -38,7 +38,29 @@ function MaterialNameCode() {
   });
 };
 
+$(document).on("change", "#product_type", function() {
+  if ($(this).val() != 0) {
+      $(this).removeClass("no-input").addClass("complete-input");
+      var fileName = "SelMaterialElement.php";
+      var sendData = {
+        product_type: $("#product_type").val(),
+      };
+      myAjax.myAjax(fileName, sendData);
+    console.log(ajaxReturnData);
+    $("#si_req").text(ajaxReturnData[0]["si"]);
+    $("#mg_req").text(ajaxReturnData[0]["mg"]);
+    $("#mn_req").text(ajaxReturnData[0]["mn"]);
+    $("#cr_req").text(ajaxReturnData[0]["cr"]);
+    $("#cu_req").text(ajaxReturnData[0]["cu"]);
+    $("#fe_req").text(ajaxReturnData[0]["fe"]);
+    $("#zn_req").text(ajaxReturnData[0]["zn"]);
+    $("#ti_b_req").text(ajaxReturnData[0]["ti_b"]);
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
 $(document).on("change", "#material", function() {
+  add_material_check();
   if ($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
       var fileName = "SelMaterialNameType.php";
@@ -58,6 +80,7 @@ $(document).on("change", "#material", function() {
   }
 });
 $(document).on("change", "#material_type", function() {
+  add_material_check();
   if ($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
@@ -65,6 +88,7 @@ $(document).on("change", "#material_type", function() {
   }
 });
 $(document).on("keyup", "#material_weight", function() {
+  add_material_check();
   if ($(this).val() > 0) {
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
@@ -169,7 +193,15 @@ $("#add_material").on("click", function () {
     break;
   }
 });
-
+function add_material_check() {
+  if (($("#material").hasClass("no-input")) ||
+      ($("#material_type").hasClass("no-input")) ||
+      ($("#material_weight").hasClass("no-input"))) {
+      $("#add_material").prop("disabled", true);
+  } else {
+      $("#add_material").prop("disabled", false);
+  }
+};
 function makeErrorTable() {
   fileName = "./php/DailyReport/SelError.php";
   sendData = {

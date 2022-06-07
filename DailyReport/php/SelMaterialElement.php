@@ -4,16 +4,16 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-$material_name_id = "";
-$material_name_id = $_POST['material_name_id'];
+$product_type = "";
+$product_type = $_POST['product_type'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
-    id, material_name_type
+    *
     FROM
-        billet_casting.m_material_name_type
+        billet_casting.m_material_element
     WHERE
-        material_name_id = '$material_name_id';)";
+        material_type = '$product_type';)";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
