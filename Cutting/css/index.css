@@ -17,20 +17,21 @@
 }
 #data__table tr th:nth-child(2),
 #data__table tr td:nth-child(2) {
-  width: 50px;
+  width: 55px;
   text-align: left;
-  border: solid 1px rgb(0, 0, 0);
+  border: solid 2px rgb(0, 0, 0);
 }
 #data__table tr th:nth-child(n+3),
 #data__table tr td:nth-child(n+3) {
   width: 40px;
   text-align: center;
-  border: solid 1px rgb(0, 0, 0);
+  border: solid 2px rgb(0, 0, 0);
 }
 #data__table tr td:nth-child(n+3) input {
   width: 38px;
   text-align: center;
-  /* border: none; */
+  border: none;
+  border-bottom: solid 1px rgb(0, 0, 0);
   padding: 0;
 }
 #data__table tr td:nth-child(n+3) {
@@ -39,5 +40,6 @@
   align-items: center;
 }
 #data__table tr td div:nth-child(1) {
-  border-bottom: solid 1px rgb(0, 0, 0);
+  border-bottom: solid 2px rgb(0, 0, 0);
+  width: 40px;
 }

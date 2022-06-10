@@ -25,7 +25,7 @@
             Product date
           </div>
           <div>
-            <input type="datetime-local" id="product_date" class="no-input save-data need-clear">
+            <input type="date" id="product_date" class="no-input save-data need-clear">
           </div>
         </div>
         <div class="input-block__outer product_type_outer">
@@ -47,7 +47,7 @@
             Product Dim
           </div>
           <div>
-            <select id="product_dim">
+            <select id="product_dim" class="save-data need-clear complete-input">
               <option value="1">9 inch</option>
               <option value="2">14 inch</option>
             </select>
@@ -57,7 +57,7 @@
       <div class="top_right__wrapper">
         <div class="input-block__outer extrusion_scrap_outer">
           <div class="input__title extrusion_scrap_title">
-            Extrusions Scrap
+            Ext Scrap
           </div>
           <div>
             <input type="text" id="extrusion_scrap" class="no-input save-data need-clear">
@@ -81,11 +81,23 @@
         </div>
         <div class="input-block__outer aluminium_orther_outer">
           <div class="input__title aluminium_orther_title">
-            Al Orther
+            Orther
           </div>
           <div>
-            <input type="text" id="aluminium_orther" class="save-data need-clear">
+            <input type="text" id="aluminium_orther" class="save-data need-clear complete-input">
           </div>
+        </div>
+        <div class="input-block__outer file_outer">
+          <div class="input__title file_title">
+            File
+          </div>
+          <div>
+            <input type="file" id="file_upload" class="save-data need-clear">
+            <label id="file_name" for="file_upload">no file</label>
+          </div>
+          <button id="preview__button" class="input__title aluminium_ingot_title">
+            Preview
+          </button>
         </div>
       </div>
       </div>
