@@ -1,9 +1,18 @@
+.left__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+}
+input {
+  text-align: left;
+}
 .input-group {
   display: flex;
   flex-direction: row;
 }
-.no-input {
-  background-color: #edff85;
+.input-block__outer {
+  width: 100%;
 }
 .input_title {
   flex-direction: row;
@@ -11,40 +20,40 @@
   align-items: center;
   justify-content: right;
 }
+.input__title {
+  width: 80px;
+}
 .input_title input {
   height: 20px;
 }
-.title {
-  background-color: #00ccff;
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border: 1px solid #000000;
-  height: 20px;
-}
-.time-input {
-  width: 260px;
+.time--input {
+  width: 300px;
 }
 .gas-input {
-  width: 130px;
+  width: 150px;
 }
 #gas_start,
 #gas_end {
-  width: 40px;
+  width: 60px;
 }
 #homo_start,
 #homo_end {
   width: 160px;
 }
 #data__table {
-  width: 410px;
+  /* width: 410px; */
 }
 
 #data__table tbody {
-  height: 180px;
+  height: 250px;
   overflow: hidden;
 }
-
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
 #data__table tbody #selected__row {
   background-color: #6db8ff;
 }
@@ -60,11 +69,17 @@
 }
 #data__table tr th:nth-child(n+3),
 #data__table tr td:nth-child(n+3) {
-  width: 40px;
+  width: 50px;
   text-align: center;
 }
 #data__table tr td:nth-child(n+3) input {
-  width: 38px;
+  width: 48px;
+  text-align: center;
+  /* border: none; */
+  padding: 0;
+}
+#data__table tr td:nth-child(n+3) select {
+  width: 50px;
   text-align: center;
   /* border: none; */
   padding: 0;

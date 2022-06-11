@@ -1,3 +1,9 @@
+.left__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  height: 100%;
+}
 #data__table {
   width: 600px;
 }

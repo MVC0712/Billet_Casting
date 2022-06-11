@@ -34,7 +34,7 @@
           </div>
           <div>
             <select id="product_type" class="no-input save-data need-clear">
-              <option value="">--</option>
+              <option value="0">--</option>
               <option value="1">6061</option>
               <option value="2">6063</option>
               <option value="3">6N01A</option>
@@ -47,7 +47,7 @@
             Product Dim
           </div>
           <div>
-            <select id="product_dim" class="save-data need-clear complete-input">
+            <select id="product_dim" class="save-data complete-input">
               <option value="1">9 inch</option>
               <option value="2">14 inch</option>
             </select>
@@ -84,7 +84,7 @@
             Orther
           </div>
           <div>
-            <input type="text" id="aluminium_orther" class="save-data need-clear complete-input">
+            <input type="text" id="aluminium_orther" class="save-data need-clear complete-input no-need">
           </div>
         </div>
         <div class="input-block__outer file_outer">
@@ -92,8 +92,8 @@
             File
           </div>
           <div>
-            <input type="file" id="file_upload" class="save-data need-clear">
-            <label id="file_name" for="file_upload">no file</label>
+            <input type="file" id="file_upload" class="need-clear">
+            <label id="file_name" for="file_upload">No file</label>
           </div>
           <button id="preview__button" class="input__title aluminium_ingot_title">
             Preview
@@ -120,6 +120,7 @@
                 </th>
                 <th>
                   <select id="material_type" class="no-input save-data need-clear">
+                    <option value="0">NO</option>
                   </select>
                 </th>
                 <th><input type="text" id="material_weight" class="no-input save-data need-clear"/></th>
@@ -181,7 +182,7 @@
             </tr>
             <tr>
               <th>Refined Time 2</th>
-              <th><input type="text" id="refined_time_2" class="no-input save-data need-clear"></th>
+              <th><input type="text" id="refined_time_2" class="save-data need-clear no-need"></th>
             </tr>
           </thead>
         </table>
@@ -233,50 +234,50 @@
               <tr>
                 <td>id</td>
                 <td>KLHK1(Kg)</td>
-                <td><input type="text" id="input_si_1"></td>
-                <td><input type="text" id="input_mg_1"></td>
-                <td><input type="text" id="input_mn_1"></td>
-                <td><input type="text" id="input_cr_1"></td>
-                <td><input type="text" id="input_cu_1"></td>
-                <td><input type="text" id="input_fe_1"></td>
-                <td><input type="text" id="input_zn_1"></td>
-                <td><input type="text" id="input_ti_b_1"></td>
+                <td><input type="text" id="input_si_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_mg_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_mn_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_cr_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_cu_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_fe_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_zn_1" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_ti_b_1" class="save-data need-clear no-need"></td>
               </tr>
               <tr>
                 <td>id</td>
                 <td>Đo lần 2(%)</td>
-                <td><input type="text" id="me_si_2"></td>
-                <td><input type="text" id="me_mg_2"></td>
-                <td><input type="text" id="me_mn_2"></td>
-                <td><input type="text" id="me_cr_2"></td>
-                <td><input type="text" id="me_cu_2"></td>
-                <td><input type="text" id="me_fe_2"></td>
-                <td><input type="text" id="me_zn_2"></td>
-                <td><input type="text" id="me_ti_b_2"></td>
-                <td rowspan="2"><input type="text" id="flux_2"></td>
+                <td><input type="text" id="me_si_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_mg_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_mn_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_cr_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_cu_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_fe_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_zn_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_ti_b_2" class="save-data need-clear no-need"></td>
+                <td rowspan="2"><input type="text" id="flux_2" class="save-data need-clear no-need"></td>
               </tr>
               <tr>
                 <td>id</td>
                 <td>KLHK2(Kg)</td>
-                <td><input type="text" id="input_si_2"></td>
-                <td><input type="text" id="input_mg_2"></td>
-                <td><input type="text" id="input_mn_2"></td>
-                <td><input type="text" id="input_cr_2"></td>
-                <td><input type="text" id="input_cu_2"></td>
-                <td><input type="text" id="input_fe_2"></td>
-                <td><input type="text" id="input_zn_2"></td>
-                <td><input type="text" id="input_ti_b_2"></td>
+                <td><input type="text" id="input_si_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_mg_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_mn_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_cr_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_cu_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_fe_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_zn_2" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="input_ti_b_2" class="save-data need-clear no-need"></td>
               </tr>
               <td>id</td>
                 <td>Đo lần 3(%)</td>
-                <td><input type="text" id="me_si_3"></td>
-                <td><input type="text" id="me_mg_3"></td>
-                <td><input type="text" id="me_mn_3"></td>
-                <td><input type="text" id="me_cr_3"></td>
-                <td><input type="text" id="me_cu_3"></td>
-                <td><input type="text" id="me_fe_3"></td>
-                <td><input type="text" id="me_zn_3"></td>
-                <td><input type="text" id="me_ti_b_3"></td>
+                <td><input type="text" id="me_si_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_mg_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_mn_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_cr_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_cu_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_fe_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_zn_3" class="save-data need-clear no-need"></td>
+                <td><input type="text" id="me_ti_b_3" class="save-data need-clear no-need"></td>
                 <td></td>
             </tbody>
           </table>

@@ -147,6 +147,42 @@ $(document).on("keyup", "#material_weight", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
 });
+
+$(document).on("keyup", "#melting_table thead input", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
+$(document).on("change", "#melting_table thead input", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
+$(document).on("keyup", "#element_table tbody input", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
+$(document).on("keyup", ".casting__wrapper thead input", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
+$(document).on("change", ".casting__wrapper thead input", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
 function checkTimeValue(inputValue) {
   let flag = false;
   if (inputValue.substr(0, 1) == "1" && inputValue.length == 4) {
@@ -236,8 +272,8 @@ $("#add_material").on("click", function () {
         .append($("<td>").append($("<input>").val($("#material_note").val())))
         .appendTo("#material_table tbody");
       $(this).prop("disabled", true);
-      $("#material").val("").focus().removeClass("complete-input").addClass("no-input");
-      $("#material_type").val("").removeClass("complete-input").addClass("no-input");
+      $("#material").val("0").focus().removeClass("complete-input").addClass("no-input");
+      $("#material_type").val("0").removeClass("complete-input").addClass("no-input");
       $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
       $("#material_note").val("");
     break;
@@ -269,7 +305,6 @@ function add_material_check() {
   } else {
       $("#add_material").prop("disabled", false);
   }
-  console.log($("#material").val());
 };
 function makeErrorTable() {
   fileName = "./php/DailyReport/SelError.php";
@@ -346,22 +381,81 @@ function MaterialNameTypeOption(seletedId) {
 
 function getInputData() {
   let inputData = new Object();
-  if ($(".top__wrapper")) {
-    $("input.save-data").each(function (index, element) {
+    $(".top__wrapper input.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
-    $(" select.save-data").each(function (index, element) {
+    $(".top__wrapper select.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
-  }
   if ($("#file_upload").prop("files")[0]) {
     inputData["file_url"] = ajaxFileUpload();
   } else {
     inputData["file_url"] = $("#file_name").html();
   }
+  $(".material__wrapper .right__material input.save-data").each(function (index, element) {
+    inputData[$(this).attr("id")] = $(this).val();
+  });
+  $(".element__wrapper input.save-data").each(function (index, element) {
+    inputData[$(this).attr("id")] = $(this).val();
+  });
+  $(".casting__wrapper input.save-data").each(function (index, element) {
+    inputData[$(this).attr("id")] = $(this).val();
+  });
   console.log(inputData);
+  console.log(Object.keys(inputData).length);
   return inputData;
 }
+function clearInputData() {
+  $(".top__wrapper input.need-clear").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $(".top__wrapper input.no-need").each(function (index, element) {
+    $(this).val("").removeClass("no-input").addClass("complete-input");
+  });
+  $(".top__wrapper select.need-clear").each(function (index, element) {
+    $(this).val("0").removeClass("complete-input").addClass("no-input");
+  });
+
+  $("#file_name").html("No file");
+
+  $(".material__wrapper .right__material input.need-clear").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $(".material__wrapper .right__material input.no-need").each(function (index, element) {
+    $(this).val("").removeClass("no-input").addClass("complete-input");
+  });
+  $(".element__wrapper input.need-clear").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $(".element__wrapper input.no-need").each(function (index, element) {
+    $(this).val("").removeClass("no-input").addClass("complete-input");
+  });
+  $(".casting__wrapper input.need-clear").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $("#material_table tbody").empty();
+}
+function getTableData(tableTrObj) {
+  var tableData = [];
+  tableTrObj.each(function (index, element) {
+    var tr = [];
+    $(this)
+      .find("td")
+      .each(function (index, element) {
+        if ($(this).find("input").length) {
+          tr.push($(this).find("input").val());
+        } else if ($(this).find("select").length) {
+          tr.push($(this).find("select").val());
+        } else {
+          tr.push($(this).html());
+        }
+      });
+    tableData.push(tr);
+  });
+  console.log(tableData);
+  return tableData;
+}
+
 function ajaxFileUpload() {
     var file_data = $('#file_upload').prop('files')[0];
     var form_data = new FormData();
@@ -379,4 +473,5 @@ function ajaxFileUpload() {
 
 $(document).on("click", "#save", function () {
   getInputData();
+  getTableData($("#material_table tbody tr"));
 });
