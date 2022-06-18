@@ -89,3 +89,19 @@ select {
   justify-content: center;
   align-items: center;
 }
+
+#summary__table tbody {
+  height: 110px;
+  /* width: 480px; */
+  overflow: auto;
+}
+#summary__table thead tr th:nth-child(1),
+#summary__table tbody tr td:nth-child(1),
+#summary__table thead tr th:nth-child(2),
+#summary__table tbody tr td:nth-child(2),
+#summary__table thead tr th:nth-child(3),
+#summary__table tbody tr td:nth-child(3),
+#summary__table thead tr th:nth-child(4),
+#summary__table tbody tr td:nth-child(4) {
+  width: 70px;
+}
