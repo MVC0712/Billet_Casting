@@ -20,8 +20,19 @@ const myAjax = {
   },
 };
 
+const getTwoDigits = (value) => value < 10 ? `0${value}` : value;
+const getDateTime = (date) => {
+    const day = getTwoDigits(date.getDate());
+    const month = getTwoDigits(date.getMonth() + 1);
+    const year = date.getFullYear();
+    const hours = getTwoDigits(date.getHours());
+    const mins = getTwoDigits(date.getMinutes());
+    return `${year}-${month}-${day} ${hours}:${mins}:00`;
+}
+// sendObj["maintenance_start"] =getDateTime(new Date($("#maintenance_start").val()));
 $(function () {
   MaterialNameCode();
+  makeSummaryTable();
   var now = new Date();
   var MonthLastDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
   var MonthFirstDate = new Date(now.getFullYear(), (now.getMonth() + 12) % 12, 1);
@@ -32,14 +43,44 @@ $(function () {
   var formatDate = function(date) {
     return date.getFullYear().toString().substr(-2);  + '-' + formatDateComponent(date.getMonth() + 1) + '-' + formatDateComponent(date.getDate()) ;
   };
-  var a = (new Date());
-  var b = formatDate(MonthLastDate);
-  var c = formatDate(new Date());
 
-  $("#plan_start").val(c);
-  $("#plan_end").val(formatDate(new Date(a.setDate(a.getDate() + 10))))
 });
-
+function makeSummaryTable() {
+  var fileName = "SelSummary.php";
+  var sendData = {
+      dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#summary_table tbody"));
+};
+function fillTableBody(data, tbodyDom) {
+  $(tbodyDom).empty();
+  data.forEach(function(trVal) {
+      let newTr = $("<tr>");
+      Object.keys(trVal).forEach(function(tdVal, index) {
+          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+      });
+      $(newTr).appendTo(tbodyDom);
+  });
+};
+$(document).on("click", "#summary_table tbody tr", function (e) {
+  let fileName = "SelUpdateData.php";
+  let sendData;
+  if (!$(this).hasClass("selected-record")) {
+    $(this).parent().find("tr").removeClass("selected-record");
+    $(this).addClass("selected-record");
+    $("#selected__tr").removeAttr("id");
+    $(this).attr("id", "selected__tr");
+    sendData = {
+      targetId: $("#selected__tr").find("td").eq(0).html(),
+    };
+    myAjax.myAjax(fileName, sendData);
+    putDataToInput(ajaxReturnData);
+    $("#add_material").text("Add");
+  } else {
+    // deleteDialog.showModal();
+  }
+});
 function MaterialNameCode() {
   var fileName = "SelMaterialName.php";
   var sendData = {
@@ -247,7 +288,7 @@ function getTableData(tableTrObj) {
 $("#file_upload").on("change", function () {
   var file = $(this).prop("files")[0];
   console.log(file.name);
-  $("#file_name").html(file.name);
+  $("#file_url").html(file.name);
   $("#preview__button").prop("disabled", false);
   readNewFile = true;
 });
@@ -379,6 +420,15 @@ function MaterialNameTypeOption(seletedId) {
   return targetDom;
 }
 
+$(document).on("keyup", ".number-input", function() {
+  if($.isNumeric($(this).val())){
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  // checkInput();
+});
+
 function getInputData() {
   let inputData = new Object();
     $(".top__wrapper input.save-data").each(function (index, element) {
@@ -388,18 +438,25 @@ function getInputData() {
       inputData[$(this).attr("id")] = $(this).val();
     });
   if ($("#file_upload").prop("files")[0]) {
-    inputData["file_url"] = ajaxFileUpload();
+    inputData["file_url"] = $("#file_url").html();
+    ajaxFileUpload();
   } else {
-    inputData["file_url"] = $("#file_name").html();
+    inputData["file_url"] = $("#file_url").html();
   }
   $(".material__wrapper .right__material input.save-data").each(function (index, element) {
     inputData[$(this).attr("id")] = $(this).val();
+  });
+  $(".material__wrapper .right__material input.date-time").each(function (index, element) {
+    inputData[$(this).attr("id")] = getDateTime(new Date($(this).val()));
   });
   $(".element__wrapper input.save-data").each(function (index, element) {
     inputData[$(this).attr("id")] = $(this).val();
   });
   $(".casting__wrapper input.save-data").each(function (index, element) {
     inputData[$(this).attr("id")] = $(this).val();
+  });
+  $(".casting__wrapper input.date-time").each(function (index, element) {
+    inputData[$(this).attr("id")] = getDateTime(new Date($(this).val()));
   });
   console.log(inputData);
   console.log(Object.keys(inputData).length);
@@ -416,7 +473,7 @@ function clearInputData() {
     $(this).val("0").removeClass("complete-input").addClass("no-input");
   });
 
-  $("#file_name").html("No file");
+  $("#file_url").html("No file");
 
   $(".material__wrapper .right__material input.need-clear").each(function (index, element) {
     $(this).val("").removeClass("complete-input").addClass("no-input");
@@ -475,3 +532,34 @@ $(document).on("click", "#save", function () {
   getInputData();
   getTableData($("#material_table tbody tr"));
 });
+
+// loop for ajaxReturnData and put data to input field
+function putDataToInput(data) {
+  $(".top__wrapper input.save-data").each(function (index, element) {
+    $(this).val(data[$(this).attr("id")]);
+  });
+  $(".top__wrapper select.save-data").each(function (index, element) {
+    $(this).val(data[$(this).attr("id")]);
+  });
+  $("#file_url").html(data["file_url"]);
+  $(".material__wrapper .right__material input.save-data").each(function (index, element) {
+    $(this).val(data[$(this).attr("id")]);
+  }
+  );
+  $(".material__wrapper .right__material input.date-time").each(function (index, element) {
+    $(this).val(getDateTime(new Date(data[$(this).attr("id")])));
+  }
+  );
+  $(".element__wrapper input.save-data").each(function (index, element) {
+    $(this).val(data[$(this).attr("id")]);
+  }
+  );
+  $(".casting__wrapper input.save-data").each(function (index, element) {
+    $(this).val(data[$(this).attr("id")]);
+  }
+  );
+  $(".casting__wrapper input.date-time").each(function (index, element) {
+    $(this).val(getDateTime(new Date(data[$(this).attr("id")])));
+  }
+  );
+};

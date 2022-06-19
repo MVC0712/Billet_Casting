@@ -68,15 +68,15 @@ $(document).on("keyup", ".number-input", function() {
   }
   checkInput();
 });
-$(document).on("change", "#data__table tbody select", function() {
-  if (($(this).val() != 0) && ($(this).parent().find("input").val() == "")) {
-    $(this).parent().find("input").removeClass("complete-input").addClass("no-input");
+$(document).on("change", ".select-pos", function() {
+  if (($(this).val() != 0) && ($(this).parent().find(".input-code").val() == 0)) {
+    $(this).parent().find(".input-code").removeClass("complete-input").addClass("no-input");
   } else {
-    $(this).parent().find("input").removeClass("no-input").addClass("complete-input");
+    $(this).parent().find(".input-code").removeClass("no-input").addClass("complete-input");
   }
   checkInput();
 });
-$(document).on("keyup", "#data__table tbody input", function() {
+$(document).on("change", ".input-code", function() {
   if ($(this).val() > 0) {
     $(this).removeClass("no-input").addClass("complete-input");
   } else {
