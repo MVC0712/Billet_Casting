@@ -96,7 +96,7 @@ tbody td {
   font-weight: normal;
 }
 tbody tr.selected-record {
-  background-color: #d6d283;
+  background-color: #00e1ff;
 }
 /* 必要入力枠の色塗り */
 .input-required {

@@ -7,6 +7,22 @@
 input {
   text-align: left;
 }
+#file_upload {
+  /* width: 270px; */
+  display: none;
+}
+#file_upload + label {
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+  border: solid 1px #0000ff;
+  width: 300px;
+  height: 20px;
+}
+#preview__button {
+  width: 50px;
+  margin: 0;
+}
 .input-group {
   display: flex;
   flex-direction: row;

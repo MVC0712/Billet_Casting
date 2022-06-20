@@ -78,7 +78,8 @@ $product_type = $_POST['product_type'];
 $refined_time_1 = $_POST['refined_time_1'];
 $$refined_time_2 = $_POST['refined_time_2'];
 $water_temp = $_POST['water_temp'];
-
+$casting_speed = $_POST['casting_speed'];
+$oil_preasure = $_POST['oil_preasure'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "UPDATE t_casting SET 'air_pressure' = '$air_pressure' ,
@@ -153,7 +154,9 @@ try {
     'product_type' = '$product_type' ,
     'refined_time_1' = '$refined_time_1' ,
     'refined_time_2' = '$refined_time_2' ,
-    'water_temp'= '$water_temp'
+    'water_temp'= '$water_temp',
+    'casting_speed' = '$casting_speed' ,
+    'oil_preasure' = '$oil_preasure'
     WHERE id= '$id'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

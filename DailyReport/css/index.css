@@ -181,26 +181,26 @@ input {
   height: 20px;
 }
 #material_table thead tr th:nth-child(1),
-#material_table thead tr td:nth-child(1){
+#material_table tbody tr td:nth-child(1){
   display: none;
 }
 #material_table thead tr th:nth-child(2),
-#material_table thead tr td:nth-child(2),
+#material_table tbody tr td:nth-child(2),
 #add_material_table thead tr th:nth-child(1) {
   width: 100px;
 }
 #material_table thead tr th:nth-child(3),
-#material_table thead tr td:nth-child(3),
+#material_table tbody tr td:nth-child(3),
 #add_material_table thead tr th:nth-child(2) {
   width: 100px;
 }
 #material_table thead tr th:nth-child(4),
-#material_table thead tr td:nth-child(4),
+#material_table tbody tr td:nth-child(4),
 #add_material_table thead tr th:nth-child(3) {
   width: 100px;
 }
 #material_table thead tr th:nth-child(5),
-#material_table thead tr td:nth-child(5),
+#material_table tbody tr td:nth-child(5),
 #add_material_table thead tr th:nth-child(4) {
   width: 100px;
 }
@@ -354,12 +354,14 @@ input {
 #hydro_table thead tr th:nth-child(5) input {
   width: 70px;
 }
-#save {
+#save,
+#update {
   width: 40px;
   height: 20px;
   padding: 0;
   margin: 0;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 #summary_table tbody {
   height: 100px;
@@ -368,7 +370,7 @@ input {
 }
 #summary_table thead tr th:nth-child(1),
 #summary_table tbody tr td:nth-child(1) {
-  width: 20px;
+  display: none;
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2) {
@@ -384,5 +386,25 @@ input {
 }
 #summary_table thead tr th:nth-child(5),
 #summary_table tbody tr td:nth-child(5) {
+  width: 100px;
+}
+#summary_table thead tr th:nth-child(6),
+#summary_table tbody tr td:nth-child(6) {
+  width: 100px;
+}
+#summary_table thead tr th:nth-child(7),
+#summary_table tbody tr td:nth-child(7) {
+  width: 100px;
+}
+#summary_table thead tr th:nth-child(8),
+#summary_table tbody tr td:nth-child(8) {
+  width: 100px;
+}
+#summary_table thead tr th:nth-child(9),
+#summary_table tbody tr td:nth-child(9) {
+  width: 100px;
+}
+#summary_table thead tr th:nth-child(19),
+#summary_table tbody tr td:nth-child(19) {
   width: 100px;
 }

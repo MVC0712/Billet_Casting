@@ -115,15 +115,15 @@
               </tr>
               <tr>
                 <th>
-                  <select id="material" class="no-input save-data need-clear">
+                  <select id="material" class="no-input need-clear">
                   </select>
                 </th>
                 <th>
-                  <select id="material_type" class="no-input save-data need-clear">
+                  <select id="material_type" class="no-input need-clear">
                     <option value="0">NO</option>
                   </select>
                 </th>
-                <th><input type="text" id="material_weight" class="no-input save-data need-clear"/></th>
+                <th><input type="text" id="material_weight" class="no-input need-clear"/></th>
                 <th><input type="text" id="material_note" class="save-data need-clear"/></th>
               </tr>
             </thead>
@@ -313,11 +313,11 @@
             </tr>
             <tr>
               <th>Oil pressure</th>
-              <th><input type="text" id="refined_time_1" class="no-input save-data need-clear number-input"></th>
+              <th><input type="text" id="oil_preasure" class="no-input save-data need-clear number-input"></th>
             <!-- </tr>
             <tr> -->
               <th>Casting Speed</th>
-              <th><input type="text" id="refined_time_2" class="no-input save-data need-clear number-input"></th>
+              <th><input type="text" id="casting_speed" class="no-input save-data need-clear number-input"></th>
             </tr>
           </thead>
           <!-- <tbody>
@@ -362,20 +362,28 @@
           </thead>
         </table>
       </div>
-      <button id="save">
+      <div>
+      <button disabled id="save">
         Save
       </button>
+      <button disabled id="update">
+        Update
+      </button>
+    </div>
     </div>
     <div class="melting__wrapper">
       <table id="summary_table">
         <thead>
           <tr>
             <th>id</th>
+            <th>Product Date</th>
+            <th>Product Type</th>
+            <th>Melting Start</th>
+            <th>Melting End</th>
+            <th>Gas Start</th>
+            <th>Gas Start</th>
             <th>Casting Start</th>
             <th>Casting End</th>
-            <th>Al Temp Gate</th>
-            <th>Al Temp Cast</th>
-            <th>Air pressure</th>
           </tr>
         </thead>
         <tbody></tbody>

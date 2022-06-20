@@ -147,3 +147,27 @@ $(document).on("click", "#summary__table tbody tr", function() {
   console.log(selectCode);
 });
 
+$("#file_upload").on("change", function () {
+  var file = $(this).prop("files")[0];
+  console.log(file.name);
+  $("#file_url").html(file.name);
+  $("#preview__button").prop("disabled", false);
+  readNewFile = true;
+});
+$(document).on("click", "#preview__button", function () {
+  window.open("./HomoSub.html");
+});
+function ajaxFileUpload() {
+  var file_data = $('#file_upload').prop('files')[0];
+  var form_data = new FormData();
+  form_data.append('file', file_data);
+  $.ajax({
+      url: "./php/FileUpload.php",
+      dataType: 'text',
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: form_data,
+      type: 'post',
+  });
+}

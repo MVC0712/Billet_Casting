@@ -7,15 +7,15 @@ if ($dbh->getInstance() === null) {
 $data = file_get_contents('php://input');
 $data_json = json_decode($data); 
 
-$selected_id = array_pop($data_json);
+$targetId = array_pop($data_json);
 
 try {
 
     if(count($data_json) > 0){
         foreach($data_json as $val){
-          $sql_paramater[] = "('{$selected_id}', '{$val[2]}', '{$val[3]}', '{$val[4]}')";
+          $sql_paramater[] = "('{$targetId}', '{$val[1]}', '{$val[2]}', '{$val[3]}', '{$val[4]}')";
         }
-        $sql = "INSERT INTO t_add_material (t_casting, material_type, 'weight', note) VALUES ".join(",", $sql_paramater);
+        $sql = "INSERT INTO t_add_material (t_casting, material, material_type, weight, note) VALUES ".join(",", $sql_paramater);
         $stmt = $dbh->getInstance()->prepare($sql);
         $stmt->execute();
       }
