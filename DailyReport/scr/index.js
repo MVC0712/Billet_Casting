@@ -528,7 +528,10 @@ function getTableData(tableTrObj) {
   console.log(tableData);
   return tableData;
 }
-
+$(document).on("change", "#file_upload", function () {
+  ajaxFileUpload();
+  console.log("Change file");
+});
 function ajaxFileUpload() {
     var file_data = $('#file_upload').prop('files')[0];
     var form_data = new FormData();
@@ -565,6 +568,7 @@ $(document).on("click", "#update", function () {
   inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
   sendData = inputData;
   myAjax.myAjax(fileName, sendData);
+  clearInputData();
   makeSummaryTable();
 });
 $(document).on("click", "#material_table tbody tr", function() {

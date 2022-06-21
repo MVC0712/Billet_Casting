@@ -13,31 +13,19 @@
     <header>Homogenizing Page</header>
 
 <div class="main__wrapper">
+<div class="top__wrapper">
 <div class="left__wrapper">
-  <table id="summary__table">
+  <table id="casting__table">
     <thead>
       <tr>
-        <th>
-          id
-        </th>
-        <th>
-          Homo
-        </th>
+        <th>id</th>
+        <th>Code</th>
+        <th>Type</th>
+        <th>Melting Start</th>
+        <th>Casting Start</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>11</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>22</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>33</td>
-      </tr>
     </tbody>
   </table>
 </div>
@@ -155,7 +143,27 @@
     Preview
   </button>
 </div>
-<button id="save__button" disabled>Save</button>
+<div class="button__wrapper">
+  <button id="save__button" disabled>Save</button>
+  <button id="update__button" disabled>Update</button>
+</div>
+
+</div>
+</div>
+<div class="bottom__wrapper">
+<table id="summary_table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Homo Start</th>
+      <th>Homo End</th>
+      <th>Gas Start</th>
+      <th>Gas End</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+</div>
 </div>
     <script src="../Lib/jquery.min.js"></script>
     <script src="./scr/index.js"></script>

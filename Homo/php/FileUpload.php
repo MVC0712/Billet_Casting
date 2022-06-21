@@ -1,5 +1,5 @@
 <?php
-  $updir = "../../FileUpload";
+  $updir = "../../FileUpload/Homo";
   $tmp_file = @$_FILES['file']['tmp_name'];
   $filepath = pathinfo($_FILES['file']['name']);
   if ( 0 < $_FILES['file']['error'] ) {

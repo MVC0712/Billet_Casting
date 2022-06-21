@@ -12,7 +12,7 @@ const myAjax = {
   myAjax: function (fileName, sendData) {
     $.ajax({
       type: "POST",
-      url: fileName,
+      url: "./php/"+fileName,
       dataType: "json",
       data: sendData,
       async: false,
@@ -29,8 +29,35 @@ const myAjax = {
 $(function () {
   fillSelectBox(pos);
   // fillInputBox(selectCode);
+  makeSummaryTable();
+  makeCastingTable();
 });
-
+function makeSummaryTable() {
+  var fileName = "SelSummary.php";
+  var sendData = {
+      dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#summary_table tbody"));
+};
+function makeCastingTable() {
+  var fileName = "SelCasting.php";
+  var sendData = {
+      dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#casting__table tbody"));
+};
+function fillTableBody(data, tbodyDom) {
+  $(tbodyDom).empty();
+  data.forEach(function(trVal) {
+      let newTr = $("<tr>");
+      Object.keys(trVal).forEach(function(tdVal, index) {
+          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+      });
+      $(newTr).appendTo(tbodyDom);
+  });
+};
 function fillSelectBox(posArray) {
   $(".select-pos").append($("<option>").val(0).html("NO"));
   posArray.forEach(function(value, index) {
@@ -124,12 +151,18 @@ function getInputData() {
     $("#data__table select.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
+    if ($("#file_upload").prop("files")[0]) {
+      inputData["file_url"] = $("#file_url").html();
+      ajaxFileUpload();
+    } else {
+      inputData["file_url"] = $("#file_url").html();
+    }
   console.log(inputData);
   console.log(Object.keys(inputData).length);
   return inputData;
 }
 
-$(document).on("click", "#summary__table tbody tr", function() {
+$(document).on("click", "#casting__table tbody tr", function() {
   let selected = new Object();
   if (!$(this).hasClass("selected-record")) {
       $(this).addClass("selected-record");
@@ -157,6 +190,10 @@ $("#file_upload").on("change", function () {
 $(document).on("click", "#preview__button", function () {
   window.open("./HomoSub.html");
 });
+$(document).on("change", "#file_upload", function () {
+  ajaxFileUpload();
+  console.log("Change file");
+});
 function ajaxFileUpload() {
   var file_data = $('#file_upload').prop('files')[0];
   var form_data = new FormData();
@@ -169,5 +206,69 @@ function ajaxFileUpload() {
       processData: false,
       data: form_data,
       type: 'post',
+  });
+}
+$(document).on("click", "#save__button", function () {
+  fileName = "InsData.php";
+  inputData = getInputData();
+  sendData = inputData;
+  myAjax.myAjax(fileName, sendData);
+  makeSummaryTable();
+  clearInputData();
+});
+$(document).on("click", "#update__button", function () {
+  fileName = "UpdateData.php";
+  inputData = getInputData();
+  inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
+  sendData = inputData;
+  myAjax.myAjax(fileName, sendData);
+  makeSummaryTable();
+  clearInputData();
+});
+$(document).on("click", "#summary_table tbody tr", function (e) {
+  let fileName = "SelUpdateData.php";
+  let sendData;
+  if (!$(this).hasClass("selected-record")) {
+    $(this).parent().find("tr").removeClass("selected-record");
+    $(this).addClass("selected-record");
+    $("#selected__tr").removeAttr("id");
+    $(this).attr("id", "selected__tr");
+    sendData = {
+      targetId: $("#selected__tr").find("td").eq(0).html(),
+    };
+    console.log(sendData);
+    myAjax.myAjax(fileName, sendData);
+    putDataToInput(ajaxReturnData);
+  } else {
+    // deleteDialog.showModal();
+  }
+  $("#save__button").attr("disabled", true);
+  $("#update__button").attr("disabled", false);
+  $(".save-data").each(function (index, element) {
+    $(this).removeClass("no-input").addClass("complete-input");
+  });
+});
+
+function putDataToInput(data) {
+    data.forEach(function (trVal) {
+      Object.keys(trVal).forEach(function (tdVal) {
+        $("#" + tdVal).val(trVal[tdVal]); 
+      });
+  });
+  $("#file_url").html(data[0].file_url);
+};
+function clearInputData() {
+  $("#file_url").html("No file");
+  $(".select-pos").each(function (index, element) {
+    $(this).val(0);
+  });
+  $(".input-code").each(function (index, element) {
+    $(this).val(0);
+  });
+  $(".number-input").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $(".time-input").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
   });
 }

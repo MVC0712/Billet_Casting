@@ -55,7 +55,7 @@
           $("<object>")
             .attr(
               "data",
-              "../FileUpload/" + filename +
+              "../FileUpload/DailyReport/" + filename +
                 "#toolbar=0&navpanes=0"
             )
             .attr("type", "application/pdf")
@@ -64,7 +64,7 @@
         case "jpg":
         case "JPG":
           $("<object>")
-            .attr("data", "../FileUpload/" + filename)
+            .attr("data", "../FileUpload/DailyReport/" + filename)
             .attr("type", "image/jpeg")
             .appendTo("body");
           break;
