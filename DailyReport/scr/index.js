@@ -647,28 +647,17 @@ function checkUpdate() {
     }
   });
   $(".material__wrapper .right__material input").each(function() {
-    if ($(this).hasClass("no-input")) {
+    if ($(this).val() == "") {
       check = false;
     }
   });
-  $("#element_table tbody input").each(function() {
-    if ($(this).hasClass("no-input")) {
+  if (!$("#summary_table tbody tr").hasClass("selected-record")) {
       check = false;
     }
-  });
-  $(".casting__wrapper input").each(function() {
-    if ($(this).hasClass("no-input")) {
-      check = false;
-    }
-  });
-  $("#summary_table tbody tr").each(function() {
-    if (!$(this).hasClass("selected-record")) {
-      check = false;
-    }
-  });
   if (check) {
     $("#update").attr("disabled", false);
   } else {
     $("#update").attr("disabled", true);
   } 
+  return check;
 };
