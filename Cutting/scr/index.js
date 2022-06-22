@@ -58,9 +58,18 @@ $(document).on("click", "#casting__table tbody tr", function (e) {
     console.log(sendData);
     // myAjax.myAjax(fileName, sendData);
     // putDataToInput(ajaxReturnData);
+
+  fileName = "SelUpdateCastingData.php";
+  sendData = {
+    targetId: $("#selected__tr").find("td").eq(0).html(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  $("#file_url").html(ajaxReturnData[0].file_url);
+
   } else {
     // deleteDialog.showModal();
   }
+  checkInput();
 });
 $(document).on("keyup", "#data__table tbody input", function() {
   if ($(this).val() != "") {
@@ -77,6 +86,9 @@ function checkInput() {
       check = false;
     }
   });
+  if (!$("#selected__tr").find("td").eq(0).html()) {
+    check = false;
+  };
   if (check) {
     $("#save__button").attr("disabled", false);
   } else {
@@ -94,4 +106,37 @@ function getInputData() {
     inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
   console.log(Object.keys(inputData).length);
   return inputData;
+};
+$("#file_upload").on("change", function () {
+  var file = $(this).prop("files")[0];
+  console.log(file.name);
+  $("#file_url").html(file.name);
+  $("#preview__button").prop("disabled", false);
+});
+$(document).on("change", "#file_upload", function () {
+  ajaxFileUpload();
+  fileName = "UpdateCastingData.php";
+  sendData = {
+    targetId: $("#selected__tr").find("td").eq(0).html(),
+    file_url: $("#file_url").html(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  console.log(sendData);
+});
+$(document).on("click", "#preview__button", function () {
+  window.open("../DailyReport/DailyReportSub.html");
+});
+function ajaxFileUpload() {
+  var file_data = $('#file_upload').prop('files')[0];
+  var form_data = new FormData();
+  form_data.append('file', file_data);
+  $.ajax({
+      url: "./php/FileUpload.php",
+      dataType: 'text',
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: form_data,
+      type: 'post',
+  });
 }

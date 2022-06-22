@@ -10,6 +10,30 @@ select {
   width: 23%;
   height: 100%;
 }
+#file_upload {
+  /* width: 270px; */
+  display: none;
+}
+#file_upload + label {
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+  border: solid 1px #0000ff;
+  width: 300px;
+  height: 20px;
+}
+#preview__button {
+  width: 50px;
+  margin: 0;
+}
+.input-block__outer {
+  height: 25px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 #data__table {
   width: 600px;
 }
