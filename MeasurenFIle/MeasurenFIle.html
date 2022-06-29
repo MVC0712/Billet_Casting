@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeasurenFile</title>
+    <link rel="stylesheet" href="../Lib/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+
+  <body>
+    <header>MeasurenFile Page</header>
+
+<div class="main__wrapper">
+<div class="top__wrapper">
+<div class="left__wrapper">
+  <table id="file_list__table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Ngày đo</th>
+        <th>Lần 1</th>
+        <th>Lần 2</th>
+        <th>Lần 3</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="right__wrapper">
+  <div class="input-block__outer">
+    <div class="input__title">Ngày đo</div>
+    <input class="save-data need-clear time-input" type="date" id="mea_date">
+  </div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 1
+  </div>
+  <div>
+    <input type="file" id="file_upload_1" class="need-clear">
+    <label id="file_url_1" for="file_upload_1">No file</label>
+  </div>
+  <button id="preview__button_1" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 2
+  </div>
+  <div>
+    <input type="file" id="file_upload_2" class="need-clear">
+    <label id="file_url_2" for="file_upload_2">No file</label>
+  </div>
+  <button id="preview__button_2" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 3
+  </div>
+  <div>
+    <input type="file" id="file_upload_3" class="need-clear">
+    <label id="file_url_3" for="file_upload_3">No file</label>
+  </div>
+  <button id="preview__button_3" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div style="flex-direction: row; display: flex;">
+  <button id="save__button" disabled>Save</button>
+  <!-- <button id="update__button" disabled>Update</button> -->
+</div>
+</div>
+</div>
+<div class="bottom__wrapper">
+  <div id="file_area"></div>
+  <!-- <div id="file_area_1" class="zoom"></div>
+  <div id="file_area_2" class="zoom"></div>
+  <div id="file_area_3" class="zoom"></div> -->
+</div>
+</div>
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
+  </body>
+</html>
