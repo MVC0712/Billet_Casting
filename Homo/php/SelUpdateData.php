@@ -8,6 +8,7 @@ $targetId = "";
 $targetId = $_POST['targetId'];
 try {
     $sql = "SELECT 
+    code,
     gas_end,
     gas_start,
     DATE_FORMAT(homo_end, '%Y-%m-%dT%H:%i') AS homo_end,

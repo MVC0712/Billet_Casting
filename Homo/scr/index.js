@@ -78,6 +78,14 @@ function fillInputBox(posArray) {
     }
   });
 };
+$(document).on("change", "#code", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+});
 $(document).on("change", ".time-input", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
@@ -129,6 +137,9 @@ function checkInput() {
       check = false;
     }
   });
+  if ($("#code").val() == "") {
+    check = false;
+  };
   $(".input-group .number-input").each(function() {
     if(!$.isNumeric($(this).val())){
       check = false;
@@ -271,4 +282,5 @@ function clearInputData() {
   $(".time-input").each(function (index, element) {
     $(this).val("").removeClass("complete-input").addClass("no-input");
   });
+  $("#code").val("").removeClass("complete-input").addClass("no-input");
 }

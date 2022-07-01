@@ -5,6 +5,7 @@ if ($dbh->getInstance() === null) {
     die("No database connection");
 }
 $id = $_POST['targetId'];
+$code = $_POST['code'];
 $file_url = $_POST['file_url'];
 $gas_end = $_POST['gas_end'];
 $gas_start = $_POST['gas_start'];
@@ -77,6 +78,7 @@ $lv48_pos = $_POST['lv48_pos'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "UPDATE t_homo SET 
+    code = '$code',
     file_url = '$file_url' ,
     gas_end = '$gas_end' ,
     gas_start = '$gas_start' ,
