@@ -13,6 +13,7 @@
             <button id="homogenizing_input">Homogenizing Input</button>
             <button id="cutting_input">Cutting Input</button>
             <button id="warehouse_input">Warehouse Input</button>
+            <button id="mea_file">Measurement File</button>
       </div>
       <div>
         <table id="summary_table" style="height: 450px;">
@@ -39,6 +40,9 @@
       });
       $(document).on("click", "#warehouse_input", function () {
         window.open("/Billet_Casting/Warehouse");
+      });
+      $(document).on("click", "#mea_file", function () {
+        window.open("/Billet_Casting/Measurement");
       });
       </script>
 </html>

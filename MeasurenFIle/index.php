@@ -1,3 +1,0 @@
-<?php
-  readfile("MeasurenFIle.html");
-?>

@@ -59,7 +59,7 @@ function fillTableBody(data, tbodyDom) {
   });
 };
 function fillSelectBox(posArray) {
-  $(".select-pos").append($("<option>").val(0).html("NO"));
+  $(".select-pos").append($("<option>").val(0).html(""));
   posArray.forEach(function(value, index) {
     $(".select-pos").append(
         $("<option>").val(index+1).html(value)

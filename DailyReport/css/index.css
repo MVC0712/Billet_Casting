@@ -294,7 +294,7 @@ input {
 }
 #melting_table thead tr th:nth-child(1),
 #melting_table tbody tr td:nth-child(1) {
-  width: 80px;
+  width: 100px;
 }
 #melting_table thead tr th:nth-child(2),
 #melting_table thead tr th:nth-child(3) {

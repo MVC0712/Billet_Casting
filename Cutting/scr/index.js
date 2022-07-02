@@ -45,7 +45,6 @@ function fillTableBody(data, tbodyDom) {
   });
 };
 $(document).on("click", "#casting__table tbody tr", function (e) {
-  clearInputData();
   let fileName = "SelUpdateData.php";
   let sendData;
   if (!$(this).hasClass("selected-record")) {
@@ -60,6 +59,7 @@ $(document).on("click", "#casting__table tbody tr", function (e) {
     myAjax.myAjax(fileName, sendData);
     console.log(ajaxReturnData.length);
     if (ajaxReturnData.length > 0) {
+      clearInputData();
       putDataToInput(ajaxReturnData);
       $("#save__button").attr("disabled", true);
       $("#update__button").attr("disabled", false);
