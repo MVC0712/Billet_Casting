@@ -46,6 +46,7 @@ input {
 .input-group {
   display: flex;
   flex-direction: row;
+  align-items: end;
 }
 .input-block__outer {
   width: 100%;

@@ -4,7 +4,7 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-
+$code = $_POST['code'];
 $file_url = $_POST['file_url'];
 $gas_end = $_POST['gas_end'];
 $gas_start = $_POST['gas_start'];
@@ -77,7 +77,7 @@ $lv48_pos = $_POST['lv48_pos'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "INSERT INTO t_homo
-    (file_url, gas_end, gas_start, homo_end, homo_start,
+    (code, file_url, gas_end, gas_start, homo_end, homo_start,
     lv11_code, lv11_pos, lv12_code, lv12_pos, lv13_code, lv13_pos,
     lv14_code, lv14_pos, lv15_code, lv15_pos, lv16_code, lv16_pos, lv17_code,
     lv17_pos, lv18_code, lv18_pos, lv21_code, lv21_pos, lv22_code,
@@ -87,7 +87,7 @@ try {
     lv36_code, lv36_pos, lv37_code, lv37_pos, lv38_code, lv38_pos, lv41_code, lv41_pos, lv42_code,
     lv42_pos, lv43_code, lv43_pos, lv44_code, lv44_pos, lv45_code, lv45_pos,
     lv46_code, lv46_pos, lv47_code, lv47_pos, lv48_code, lv48_pos) VALUES 
-    ('$file_url', '$gas_end', '$gas_start', '$homo_end', '$homo_start',
+    ('$code', '$file_url', '$gas_end', '$gas_start', '$homo_end', '$homo_start',
     '$lv11_code', '$lv11_pos', '$lv12_code', '$lv12_pos', '$lv13_code', '$lv13_pos',
     '$lv14_code', '$lv14_pos', '$lv15_code', '$lv15_pos', '$lv16_code', '$lv16_pos', '$lv17_code',
     '$lv17_pos', '$lv18_code', '$lv18_pos', '$lv21_code', '$lv21_pos', '$lv22_code',
