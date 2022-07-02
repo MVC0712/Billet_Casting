@@ -463,7 +463,7 @@ function getInputData() {
     inputData[$(this).attr("id")] = $(this).val();
   });
   $(".material__wrapper .right__material input.date-time").each(function (index, element) {
-    inputData[$(this).attr("id")] = getDateTime(new Date($(this).val()));
+    inputData[$(this).attr("id")] = $(this).val();
   });
   $(".element__wrapper input.save-data").each(function (index, element) {
     inputData[$(this).attr("id")] = $(this).val();
@@ -472,7 +472,7 @@ function getInputData() {
     inputData[$(this).attr("id")] = $(this).val();
   });
   $(".casting__wrapper input.date-time").each(function (index, element) {
-    inputData[$(this).attr("id")] = getDateTime(new Date($(this).val()));
+    inputData[$(this).attr("id")] = $(this).val();
   });
   console.log(inputData);
   console.log(Object.keys(inputData).length);
@@ -505,6 +505,9 @@ function clearInputData() {
   });
   $(".casting__wrapper input.need-clear").each(function (index, element) {
     $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $(".casting__wrapper input.no-need").each(function (index, element) {
+    $(this).val("").removeClass("no-input").addClass("complete-input");
   });
   $("#material_table tbody").empty();
 }

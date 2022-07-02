@@ -55,31 +55,31 @@
         </div>
       </div>
       <div class="top_right__wrapper">
-        <div class="input-block__outer extrusion_scrap_outer">
+        <div class="input-block__outer extrusion_scrap_outer" style="display:none">
           <div class="input__title extrusion_scrap_title">
             PP Đùn
           </div>
           <div>
-            <input type="text" id="extrusion_scrap" class="no-input save-data need-clear number-input">
+            <input type="text" id="extrusion_scrap" class="save-data need-clear complete-input no-need number-input">
           </div>
         </div>
-        <div class="input-block__outer casting_scrap_outer">
+        <div class="input-block__outer casting_scrap_outer" style="display:none">
           <div class="input__title casting_scrap_title">
             PP Đúc
           </div>
           <div>
-            <input type="text" id="casting_scrap" class="no-input save-data need-clear number-input">
+            <input type="text" id="casting_scrap" class="save-data need-clear complete-input no-need number-input">
           </div>
         </div>
-        <div class="input-block__outer aluminium_ingot_outer">
+        <div class="input-block__outer aluminium_ingot_outer" style="display:none">
           <div class="input__title aluminium_ingot_title">
             Al 99.7%
           </div>
           <div>
-            <input type="text" id="aluminium_ingot" class="no-input save-data need-clear number-input">
+            <input type="text" id="aluminium_ingot" class="save-data need-clear complete-input no-need number-input">
           </div>
         </div>
-        <div class="input-block__outer aluminium_orther_outer">
+        <div class="input-block__outer aluminium_orther_outer" style="display:none">
           <div class="input__title aluminium_orther_title">
             Khác
           </div>
@@ -154,11 +154,11 @@
             </tr>
             <tr>
               <th>Bắt đầu nung</th>
-              <th><input type="datetime-local" id="melting_start" class="no-input save-data need-clear date-time"></th>
+              <th><input type="time" id="melting_start" class="no-input save-data need-clear date-time"></th>
             </tr>
             <tr>
               <th>Kết thúc nung</th>
-              <th><input type="datetime-local"id="melting_end"class="no-input save-data need-clear date-time"></th>
+              <th><input type="time"id="melting_end"class="no-input save-data need-clear date-time"></th>
             </tr>
             <tr>
               <th>Gas bắt đầu</th>
@@ -293,13 +293,13 @@
             </tr>
             <tr>
               <th>Bắt đầu đúc</th>
-              <th><input type="datetime-local" id="casting_start" class="no-input save-data need-clear date-time"></th>
+              <th><input type="time" id="casting_start" class="no-input save-data need-clear date-time"></th>
               <th>T0 Al cửa lò</th>
               <th><input type="text" id="al_temp_gate" class="no-input save-data need-clear number-input"></th>
             </tr>
             <tr>
               <th>Kết thúc đúc</th>
-              <th><input type="datetime-local" id="casting_end" class="no-input save-data need-clear date-time"></th>
+              <th><input type="time" id="casting_end" class="no-input save-data need-clear date-time"></th>
               <th>T0 Al bàn đúc</th>
               <th><input type="text" id="al_temp_cast" class="no-input save-data need-clear number-input"></th>
             </tr>
@@ -348,16 +348,16 @@
             <tr>
               <th>3</th>
               <th>Giờ</th>
-              <th><input type="time" id="hydro_time_3" class="save-data need-clear"></th>
+              <th><input type="time" id="hydro_time_3" class="save-data need-clear no-need"></th>
               <th>Số liệu</th>
-              <th><input type="text" id="hydro_value_3" class="save-data need-clear number-input"></th>
+              <th><input type="text" id="hydro_value_3" class="save-data need-clear number-input no-need"></th>
             </tr>
             <tr>
               <th>4</th>
               <th>Giờ</th>
-              <th><input type="time" id="hydro_time_4" class="save-data need-clear"></th>
+              <th><input type="time" id="hydro_time_4" class="save-data need-clear no-need"></th>
               <th>Số liệu</th>
-              <th><input type="text" id="hydro_value_4" class="save-data need-clear number-input"></th>
+              <th><input type="text" id="hydro_value_4" class="save-data need-clear number-input no-need"></th>
             </tr>
           </thead>
         </table>
@@ -376,6 +376,7 @@
         <thead>
           <tr>
             <th>id</th>
+            <th>Mã đúc</th>
             <th>Ngày SX</th>
             <th>Mã vật liệu</th>
             <th>Bắt đầu nung</th>

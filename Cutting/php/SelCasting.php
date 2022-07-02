@@ -10,12 +10,12 @@ try {
     t_casting.id,
     code,
     material_type,
-    DATE_FORMAT(casting_start, '%y-%m-%d') AS casting_start
+    product_date
 FROM
     billet_casting.t_casting
         LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
-    ORDER BY casting_start DESC;";
+    ORDER BY product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

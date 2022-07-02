@@ -68,11 +68,11 @@ input {
   align-items: center;
 }
 .code_outer {
-  width: 150px;
+  width: 170px;
   margin-right: 10px;
 }
 .code_title {
-  width: 50px;
+  width: 70px;
 }
 #code {
   width: 100px;
@@ -162,9 +162,12 @@ input {
   display: inline-block;
   cursor: pointer;
   border: solid 1px #0000ff;
-  width: 150px;
+  width: 260px;
   height: 20px;
 }
+/* #file_url {
+  width: 250px;
+} */
 #preview__button {
   width: 50px;
 }
@@ -365,7 +368,7 @@ input {
 }
 #summary_table tbody {
   height: 100px;
-  /* width: 480px; */
+  width: 780px;
   overflow: auto;
 }
 #summary_table thead tr th:nth-child(1),
@@ -374,37 +377,37 @@ input {
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2) {
-  width: 80px;
+  width: 60px;
 }
 #summary_table thead tr th:nth-child(3),
 #summary_table tbody tr td:nth-child(3) {
-  width: 80px;
+  width: 70px;
 }
 #summary_table thead tr th:nth-child(4),
 #summary_table tbody tr td:nth-child(4) {
-  width: 100px;
+  width: 80px;
 }
 #summary_table thead tr th:nth-child(5),
 #summary_table tbody tr td:nth-child(5) {
-  width: 100px;
+  width: 80px;
 }
 #summary_table thead tr th:nth-child(6),
 #summary_table tbody tr td:nth-child(6) {
-  width: 100px;
+  width: 80px;
 }
 #summary_table thead tr th:nth-child(7),
 #summary_table tbody tr td:nth-child(7) {
-  width: 100px;
+  width: 80px;
 }
 #summary_table thead tr th:nth-child(8),
 #summary_table tbody tr td:nth-child(8) {
-  width: 100px;
+  width: 80px;
 }
 #summary_table thead tr th:nth-child(9),
 #summary_table tbody tr td:nth-child(9) {
   width: 100px;
 }
-#summary_table thead tr th:nth-child(19),
-#summary_table tbody tr td:nth-child(19) {
+#summary_table thead tr th:nth-child(10),
+#summary_table tbody tr td:nth-child(10) {
   width: 100px;
 }
