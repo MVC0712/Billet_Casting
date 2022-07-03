@@ -4,18 +4,16 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
+$product_type = "";
+$product_type = $_POST['product_type'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
-    t_casting.id,
-    code,
-    material_type,
-    product_date
-FROM
-    billet_casting.t_casting
-        LEFT JOIN
-    m_material_type ON m_material_type.id = t_casting.product_type
-    ORDER BY product_date DESC;";
+    *
+    FROM
+        billet_casting.m_material_element
+    WHERE
+        material_type = '$product_type';)";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

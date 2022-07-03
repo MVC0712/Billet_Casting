@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make Excel</title>
+    <link rel="stylesheet" href="../Lib/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header>Make Excel Page</header>
+      <div class="top__wrapper">
+        <div class="top_left__wrapper">
+        <div class="input-block__outer code_outer">
+          <div class="input__title code_title">
+            Mã đúc
+          </div>
+          <div>
+            <input type="text" id="code" class="no-input save-data need-clear">
+          </div>
+        </div>
+        <div class="input-block__outer product_date_outer">
+          <div class="input__title product_date_title">
+            Ngày SX
+          </div>
+          <div>
+            <input type="date" id="product_date" class="no-input save-data need-clear">
+          </div>
+        </div>
+        <div class="input-block__outer product_type_outer">
+          <div class="input__title product_type_title">
+            Mã VL
+          </div>
+          <div>
+            <select id="product_type" class="no-input save-data need-clear">
+              <option value="0">--</option>
+              <option value="1">6061</option>
+              <option value="2">6063</option>
+              <option value="3">6N01A</option>
+              <option value="4">6N01</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-block__outer product_dim_outer">
+          <div class="input__title product_dim_title">
+            Đường kính
+          </div>
+          <div>
+            <select id="product_dim" class="save-data complete-input">
+              <option value="1">9 inch</option>
+              <option value="2">14 inch</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="top_right__wrapper">
+        <div class="input-block__outer extrusion_scrap_outer" style="display:none">
+          <div class="input__title extrusion_scrap_title">
+            PP Đùn
+          </div>
+          <div>
+            <input type="text" id="extrusion_scrap" class="save-data need-clear complete-input no-need number-input">
+          </div>
+        </div>
+        <div class="input-block__outer casting_scrap_outer" style="display:none">
+          <div class="input__title casting_scrap_title">
+            PP Đúc
+          </div>
+          <div>
+            <input type="text" id="casting_scrap" class="save-data need-clear complete-input no-need number-input">
+          </div>
+        </div>
+        <div class="input-block__outer aluminium_ingot_outer" style="display:none">
+          <div class="input__title aluminium_ingot_title">
+            Al 99.7%
+          </div>
+          <div>
+            <input type="text" id="aluminium_ingot" class="save-data need-clear complete-input no-need number-input">
+          </div>
+        </div>
+        <div class="input-block__outer aluminium_orther_outer" style="display:none">
+          <div class="input__title aluminium_orther_title">
+            Khác
+          </div>
+          <div>
+            <input type="text" id="aluminium_orther" class="save-data need-clear complete-input no-need number-input">
+          </div>
+        </div>
+        <div class="input-block__outer file_outer">
+          <div class="input__title file_title">
+            File
+          </div>
+          <div>
+            <input type="file" id="file_upload" class="need-clear">
+            <label id="file_url" for="file_upload">No file</label>
+          </div>
+          <button id="preview__button" class="input__title aluminium_ingot_title">
+            Xem
+          </button>
+        </div>
+      </div>
+      </div>
+      <!-- <br> -->
+      <div class="casting__wrapper">
+        <div class="left__material">
+        <table id="casting_table">
+          <thead>
+            <tr>
+              <th colspan="5">Dữ liệu đúc</th>
+            </tr>
+            <tr>
+              <th>Bắt đầu đúc</th>
+              <th><input type="time" id="casting_start" class="no-input save-data need-clear date-time"></th>
+              <th>T0 Al cửa lò</th>
+              <th><input type="text" id="al_temp_gate" class="no-input save-data need-clear number-input"></th>
+            </tr>
+            <tr>
+              <th>Kết thúc đúc</th>
+              <th><input type="time" id="casting_end" class="no-input save-data need-clear date-time"></th>
+              <th>T0 Al bàn đúc</th>
+              <th><input type="text" id="al_temp_cast" class="no-input save-data need-clear number-input"></th>
+            </tr>
+            <tr>
+              <th>Áp lực khí</th>
+              <th><input type="text" id="air_pressure" class="no-input save-data need-clear number-input"></th>
+            <!-- </tr>
+            <tr> -->
+              <th>Nhiệt độ nước</th>
+              <th><input type="text" id="water_temp" class="no-input save-data need-clear number-input"></th>
+            </tr>
+            <tr>
+              <th>Áp lực dầu</th>
+              <th><input type="text" id="oil_preasure" class="no-input save-data need-clear number-input"></th>
+            <!-- </tr>
+            <tr> -->
+              <th>Tốc độ đúc</th>
+              <th><input type="text" id="casting_speed" class="no-input save-data need-clear number-input"></th>
+            </tr>
+          </thead>
+          <!-- <tbody>
+
+          </tbody> -->
+        </table>
+      </div>
+      <div class="right__material">
+        <table id="hydro_table">
+          <thead>
+            <tr>
+              <th colspan="5">Hydro Data</th>
+            </tr>
+            <tr>
+              <th>1</th>
+              <th>Giờ</th>
+              <th><input type="time" id="hydro_time_1" class="no-input save-data need-clear"></th>
+              <th>Số liệu</th>
+              <th><input type="text" id="hydro_value_1" class="no-input save-data need-clear number-input"></th>
+            </tr>
+            <tr>
+              <th>2</th>
+              <th>Giờ</th>
+              <th><input type="time" id="hydro_time_2" class="no-input save-data need-clear"></th>
+              <th>Số liệu</th>
+              <th><input type="text" id="hydro_value_2" class="no-input save-data need-clear number-input"></th>
+            </tr>
+            <tr>
+              <th>3</th>
+              <th>Giờ</th>
+              <th><input type="time" id="hydro_time_3" class="save-data need-clear no-need"></th>
+              <th>Số liệu</th>
+              <th><input type="text" id="hydro_value_3" class="save-data need-clear number-input no-need"></th>
+            </tr>
+            <tr>
+              <th>4</th>
+              <th>Giờ</th>
+              <th><input type="time" id="hydro_time_4" class="save-data need-clear no-need"></th>
+              <th>Số liệu</th>
+              <th><input type="text" id="hydro_value_4" class="save-data need-clear number-input no-need"></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div>
+      <button disabled id="save">
+        Save
+      </button>
+      <button disabled id="update">
+        Update
+      </button>
+    </div>
+    </div>
+    <div class="melting__wrapper">
+      <table id="summary_table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Mã đúc</th>
+            <th>Ngày SX</th>
+            <th>Mã vật liệu</th>
+            <th>Bắt đầu nung</th>
+            <th>Kết thúc nung</th>
+            <th>Gas bắt đầu</th>
+            <th>Gas kết thúc</th>
+            <th>Bắt đầu đúc</th>
+            <th>Kết thúc đúc</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+      <!-- <div>
+        <table id="summary_table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Casting Start</th>
+              <th>Casting End</th>
+              <th>Al Temp Gate</th>
+              <th>Al Temp Cast</th>
+              <th>Air pressure</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div> -->
+
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
+  </body>
+</html>

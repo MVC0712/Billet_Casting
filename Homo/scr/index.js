@@ -31,6 +31,7 @@ $(function () {
   // fillInputBox(selectCode);
   makeSummaryTable();
   makeCastingTable();
+  selSelectCode();
 });
 function makeSummaryTable() {
   var fileName = "SelSummary.php";
@@ -39,6 +40,16 @@ function makeSummaryTable() {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary_table tbody"));
+};
+function selSelectCode() {
+  var fileName = "SelSelectCode.php";
+  var sendData = {
+      dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  console.log(ajaxReturnData);
+  selectCode = ajaxReturnData;
+  fillInputBox(selectCode);
 };
 function makeCastingTable() {
   var fileName = "SelCasting.php";

@@ -9,8 +9,14 @@ try {
     $sql = "SELECT 
     t_casting.id,
     code,
+    product_date,
     material_type,
-    product_date
+    melting_start,
+    melting_end,
+    melting_gas_start,
+    melting_gas_end,
+    casting_start,
+    casting_end
 FROM
     billet_casting.t_casting
         LEFT JOIN
