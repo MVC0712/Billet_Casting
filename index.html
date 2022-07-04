@@ -22,9 +22,9 @@
           <thead>
             <tr>
               <th>id</th>
-              <th>Mã</th>
+              <th colspan="2"><input type="date" id="start" style="width: 97px;"></th>
               <th>Ngày đúc</th>
-              <th>Bắt đầu</th>
+              <th colspan="2"><input type="date" id="end" style="width: 97px;"></th>
               <th>Kết thúc</th>
               <th>Vật liệu</th>
               <th>Tổng vào</th>
@@ -86,11 +86,25 @@
         };
         $(function () {
           makeSummaryTable();
+          var now = new Date();
+          var MonthLastDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+          var MonthFirstDate = new Date(now.getFullYear(), (now.getMonth() + 12) % 12, 1);
+          var formatDateComponent = function(dateComponent) {
+            return (dateComponent < 10 ? '0' : '') + dateComponent;
+          };
+          var formatDate = function(date) {
+            return date.getFullYear()  + '-' + formatDateComponent(date.getMonth() + 1) + '-' + formatDateComponent(date.getDate()) ;
+          };
+          var a = formatDate(MonthFirstDate);
+          var b = formatDate(MonthLastDate);
+          $("#start").val(a);
+          $("#end").val(b);
         });
         function makeSummaryTable() {
           var fileName = "SelSummary.php";
           var sendData = {
-              dummy: "dummy",
+              start: $("#start").val(),
+              end: $("#end").val(),
           };
           myAjax.myAjax(fileName, sendData);
           fillTableBody(ajaxReturnData, $("#summary_table tbody"));
@@ -105,5 +119,11 @@
               $(newTr).appendTo(tbodyDom);
           });
         };
+        $(document).on("change", "#start", function () {
+          makeSummaryTable();
+        });
+        $(document).on("change", "#end", function () {
+          makeSummaryTable();
+        });
       </script>
 </html>

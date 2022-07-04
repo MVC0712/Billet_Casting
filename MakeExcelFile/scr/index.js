@@ -23,7 +23,6 @@ const myAjax = {
 };
 
 $(function () {
-  MaterialNameCode();
   makeSummaryTable();
 });
 function makeSummaryTable() {
@@ -32,7 +31,7 @@ function makeSummaryTable() {
       dummy: "dummy",
   };
   myAjax.myAjax(fileName, sendData);
-  fillTableBody(ajaxReturnData, $("#summary_table tbody"));
+  // fillTableBody(ajaxReturnData, $("#summary_table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -56,32 +55,16 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
       targetId: $("#selected__tr").find("td").eq(0).html(),
     };
     myAjax.myAjax(fileName, sendData);
-    putDataToInput(ajaxReturnData);
-    $("#add_material").text("Add");
+    // putDataToInput(ajaxReturnData);
   } else {
     // deleteDialog.showModal();
   }
   $("#save").attr("disabled", true);
   checkUpdate();
-  makeAddMaterial();
   $(".save-data").each(function (index, element) {
     $(this).removeClass("no-input").addClass("complete-input");
   });
 });
-function MaterialNameCode() {
-  var fileName = "SelMaterialName.php";
-  var sendData = {
-      dummy: "dummy",
-  };
-  myAjax.myAjax(fileName, sendData);
-  $("#material option").remove();
-  $("#material").append($("<option>").val(0).html("NO"));
-  ajaxReturnData.forEach(function(value) {
-      $("#material").append(
-          $("<option>").val(value["id"]).html(value["material_name"])
-      );
-  });
-};
 $(document).on("change", "#product_date", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
@@ -160,7 +143,6 @@ $(document).on("keyup", ".number-input", function() {
   checkInput();
   checkUpdate();
 });
-
 function getInputData() {
   let inputData = new Object();
     $(".top__wrapper input.save-data").each(function (index, element) {
@@ -191,7 +173,6 @@ function getInputData() {
     inputData[$(this).attr("id")] = $(this).val();
   });
   console.log(inputData);
-  console.log(Object.keys(inputData).length);
   return inputData;
 }
 function clearInputData() {
@@ -204,40 +185,11 @@ function clearInputData() {
   $(".top__wrapper select.need-clear").each(function (index, element) {
     $(this).val("0").removeClass("complete-input").addClass("no-input");
   });
-
-  $("#file_url").html("No file");
-
-  $(".material__wrapper .right__material input.need-clear").each(function (index, element) {
-    $(this).val("").removeClass("complete-input").addClass("no-input");
-  });
-  $(".material__wrapper .right__material input.no-need").each(function (index, element) {
-    $(this).val("").removeClass("no-input").addClass("complete-input");
-  });
-  $(".element__wrapper input.need-clear").each(function (index, element) {
-    $(this).val("").removeClass("complete-input").addClass("no-input");
-  });
-  $(".element__wrapper input.no-need").each(function (index, element) {
-    $(this).val("").removeClass("no-input").addClass("complete-input");
-  });
-  $(".casting__wrapper input.need-clear").each(function (index, element) {
-    $(this).val("").removeClass("complete-input").addClass("no-input");
-  });
-  $(".casting__wrapper input.no-need").each(function (index, element) {
-    $(this).val("").removeClass("no-input").addClass("complete-input");
-  });
-  $("#material_table tbody").empty();
 }
 $(document).on("click", "#save", function () {
   fileName = "InsData.php";
   inputData = getInputData();
   sendData = inputData;
-  myAjax.myAjax(fileName, sendData);
-  let targetId = ajaxReturnData[0]["id"];
-  tableData = getTableData($("#material_table tbody tr"));
-  tableData.push(targetId);
-  fileName = "InsMaterialData.php";
-  sendData = JSON.stringify(tableData);
-  console.log(sendData);
   myAjax.myAjax(fileName, sendData);
   clearInputData();
   makeSummaryTable();
@@ -251,7 +203,6 @@ $(document).on("click", "#update", function () {
   clearInputData();
   makeSummaryTable();
 });
-
 function checkInput() {
   let check = true;
   $(".top__wrapper input .save-data").each(function() {
@@ -300,14 +251,9 @@ function checkUpdate() {
       check = false;
     }
   });
-  $(".material__wrapper .right__material input").each(function() {
-    if ($(this).val() == "") {
-      check = false;
-    }
-  });
   if (!$("#summary_table tbody tr").hasClass("selected-record")) {
       check = false;
-    }
+  }
   if (check) {
     $("#update").attr("disabled", false);
   } else {
@@ -315,14 +261,13 @@ function checkUpdate() {
   } 
   return check;
 };
-
-$(document).on("click", "#print__button", function() {
+$(document).on("click", "#print", function() {
   ajaxSelForExcel($("#selected__tr").find("td").eq(0).html());
 });
 function ajaxSelForExcel(targetId) {
   $.ajax({
     type: "POST",
-    url: "./php/MakingPressDirective/SelForExcel.php",
+    url: "./php/SelForExcel.php",
     dataType: "json",
     async: false,
     data: {
@@ -362,7 +307,17 @@ function downloadExcelFile(donwloadFileName) {
   const a = document.createElement("a");
   document.body.appendChild(a);
   a.download = donwloadFileName;
-  a.href = "../PressDIrectiveFile/" + donwloadFileName;
+  a.href = "../../FileDownLoad/ExcelFile/" + donwloadFileName;
   a.click();
   a.remove();
+}
+function caculating() {
+  let exd_scrap = $("#extrusion_scrap").val();
+  let cast_scrap = $("#casting_scrap").val();
+  let al_ingot = $("#aluminium_ingot").val();
+  let al_orther = $("#aluminium_other").val();
+  let total_weight = exd_scrap + cast_scrap + al_ingot + al_orther;
+  let al_degas = 1000;
+  let al_filter = 250;
+  let al_table = total_weight - al_degas - al_filter;
 }

@@ -4,6 +4,8 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
+$start = $_POST['start'];
+$end = $_POST['end'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
@@ -39,7 +41,8 @@ FROM
     FROM
         t_add_material
     GROUP BY t_add_material.t_casting) t10 ON t_casting.id = t10.cid
-    LEFT JOIN m_material_type ON m_material_type.id = t_casting.product_type
+    LEFT JOIN m_material_type ON m_material_type.id = t_casting.product_type 
+WHERE t_casting.product_date BETWEEN '$start' AND '$end'
 GROUP BY t_casting.id
 ORDER BY t_casting.product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);

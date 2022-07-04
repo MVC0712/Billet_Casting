@@ -14,7 +14,9 @@
 #summary_table tbody tr td:nth-child(2) {
   width: 40px;
 }
-#summary_table thead tr th:nth-child(3),
+#summary_table thead tr th:nth-child(3) {
+  display: none;
+}
 #summary_table tbody tr td:nth-child(3) {
   width: 60px;
 }
@@ -22,7 +24,9 @@
 #summary_table tbody tr td:nth-child(4) {
   width: 50px;
 }
-#summary_table thead tr th:nth-child(5),
+#summary_table thead tr th:nth-child(5) {
+  display: none;
+}
 #summary_table tbody tr td:nth-child(5),
 #summary_table thead tr th:nth-child(6),
 #summary_table tbody tr td:nth-child(6),
