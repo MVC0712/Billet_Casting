@@ -206,7 +206,43 @@
       </tr>
     </tbody>
   </table>
-  
+  <table id="add_scrap_table">
+    <thead>
+      <tr>
+        <th>Loại PP</th>
+        <th>Khối lượng</th>
+        <th><button id="add_scrap" disabled>Save</button></th>
+      </tr>
+      <tr>
+        <th><select id="scrap_type" class="no-input need-clear">
+          <option value="0">No</option>
+          <option value="1">Xỉ</option>
+          <option value="2">Nhôm dư</option>
+          <option value="3">Cắt</option>
+        </select></th>
+        <th><input type="text" id="scrap_weight" class="no-input need-clear"></th>
+        <th><input type="text" id="scrap_note"></th>
+      </tr>
+    </thead>
+  </table>
+  <table id="scrap_table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Loại PP</th>
+        <th>Khối lượng</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>1</td>
+        <td><select name="" id=""></select></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr> -->
+    </tbody>
+  </table>
   <div class="input-block__outer file_outer">
     <div class="input__title file_title">
       File

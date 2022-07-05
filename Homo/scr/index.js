@@ -50,6 +50,7 @@ function selSelectCode() {
   console.log(ajaxReturnData);
   selectCode = ajaxReturnData;
   fillInputBox(selectCode);
+  selectCode =[];
 };
 function makeCastingTable() {
   var fileName = "SelCasting.php";

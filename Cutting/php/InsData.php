@@ -139,7 +139,7 @@ $D3TL = $_POST['D3TL'];
 $targetId = $_POST['targetId'];
 
 try {
-    $sql = "DELETE FROM `t_cutting` WHERE casting_id = '$targetId'";
+    $sql = "DELETE FROM t_cutting WHERE casting_id = '$targetId'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
 
