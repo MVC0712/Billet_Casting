@@ -646,21 +646,21 @@ function checkInput() {
 };
 function checkUpdate() {
   let check = true;
-  $(".top__wrapper input .save-data").each(function() {
-    if ($(this).val() == "") {
-      check = false;
-    }
-  });
-  $(".top__wrapper select .save-data").each(function() {
-    if ($(this).val() == 0) {
-      check = false;
-    }
-  });
-  $(".material__wrapper .right__material input").each(function() {
-    if ($(this).val() == "") {
-      check = false;
-    }
-  });
+  // $(".top__wrapper input .save-data").each(function() {
+  //   if ($(this).val() == "") {
+  //     check = false;
+  //   }
+  // });
+  // $(".top__wrapper select .save-data").each(function() {
+  //   if ($(this).val() == 0) {
+  //     check = false;
+  //   }
+  // });
+  // $(".material__wrapper .right__material input").each(function() {
+  //   if ($(this).val() == "") {
+  //     check = false;
+  //   }
+  // });
   if (!$("#summary_table tbody tr").hasClass("selected-record")) {
       check = false;
     }

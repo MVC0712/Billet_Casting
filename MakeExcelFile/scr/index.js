@@ -60,6 +60,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
     // deleteDialog.showModal();
   }
   $("#save").attr("disabled", true);
+  $("#print").attr("disabled", false);
   checkUpdate();
   $(".save-data").each(function (index, element) {
     $(this).removeClass("no-input").addClass("complete-input");
@@ -133,7 +134,6 @@ $(document).on("keyup", "#aluminium_ingot", function() {
   checkInput();
   checkUpdate();
 });
-
 $(document).on("keyup", ".number-input", function() {
   if($.isNumeric($(this).val())){
       $(this).removeClass("no-input").addClass("complete-input");
@@ -151,30 +151,9 @@ function getInputData() {
     $(".top__wrapper select.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
-  if ($("#file_upload").prop("files")[0]) {
-    inputData["file_url"] = $("#file_url").html();
-    ajaxFileUpload();
-  } else {
-    inputData["file_url"] = $("#file_url").html();
-  }
-  $(".material__wrapper .right__material input.save-data").each(function (index, element) {
-    inputData[$(this).attr("id")] = $(this).val();
-  });
-  $(".material__wrapper .right__material input.date-time").each(function (index, element) {
-    inputData[$(this).attr("id")] = $(this).val();
-  });
-  $(".element__wrapper input.save-data").each(function (index, element) {
-    inputData[$(this).attr("id")] = $(this).val();
-  });
-  $(".casting__wrapper input.save-data").each(function (index, element) {
-    inputData[$(this).attr("id")] = $(this).val();
-  });
-  $(".casting__wrapper input.date-time").each(function (index, element) {
-    inputData[$(this).attr("id")] = $(this).val();
-  });
   console.log(inputData);
   return inputData;
-}
+};
 function clearInputData() {
   $(".top__wrapper input.need-clear").each(function (index, element) {
     $(this).val("").removeClass("complete-input").addClass("no-input");
@@ -185,7 +164,7 @@ function clearInputData() {
   $(".top__wrapper select.need-clear").each(function (index, element) {
     $(this).val("0").removeClass("complete-input").addClass("no-input");
   });
-}
+};
 $(document).on("click", "#save", function () {
   fileName = "InsData.php";
   inputData = getInputData();
@@ -205,28 +184,13 @@ $(document).on("click", "#update", function () {
 });
 function checkInput() {
   let check = true;
-  $(".top__wrapper input .save-data").each(function() {
+  $(".top__wrapper input").each(function() {
     if ($(this).val() == "") {
       check = false;
     }
   });
-  $(".top__wrapper select .save-data").each(function() {
+  $(".top__wrapper select").each(function() {
     if ($(this).val() == 0) {
-      check = false;
-    }
-  });
-  $(".material__wrapper .right__material input").each(function() {
-    if ($(this).hasClass("no-input")) {
-      check = false;
-    }
-  });
-  $("#element_table tbody input").each(function() {
-    if ($(this).hasClass("no-input")) {
-      check = false;
-    }
-  });
-  $(".casting__wrapper input").each(function() {
-    if ($(this).hasClass("no-input")) {
       check = false;
     }
   });
@@ -259,7 +223,6 @@ function checkUpdate() {
   } else {
     $("#update").attr("disabled", true);
   } 
-  return check;
 };
 $(document).on("click", "#print", function() {
   ajaxSelForExcel($("#selected__tr").find("td").eq(0).html());
@@ -283,16 +246,12 @@ function ajaxPyMakeExcelFile(inputData) {
   let data = new Object();
   let donwloadFileName;
   data = inputData[0];
-  data["pressing_type"] = encodeURI(data["pressing_type"]);
-  data["staff_name"] = encodeURI(data["staff_name"]);
-  data["previous_press_note"] = encodeURI(data["previous_press_note"]);
-
   donwloadFileName = data["plan_date_at"] + "_" + data["die_number"] + ".xlsx";
   let JSONdata = JSON.stringify(data);
 
   $.ajax({
     async: false,
-    url: "./py/MakingPressDirective.py",
+    url: "./py/MakeExcelFile.py",
     type: "post",
     data: JSONdata,
     dataType: "json",

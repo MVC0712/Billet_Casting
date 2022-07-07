@@ -107,16 +107,20 @@ input {
   display: none;
 }
 #casting__table thead tr th:nth-child(2),
-#casting__table tbody tr td:nth-child(2),
+#casting__table tbody tr td:nth-child(2) {
+  width: 30px;
+}
 #casting__table thead tr th:nth-child(3),
 #casting__table tbody tr td:nth-child(3) {
-  width: 40px;
+  width: 38px;
 }
 #casting__table thead tr th:nth-child(4),
-#casting__table tbody tr td:nth-child(4),
+#casting__table tbody tr td:nth-child(4) {
+  width: 58px;
+}
 #casting__table thead tr th:nth-child(5),
 #casting__table tbody tr td:nth-child(5) {
-  width: 78px;
+  width: 35px;
 }
 
 #scrap_table {
