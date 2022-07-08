@@ -18,14 +18,13 @@ params = json.loads(data)
 
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
 print("\n\n")
-print(json.JSONEncoder().encode(response))
 print('\n')
 
 wb = openpyxl.load_workbook('ExcelFile.xlsx')
 sheet = wb.get_sheet_by_name('input')
 
-sheet['c1'] = params["product_type"]
-sheet['c2'] = params["product_dim"]
+sheet['c1'] = params["material_type"]
+sheet['c2'] = params["dimention"]
 sheet['c3'] = params["code"]
 sheet['c4'] = params["product_date"]
 sheet['c5'] = params["extrusion_scrap"]
@@ -42,6 +41,6 @@ sheet['c15'] = params["zn"]
 sheet['c16'] = params["ti_b"]
 
 wb.save("../../FileDownLoad/ExcelFile/" +
+        params["code"] + "_" +
         params["product_date"] + "_" +
-        params["product_type"] + "_" +
-        params["code"] + ".xlsx")
+        params["material_type"] + ".xlsx")

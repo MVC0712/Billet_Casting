@@ -14,7 +14,7 @@ $casting_scrap = $_POST['casting_scrap'];
 $aluminium_ingot = $_POST['aluminium_ingot'];
 $aluminium_orther = $_POST['aluminium_orther'];
 try {
-    $sql = "UPDATE t_excel
+    $sql = "UPDATE t_plan
     SET product_date = '$product_date', 
     product_dim = '$product_dim', 
     product_type = '$product_type', 

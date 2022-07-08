@@ -21,7 +21,7 @@
         <table id="summary_table" style="height: 450px;">
           <thead>
             <tr>
-              <th>id</th>
+              <th>Stt</th>
               <th colspan="2"><input type="date" id="start" style="width: 97px;"></th>
               <th>Ngày đúc</th>
               <th colspan="2"><input type="date" id="end" style="width: 97px;"></th>
@@ -85,7 +85,6 @@
           },
         };
         $(function () {
-          makeSummaryTable();
           var now = new Date();
           var MonthLastDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
           var MonthFirstDate = new Date(now.getFullYear(), (now.getMonth() + 12) % 12, 1);
@@ -99,6 +98,7 @@
           var b = formatDate(MonthLastDate);
           $("#start").val(a);
           $("#end").val(b);
+          makeSummaryTable();
         });
         function makeSummaryTable() {
           var fileName = "SelSummary.php";
@@ -111,8 +111,9 @@
         };
         function fillTableBody(data, tbodyDom) {
           $(tbodyDom).empty();
-          data.forEach(function(trVal) {
+          data.forEach(function(trVal, index) {
               let newTr = $("<tr>");
+                $("<td>").html(index + 1).appendTo(newTr);
               Object.keys(trVal).forEach(function(tdVal, index) {
                   $("<td>").html(trVal[tdVal]).appendTo(newTr);
               });

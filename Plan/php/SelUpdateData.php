@@ -4,10 +4,12 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-$datetime = date("Y-m-d H:i:s");
+$targetId = "";
+$targetId = $_POST['targetId'];
 try {
     $sql = "SELECT 
-    * FROM t_excel";
+    * FROM t_plan
+WHERE id = '$targetId'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

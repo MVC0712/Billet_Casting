@@ -9,7 +9,6 @@ $end = $_POST['end'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
-    t_casting.id,
     t_casting.code,
     DATE_FORMAT(t_casting.product_date, '%y-%m-%d') AS product_date,
     TIME_FORMAT(t_casting.melting_start, '%H:%i') AS melting_start,

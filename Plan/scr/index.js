@@ -31,18 +31,91 @@ function makeSummaryTable() {
       dummy: "dummy",
   };
   myAjax.myAjax(fileName, sendData);
-  // fillTableBody(ajaxReturnData, $("#summary_table tbody"));
+  fillTableBody(ajaxReturnData, $("#summary_table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
-  data.forEach(function(trVal) {
-      let newTr = $("<tr>");
-      Object.keys(trVal).forEach(function(tdVal, index) {
-          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+    data.forEach(function(trVal) {
+      var newTr = $("<tr>");
+      Object.keys(trVal).forEach(function(tdVal) {
+        if (tdVal == "product_dim") {
+          $("<td>").append(makeDimSel(trVal[tdVal])).appendTo(newTr);
+        }else if (tdVal == "product_type") {
+              $("<td>").append(makeMaterialSel(trVal[tdVal])).appendTo(newTr);
+        } else if (tdVal == "product_date") {
+            $("<td>").append(makeDatePlan(trVal[tdVal])).appendTo(newTr);
+        } else if ((tdVal == "code")||(tdVal == "extrusion_scrap")||
+                (tdVal == "casting_scrap")||(tdVal == "aluminium_ingot")||
+                (tdVal == "aluminium_orther")) {
+            $("<td>").append(makeInput(trVal[tdVal])).appendTo(newTr);
+        } else {
+            $("<td>").html(trVal[tdVal]).appendTo(newTr);
+        }
       });
       $(newTr).appendTo(tbodyDom);
   });
 };
+function makeMaterialSel(seletedId) {
+  let targetDom = $("<select>");
+  fileName = "SelMaterialType.php";
+  sendData = {
+    dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  ajaxReturnData.forEach(function(element) {
+      if (element["id"] == seletedId) {
+          $("<option>")
+              .html(element["material_type"])
+              .val(element["id"])
+              .prop("selected", true)
+              .appendTo(targetDom);
+      } else {
+          $("<option>")
+              .html(element["material_type"])
+              .val(element["id"])
+              .appendTo(targetDom);
+      }
+  });
+  return targetDom;
+};
+function makeDimSel(seletedId) {
+  let targetDom = $("<select>");
+  var dim=[{
+                "id": 1,
+                "dim": "9 inch"
+            },
+            {
+                "id": 2,
+                "dim": "14 inch"
+            }];
+dim.forEach(function(element) {
+      if (element["id"] == seletedId) {
+          $("<option>")
+              .html(element["dim"])
+              .val(element["id"])
+              .prop("selected", true)
+              .appendTo(targetDom);
+      } else {
+          $("<option>")
+              .html(element["dim"])
+              .val(element["id"])
+              .appendTo(targetDom);
+      }
+  });
+  return targetDom;
+}
+function makeDatePlan(datePlan) {
+  let targetDom = $("<input>");
+  targetDom.attr("type", "date");
+  targetDom.val(datePlan);
+  return targetDom;
+}
+function makeInput(qty) {
+  let targetDom = $("<input>");
+  targetDom.attr("type", "text");
+  targetDom.val(qty);
+  return targetDom;
+}
 $(document).on("click", "#summary_table tbody tr", function (e) {
   let fileName = "SelUpdateData.php";
   let sendData;
@@ -246,7 +319,7 @@ function ajaxPyMakeExcelFile(inputData) {
   let data = new Object();
   let donwloadFileName;
   data = inputData[0];
-  donwloadFileName = data["plan_date_at"] + "_" + data["die_number"] + ".xlsx";
+  donwloadFileName = data["code"] + "_" + data["product_date"] + "_" + data["material_type"] + ".xlsx";   
   let JSONdata = JSON.stringify(data);
 
   $.ajax({
@@ -256,10 +329,9 @@ function ajaxPyMakeExcelFile(inputData) {
     data: JSONdata,
     dataType: "json",
   }).done(function(data) {
-    console.log(data);
     downloadExcelFile(donwloadFileName);
-  }).fail(function() {
-    alert("Tải file thất bại");
+  }).fail(function(e) {
+    // alert("Tải file thất bại");
   });
 }
 function downloadExcelFile(donwloadFileName) {

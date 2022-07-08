@@ -15,7 +15,7 @@ $aluminium_ingot = $_POST['aluminium_ingot'];
 $aluminium_orther = $_POST['aluminium_orther'];
 
 try {
-    $sql = "INSERT INTO t_excel
+    $sql = "INSERT INTO t_plan
     (product_date, product_dim, product_type, code, extrusion_scrap, casting_scrap, aluminium_ingot, aluminium_orther) VALUES 
     ('$product_date', '$product_dim', '$product_type', '$code', '$extrusion_scrap', '$casting_scrap', '$aluminium_ingot', '$aluminium_orther')";
     $stmt = $dbh->getInstance()->prepare($sql);
