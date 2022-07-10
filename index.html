@@ -10,11 +10,11 @@
   <body>
     <header>Home Page</header>
       <div style="flex-direction: row; display:flex;">
-            <!-- <button id="make_excel">Make Excel</button> -->
+            <button id="plan">Plan</button>
+            <button id="plan_view">Plan View</button>
             <button id="daily_input">Daily Input</button>
             <button id="homogenizing_input">Homogenizing Input</button>
             <button id="cutting_input">Cutting Input</button>
-            <!-- <button id="warehouse_input">Warehouse Input</button> -->
             <button id="mea_file">Measurement File</button>
       </div>
       <div>
@@ -41,8 +41,12 @@
       </div>
       <script src="./Lib/jquery.min.js"></script>
       <script>
-        $(document).on("click", "#make_excel", function () {
-          window.open("/Billet_Casting/MakeExcelFile");
+        $(document).on("click", "#plan", function () {
+          window.open("/Billet_Casting/Plan");
+        });
+
+        $(document).on("click", "#plan_view", function () {
+          window.open("/Billet_Casting/PlanView");
         });
   
       $(document).on("click", "#daily_input", function () {

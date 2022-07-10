@@ -134,7 +134,6 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
   }
   $("#save").attr("disabled", true);
   $("#print").attr("disabled", false);
-  checkUpdate();
   $(".save-data").each(function (index, element) {
     $(this).removeClass("no-input").addClass("complete-input");
   });
@@ -146,7 +145,6 @@ $(document).on("change", "#product_date", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkInput();
-  checkUpdate();
 });
 $(document).on("keyup", "#code", function() {
   $(this).val($(this).val().toUpperCase());
@@ -156,56 +154,14 @@ $(document).on("keyup", "#code", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkInput();
-  checkUpdate();
 });
 $(document).on("change", "#product_type", function() {
   if ($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
-      var fileName = "SelMaterialElement.php";
-      var sendData = {
-        product_type: $("#product_type").val(),
-      };
-      myAjax.myAjax(fileName, sendData);
-    $("#si_req").text(ajaxReturnData[0]["si"]);
-    $("#mg_req").text(ajaxReturnData[0]["mg"]);
-    $("#mn_req").text(ajaxReturnData[0]["mn"]);
-    $("#cr_req").text(ajaxReturnData[0]["cr"]);
-    $("#cu_req").text(ajaxReturnData[0]["cu"]);
-    $("#fe_req").text(ajaxReturnData[0]["fe"]);
-    $("#zn_req").text(ajaxReturnData[0]["zn"]);
-    $("#ti_b_req").text(ajaxReturnData[0]["ti_b"]);
   } else {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkInput();
-  checkUpdate();
-});
-$(document).on("keyup", "#extrusion_scrap", function() {
-  if ($(this).val() != "") {
-      $(this).removeClass("no-input").addClass("complete-input");
-  } else {
-      $(this).removeClass("complete-input").addClass("no-input");
-  }
-  checkInput();
-  checkUpdate();
-});
-$(document).on("keyup", "#casting_scrap", function() {
-  if ($(this).val() != "") {
-      $(this).removeClass("no-input").addClass("complete-input");
-  } else {
-      $(this).removeClass("complete-input").addClass("no-input");
-  }
-  checkInput();
-  checkUpdate();
-});
-$(document).on("keyup", "#aluminium_ingot", function() {
-  if ($(this).val() != "") {
-      $(this).removeClass("no-input").addClass("complete-input");
-  } else {
-      $(this).removeClass("complete-input").addClass("no-input");
-  }
-  checkInput();
-  checkUpdate();
 });
 $(document).on("keyup", ".number-input", function() {
   if($.isNumeric($(this).val())){
@@ -214,7 +170,6 @@ $(document).on("keyup", ".number-input", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkInput();
-  checkUpdate();
 });
 function getInputData() {
   let inputData = new Object();
@@ -224,7 +179,6 @@ function getInputData() {
     $(".top__wrapper select.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
-  console.log(inputData);
   return inputData;
 };
 function clearInputData() {
@@ -245,19 +199,11 @@ $(document).on("click", "#save", function () {
   myAjax.myAjax(fileName, sendData);
   clearInputData();
   makeSummaryTable();
-});
-$(document).on("click", "#update", function () {
-  fileName = "UpdateData.php";
-  inputData = getInputData();
-  inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
-  sendData = inputData;
-  myAjax.myAjax(fileName, sendData);
-  clearInputData();
-  makeSummaryTable();
+  $("#save").attr("disabled", true);
 });
 function checkInput() {
   let check = true;
-  $(".top__wrapper input").each(function() {
+  $(".top__wrapper input .check").each(function() {
     if ($(this).val() == "") {
       check = false;
     }
@@ -274,27 +220,6 @@ function checkInput() {
     $("#save").attr("disabled", false);
   } else {
     $("#save").attr("disabled", true);
-  } 
-};
-function checkUpdate() {
-  let check = true;
-  $(".top__wrapper input .save-data").each(function() {
-    if ($(this).val() == "") {
-      check = false;
-    }
-  });
-  $(".top__wrapper select .save-data").each(function() {
-    if ($(this).val() == 0) {
-      check = false;
-    }
-  });
-  if (!$("#summary_table tbody tr").hasClass("selected-record")) {
-      check = false;
-  }
-  if (check) {
-    $("#update").attr("disabled", false);
-  } else {
-    $("#update").attr("disabled", true);
   } 
 };
 $(document).on("click", "#print", function() {
@@ -352,3 +277,21 @@ function caculating() {
   let al_filter = 250;
   let al_table = total_weight - al_degas - al_filter;
 }
+$(document).on("change", "#summary_table tbody tr", function () {
+  let sendData = new Object();
+  let fileName;
+  fileName = "UpdateData.php";
+  sendData = {
+    targetId : $("#selected__tr td:nth-child(1)").html(),
+    product_date : $("#selected__tr td:nth-child(2) input").val(),
+    product_dim: $("#selected__tr td:nth-child(3) select").val(),
+    product_type: $("#selected__tr td:nth-child(4) select").val(),
+    code: $("#selected__tr td:nth-child(5) input").val(),
+    extrusion_scrap : $("#selected__tr td:nth-child(6) input").val(),
+    casting_scrap: $("#selected__tr td:nth-child(7) input").val(),
+    aluminium_ingot : $("#selected__tr td:nth-child(8) input").val(),
+    aluminium_orther : $("#selected__tr td:nth-child(9) input").val(),
+  };
+  console.log(sendData);
+  myAjax.myAjax(fileName, sendData);
+});
