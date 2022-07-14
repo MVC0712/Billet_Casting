@@ -6,24 +6,47 @@ body {
   height: calc(600px - 2px);
   width: calc(800px - 2px);
 }
+input{
+  text-align: left;
+}
+input[type=checkbox] {
+  margin: 0;
+  padding: 0;
+  width: 15px;
+  vertical-align:middle;
+}
+select {
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  -webkit-appearance: none;
+}
 .main__wrapper {
   height: 600px;
 }
 .top__wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 60%;
+  height: 80%;
 }
 .bottom__wrapper {
   width: 100%;
-  height: 40%;
+  height: 20%;
   display: flex;
   flex-direction: row;
 }
-.circle {
+.box {
+  display: flex;
   width: 100px;
-  height: 100px;
+  height: 110px;
+  align-items: center;
+  flex-direction: column;
+  /* align-items: end; */
+}
+.circle {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #0000cc;
   display: flex;
@@ -32,8 +55,71 @@ body {
 }
 .line {
   width: 100%;
-  height: 120px;
+  height: 110px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: end;
+}
+.check_box {
   align-items: center;
+}
+.input_area {
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+#check_date {
+  width: 100px;
+}
+#add_error {
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+#error_table {
+  margin-left: 20px;
+}
+#error_table tbody {
+  height: 160px;
+  width: 330px;
+  overflow: auto;
+}
+#add_error_table {
+  width: 250px;
+  height: 20px;
+  margin-left: 20px;
+}
+#error_table thead tr th:nth-child(1),
+#error_table tbody tr td:nth-child(1){
+  display: none;
+}
+#error_table thead tr th:nth-child(2),
+#error_table tbody tr td:nth-child(2),
+#add_error_table thead tr th:nth-child(1) {
+  width: 100px;
+}
+#error_table thead tr th:nth-child(3),
+#error_table tbody tr td:nth-child(3),
+#add_error_table thead tr th:nth-child(2) {
+  width: 100px;
+}
+#error_table thead tr th:nth-child(4),
+#error_table tbody tr td:nth-child(4),
+#add_error_table thead tr th:nth-child(3) {
+  width: 100px;
+}
+#error_table tbody tr td:nth-child(2) select,
+#add_error_table thead tr th:nth-child(1) select  {
+  width: 96px;
+}
+#error_table tbody tr td:nth-child(3) select,
+#add_error_table thead tr th:nth-child(2) select {
+  width: 96px;
+}
+#error_table tbody tr td:nth-child(4) input,
+#add_error_table thead tr th:nth-child(3) input {
+  width: 96px;
+  padding: 0;
 }
