@@ -88,6 +88,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
   $(".save-data").each(function (index, element) {
     $(this).removeClass("no-input").addClass("complete-input");
   });
+  Total();
 });
 function MaterialNameCode() {
   var fileName = "SelMaterialName.php";
@@ -326,6 +327,7 @@ $("#add_material").on("click", function () {
       $("#add_material").prop("disabled", true);
     break;
   }
+  Total();
 });
 function add_material_check() {
   if ($("#material").val() == 0 ||
@@ -598,6 +600,7 @@ $(document).on("change", "#material_table tbody tr", function () {
   };
   console.log(sendData);
   myAjax.myAjax(fileName, sendData);
+  Total();
 });
 function putDataToInput(data) {
     data.forEach(function (trVal) {

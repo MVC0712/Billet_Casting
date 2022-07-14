@@ -172,7 +172,7 @@ input {
   width: 50px;
 }
 #material_table {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 #material_table tbody {
   height: 140px;
@@ -182,7 +182,7 @@ input {
 #add_material_table {
   width: 250px;
   height: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 #material_table thead tr th:nth-child(1),
 #material_table tbody tr td:nth-child(1){

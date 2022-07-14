@@ -18,9 +18,10 @@ params = json.loads(data)
 
 print('Content-type: text/html\nAccess-Control-Allow-Origin: *\n')
 print("\n\n")
+print(json.JSONEncoder().encode('OK'))
 print('\n')
 
-wb = openpyxl.load_workbook('ExcelFile.xlsx')
+wb = openpyxl.load_workbook('excel_file.xlsx')
 sheet = wb.get_sheet_by_name('input')
 
 sheet['c1'] = params["material_type"]
@@ -31,16 +32,16 @@ sheet['c5'] = params["extrusion_scrap"]
 sheet['c6'] = params["casting_scrap"]
 sheet['c7'] = params["aluminium_ingot"]
 sheet['c8'] = params["aluminium_orther"]
-sheet['c9'] = params["si"]
-sheet['c10'] = params["mg"]
-sheet['c11'] = params["mn"]
-sheet['c12'] = params["cr"]
-sheet['c13'] = params["cu"]
-sheet['c14'] = params["fe"]
-sheet['c15'] = params["zn"]
-sheet['c16'] = params["ti_b"]
+sheet['c9'] = urllib.parse.unquote(params["si"])
+sheet['c10'] = urllib.parse.unquote(params["mg"])
+sheet['c11'] = urllib.parse.unquote(params["mn"])
+sheet['c12'] = urllib.parse.unquote(params["cr"])
+sheet['c13'] = urllib.parse.unquote(params["cu"])
+sheet['c14'] = urllib.parse.unquote(params["fe"])
+sheet['c15'] = urllib.parse.unquote(params["zn"])
+sheet['c16'] = urllib.parse.unquote(params["ti_b"])
 
 wb.save("../../FileDownLoad/ExcelFile/" +
-        params["code"] + "_" +
         params["product_date"] + "_" +
+        params["code"] + "_" +
         params["material_type"] + ".xlsx")

@@ -1,3 +1,3 @@
 <?php
-  readfile("DailyReport.html");
+  readfile("DailyReportV2.html");
 ?>

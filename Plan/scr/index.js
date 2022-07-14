@@ -244,7 +244,7 @@ function ajaxPyMakeExcelFile(inputData) {
   let data = new Object();
   let donwloadFileName;
   data = inputData[0];
-  donwloadFileName = data["code"] + "_" + data["product_date"] + "_" + data["material_type"] + ".xlsx";   
+  donwloadFileName = data["product_date"] + "_" + data["code"] + "_" + data["material_type"] + ".xlsx";   
   let JSONdata = JSON.stringify(data);
 
   $.ajax({
@@ -253,10 +253,11 @@ function ajaxPyMakeExcelFile(inputData) {
     type: "post",
     data: JSONdata,
     dataType: "json",
-  }).done(function(data) {
+  }).done(function(a) {
+    console.log(a);
     downloadExcelFile(donwloadFileName);
   }).fail(function(e) {
-    // alert("Tải file thất bại");
+    alert("Tải file thất bại");
   });
 }
 function downloadExcelFile(donwloadFileName) {

@@ -30,7 +30,19 @@ FROM
         	SELECT t_cutting.casting_id AS tcid,
             SUM(A2L + A3L + B1L + B2L + B3L + B4L + C1L + C2L + C3L + C4L + D2L + D3L)/1000*111 AS total_output,
             SUM(A2Q12 + A3Q12 + B1Q12 + B2Q12 + B3Q12 + B4Q12 + C1Q12 + C2Q12 + C3Q12 + C4Q12 + D2Q12 + D3Q12) AS tt1200,
-            SUM(A2Q6 + A3Q6 + B1Q6 + B2Q6 + B3Q6 + B4Q6 + C1Q6 + C2Q6 + C3Q6 + C4Q6 + D2Q6 + D3Q6) AS tt600
+            SUM(A2Q6 + A3Q6 + B1Q6 + B2Q6 + B3Q6 + B4Q6 + C1Q6 + C2Q6 + C3Q6 + C4Q6 + D2Q6 + D3Q6) AS tt600,
+            CASE WHEN A2S = 3 THEN SUM(A2Q6 + A2Q12) ELSE 0 END AS a2ttt,
+            CASE WHEN A3S = 3 THEN SUM(A3Q6 + A3Q12) ELSE 0 END AS a3ttt,
+            CASE WHEN B1S = 3 THEN SUM(B1Q6 + B1Q12) ELSE 0 END AS b1ttt,
+            CASE WHEN B2S = 3 THEN SUM(B2Q6 + B2Q12) ELSE 0 END AS b2ttt,
+            CASE WHEN B3S = 3 THEN SUM(B3Q6 + B3Q12) ELSE 0 END AS b3ttt,
+            CASE WHEN B4S = 3 THEN SUM(B4Q6 + B4Q12) ELSE 0 END AS b4ttt,
+            CASE WHEN C1S = 3 THEN SUM(C1Q6 + C1Q12) ELSE 0 END AS c1ttt,
+            CASE WHEN C2S = 3 THEN SUM(C2Q6 + C2Q12) ELSE 0 END AS c2ttt,
+            CASE WHEN C3S = 3 THEN SUM(C3Q6 + C3Q12) ELSE 0 END AS c3ttt,
+            CASE WHEN C4S = 3 THEN SUM(C4Q6 + C4Q12) ELSE 0 END AS c4ttt,
+            CASE WHEN D2S = 3 THEN SUM(D2Q6 + D2Q12) ELSE 0 END AS d2ttt,
+            CASE WHEN D3S = 3 THEN SUM(D3Q6 + D3Q12) ELSE 0 END AS d3ttt
             FROM t_cutting 
             GROUP BY  tcid            
         ) tc ON tc.tcid = t_casting.id

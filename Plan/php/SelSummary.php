@@ -7,7 +7,8 @@ if ($dbh->getInstance() === null) {
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
-    * FROM t_plan";
+    * FROM t_plan
+    ORDER BY product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

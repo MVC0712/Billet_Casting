@@ -11,7 +11,7 @@
     <header>Home Page</header>
       <div style="flex-direction: row; display:flex;">
             <button id="plan">Plan</button>
-            <button id="plan_view">Plan View</button>
+            <!-- <button id="plan_view">Plan View</button> -->
             <button id="daily_input">Daily Input</button>
             <button id="homogenizing_input">Homogenizing Input</button>
             <button id="cutting_input">Cutting Input</button>
@@ -100,15 +100,25 @@
           };
           var a = formatDate(MonthFirstDate);
           var b = formatDate(MonthLastDate);
-          $("#start").val(a);
-          $("#end").val(b);
+          // $("#start").val(a);
+          // $("#end").val(b);
           makeSummaryTable();
         });
         function makeSummaryTable() {
+          if ($("#start").val() == "") {
+            st = "2022-01-01"
+          } else {
+            st = $("#start").val();
+          }
+          if ($("#end").val() == "") {
+            en = "2030-01-01"
+          } else {
+            en = $("#end").val();
+          }
           var fileName = "SelSummary.php";
           var sendData = {
-              start: $("#start").val(),
-              end: $("#end").val(),
+              start: st,
+              end: en,
           };
           myAjax.myAjax(fileName, sendData);
           fillTableBody(ajaxReturnData, $("#summary_table tbody"));
