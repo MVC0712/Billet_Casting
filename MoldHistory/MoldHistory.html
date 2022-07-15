@@ -13,6 +13,17 @@
     <header>Mold History Page</header>
 
 <div class="main__wrapper">
+  <div class="left__wrapper">
+    <table id="summary_table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
   <div class="top__wrapper">
     <div class="line">
       <div class="circle" style="background-color: white;">
@@ -27,7 +38,8 @@
             <label for="vehicle1">GR mới</label>
           </div>
         <div class="circle">
-          <select name="" id="">
+          <input type="text" class="mold_id">
+          <select name="" id="" class="opt_select">
             <option value="1">OK</option>
             <option value="0">NG</option>
           </select>
@@ -267,6 +279,18 @@
         </tr>
       </thead>
     </table>
+    <div class="input-block__outer file_outer">
+      <div class="input__title file_title">
+        File
+      </div>
+      <div>
+        <input type="file" id="file_upload" class="need-clear">
+        <label id="file_url" for="file_upload">No file</label>
+      </div>
+      <button id="preview__button" class="input__title aluminium_ingot_title">
+        Preview
+      </button>
+    </div>
   </div>
     <table id="error_table">
       <thead>

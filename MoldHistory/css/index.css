@@ -24,14 +24,22 @@ select {
 .main__wrapper {
   height: 600px;
 }
+.left__wrapper {
+  width: 20%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .top__wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 80%;
+  width: 80%;
+  height: 74%;
 }
 .bottom__wrapper {
-  width: 100%;
+  width: 80%;
   height: 20%;
   display: flex;
   flex-direction: row;
@@ -59,14 +67,24 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: end;
+  border-bottom: 1px solid #0000cc;
+  border-left: 1px solid #0000cc;
 }
 .check_box {
   align-items: center;
 }
+.mold_id {
+  width: 25px;
+  border-radius: 30%;
+}
+.opt_select {
+  width: 22px;
+  border-radius: 30%;
+}
 .input_area {
   display: flex;
   flex-direction: column;
-align-items: center;
+  align-items: center;
 }
 #check_date {
   width: 100px;
@@ -82,8 +100,8 @@ align-items: center;
   margin-left: 20px;
 }
 #error_table tbody {
-  height: 160px;
-  width: 330px;
+  height: 110px;
+  width: 315px;
   overflow: auto;
 }
 #add_error_table {
@@ -98,28 +116,73 @@ align-items: center;
 #error_table thead tr th:nth-child(2),
 #error_table tbody tr td:nth-child(2),
 #add_error_table thead tr th:nth-child(1) {
-  width: 100px;
+  width: 50px;
 }
 #error_table thead tr th:nth-child(3),
 #error_table tbody tr td:nth-child(3),
 #add_error_table thead tr th:nth-child(2) {
-  width: 100px;
+  width: 90px;
 }
 #error_table thead tr th:nth-child(4),
 #error_table tbody tr td:nth-child(4),
 #add_error_table thead tr th:nth-child(3) {
-  width: 100px;
+  width: 140px;
 }
 #error_table tbody tr td:nth-child(2) select,
 #add_error_table thead tr th:nth-child(1) select  {
-  width: 96px;
+  width: 46px;
 }
 #error_table tbody tr td:nth-child(3) select,
 #add_error_table thead tr th:nth-child(2) select {
-  width: 96px;
+  width: 86px;
 }
 #error_table tbody tr td:nth-child(4) input,
 #add_error_table thead tr th:nth-child(3) input {
-  width: 96px;
+  width: 136px;
   padding: 0;
+}
+.input-block__outer {
+  height: 25px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.input__title {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  background-color: #0000ff;
+  color: white;
+}
+#file_upload {
+  /* width: 270px; */
+  display: none;
+}
+#file_upload + label {
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+  border: solid 1px #0000ff;
+  width: 200px;
+  height: 20px;
+}
+#summary_table {
+  width: 150px;
+  height: 95%;
+  overflow: auto;
+}
+#summary_table tbody {
+  height: 95%;
+  width: 100%;
+  overflow: auto;
+}
+#summary_table thead tr th:nth-child(1),
+#summary_table tbody tr td:nth-child(1){
+  display: none;
+}
+#summary_table thead tr th:nth-child(2),
+#summary_table tbody tr td:nth-child(2){
+  width: 130px;
 }
