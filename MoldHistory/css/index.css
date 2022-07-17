@@ -3,7 +3,7 @@ body {
   border: solid 1px #0000cc;
   display: flex;
   flex-direction: column;
-  height: calc(600px - 2px);
+  height: calc(800px - 2px);
   width: calc(800px - 2px);
 }
 input{
@@ -22,11 +22,11 @@ select {
   -webkit-appearance: none;
 }
 .main__wrapper {
-  height: 600px;
+  height: 100%;
 }
 .left__wrapper {
   width: 20%;
-  height: 600px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,7 +36,7 @@ select {
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 74%;
+  height: 60%;
 }
 .bottom__wrapper {
   width: 80%;
@@ -69,6 +69,25 @@ select {
   align-items: end;
   border-bottom: 1px solid #0000cc;
   border-left: 1px solid #0000cc;
+}
+.line_cha {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+flex-direction: row;
+}
+.cha {
+  width: 100px;
+}
+.column_num {
+  width: 20px;
+  /* height: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-direction: column;
 }
 .check_box {
   align-items: center;
@@ -105,7 +124,7 @@ select {
   overflow: auto;
 }
 #add_error_table {
-  width: 250px;
+  /* width: 250px; */
   height: 20px;
   margin-left: 20px;
 }
@@ -174,7 +193,7 @@ select {
   overflow: auto;
 }
 #summary_table tbody {
-  height: 95%;
+  height: 100%;
   width: 100%;
   overflow: auto;
 }

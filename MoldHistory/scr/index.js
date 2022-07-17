@@ -182,3 +182,108 @@ function addErrorCheck() {
       $("#add_error").prop("disabled", false);
   }
 };
+
+function getInputData() {
+  let inputData = new Object();
+    $("input.save-data").each(function (index, element) {
+      inputData[$(this).attr("id")] = $(this).val();
+    });
+    $("input[type=checkbox]").each(function (index, element) {
+      inputData[$(this).attr("id")] = this.checked ? "1" : "0";
+    });
+    $("select.save-data").each(function (index, element) {
+      inputData[$(this).attr("id")] = $(this).val();
+    });
+    if ($("#file_upload").prop("files")[0]) {
+      inputData["file_url"] = $("#file_url").html();
+      ajaxFileUpload();
+    } else {
+      inputData["file_url"] = $("#file_url").html();
+    }
+    inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
+  console.log(Object.keys(inputData).length);
+  return inputData;
+};
+
+function checkTF(data) {
+  if (data == "1") {
+    return true;
+  } else {
+    return false;
+  }
+};
+function putDataToInput(data) {
+  data.forEach(function (trVal) {
+    Object.keys(trVal).forEach(function (tdVal) {
+      $("#" + tdVal).val(trVal[tdVal]);
+    });
+  });
+  $("#file_url").html(data[0].file_url);
+  $("#A2CGR").prop("checked", checkTF(data[0].A2CGR));
+  $("#A2CTH").prop("checked", checkTF(data[0].A2CTH));
+  $("#A3CGR").prop("checked", checkTF(data[0].A3CGR));
+  $("#A3CTH").prop("checked", checkTF(data[0].A3CTH));
+  $("#B1CGR").prop("checked", checkTF(data[0].B1CGR));
+  $("#B1CTH").prop("checked", checkTF(data[0].B1CTH));
+  $("#B2CGR").prop("checked", checkTF(data[0].B2CGR));
+  $("#B2CTH").prop("checked", checkTF(data[0].B2CTH));
+  $("#B3CGR").prop("checked", checkTF(data[0].B3CGR));
+  $("#B3CTH").prop("checked", checkTF(data[0].B3CTH));
+  $("#B4CGR").prop("checked", checkTF(data[0].B4CGR));
+  $("#B4CTH").prop("checked", checkTF(data[0].B4CTH));
+  $("#C1CGR").prop("checked", checkTF(data[0].C1CGR));
+  $("#C1CTH").prop("checked", checkTF(data[0].C1CTH));
+  $("#C2CGR").prop("checked", checkTF(data[0].C2CGR));
+  $("#C2CTH").prop("checked", checkTF(data[0].C2CTH));
+  $("#C3CGR").prop("checked", checkTF(data[0].C3CGR));
+  $("#C3CTH").prop("checked", checkTF(data[0].C3CTH));
+  $("#C4CGR").prop("checked", checkTF(data[0].C4CGR));
+  $("#C4CTH").prop("checked", checkTF(data[0].C4CTH));
+  $("#D2CGR").prop("checked", checkTF(data[0].D2CGR));
+  $("#D2CTH").prop("checked", checkTF(data[0].D2CTH));
+  $("#D3CGR").prop("checked", checkTF(data[0].D3CGR));
+  $("#D3CTH").prop("checked", checkTF(data[0].D3CTH));
+};
+function clearInputData() {
+  $("#file_url").html("No file");
+  $("input[type=checkbox]").each(function (index, element) {
+    $(this).prop("checked", false);
+  });
+  $("input.need-clear").each(function (index, element) {
+    $(this).val("");
+  });
+  $("select.need-clear").each(function (index, element) {
+    $(this).val(1);
+  });
+  $(".date-input").each(function (index, element) {
+    $(this).val("").removeClass("complete-input").addClass("no-input");
+  });
+  $("#error_table").empty();
+}
+$("#file_upload").on("change", function () {
+  var file = $(this).prop("files")[0];
+  console.log(file.name);
+  $("#file_url").html(file.name);
+  $("#preview__button").prop("disabled", false);
+});
+$(document).on("click", "#preview__button", function () {
+  window.open("./HomoSub.html");
+});
+$(document).on("change", "#file_upload", function () {
+  ajaxFileUpload();
+  console.log("Change file");
+});
+function ajaxFileUpload() {
+  var file_data = $('#file_upload').prop('files')[0];
+  var form_data = new FormData();
+  form_data.append('file', file_data);
+  $.ajax({
+      url: "./php/FileUpload.php",
+      dataType: 'text',
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: form_data,
+      type: 'post',
+  });
+}
