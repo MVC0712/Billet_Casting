@@ -71,12 +71,21 @@ function fillTableBody(data, tbodyDom) {
       $(newTr).appendTo(tbodyDom);
   });
 };
+$(document).on("keyup", ".mold_id", function() {
+  if ($(this).val() != "") {
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+});
 $(document).on("change", "#check_date", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
       $(this).removeClass("complete-input").addClass("no-input");
   }
+  checkInput();
 });
 $(document).on("change", "#position", function() {
   addErrorCheck();
@@ -98,8 +107,8 @@ $(document).on("click", "#error_table tbody tr", function (e) {
   if (!$(this).hasClass("selected-record")) {
     $(this).parent().find("tr").removeClass("selected-record");
     $(this).addClass("selected-record");
-    $("#selected__tr").removeAttr("id");
-    $(this).attr("id", "selected__tr");
+    $("#selected__error").removeAttr("id");
+    $(this).attr("id", "selected__error");
   } else {
     // deleteDialog.showModal();
   }
@@ -123,18 +132,55 @@ $("#add_error").on("click", function () {
       let sendData = new Object();
       fileName = "AddError.php";
       sendData = {
-        check_date: $("#check_date").val(),
         position: $("#position").val(),
         error: $("#error").val(),
         note: $("#note").val(),
       };
       myAjax.myAjax(fileName, sendData);
-      makeScrapTable();
+      makeError();
       $("#position").val("").removeClass("complete-input").addClass("no-input");
       $("#error").val("").removeClass("complete-input").addClass("no-input");
       $("#add_error").prop("disabled", true);
     break;
   }
+});
+function makeError() {
+  fileName = "SelAddMaterial.php";
+  sendData = {
+    id: $("#selected__tr td:nth-child(1)").text(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  $("#error_table tbody").empty();
+  ajaxReturnData.forEach(function (trVal) {
+    var newTr = $("<tr>");
+    Object.keys(trVal).forEach(function (tdVal) {
+      if (tdVal == "position") {
+        $("<td>")
+            .append(posOption(trVal[tdVal])).appendTo(newTr);
+      } else if (tdVal == "error") {
+        $("<td>")
+            .append(errorOption(trVal[tdVal])).appendTo(newTr);
+    } else if (tdVal == "note") {
+      $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
+    } else {
+      $("<td>").html(trVal[tdVal]).appendTo(newTr);
+    }
+    });
+    $(newTr).appendTo("#error_table tbody");
+  });
+};
+$(document).on("change", "#error_table tbody tr", function () {
+  let sendData = new Object();
+  let fileName;
+  fileName = "UpdateAddMaterial.php";
+  sendData = {
+    id: $("#selected__error td:nth-child(1)").html(),
+    position : $("#selected__error td:nth-child(2) select").val(),
+    error: $("#selected__error td:nth-child(3) select").val(),
+    note: $("#selected__error td:nth-child(4) input").val(),
+  };
+  console.log(sendData);
+  // myAjax.myAjax(fileName, sendData);
 });
 function posOption(seletedId) {
   let targetDom = $("<select>");
@@ -182,7 +228,22 @@ function addErrorCheck() {
       $("#add_error").prop("disabled", false);
   }
 };
-
+function checkInput() {
+  let check = true;
+  $(".top__wrapper input").each(function() {
+    if ($(this).hasClass("no-input")) {
+      check = false;
+    }
+  });
+  if ($("#check_date").val() == "") {
+    check = false;
+  };
+  if (check) {
+    $("#save").attr("disabled", false);
+  } else {
+    $("#save").attr("disabled", true);
+  } 
+};
 function getInputData() {
   let inputData = new Object();
     $("input.save-data").each(function (index, element) {
@@ -267,7 +328,7 @@ $("#file_upload").on("change", function () {
   $("#preview__button").prop("disabled", false);
 });
 $(document).on("click", "#preview__button", function () {
-  window.open("./HomoSub.html");
+  window.open("./MoldHistorySub.html");
 });
 $(document).on("change", "#file_upload", function () {
   ajaxFileUpload();
@@ -286,4 +347,47 @@ function ajaxFileUpload() {
       data: form_data,
       type: 'post',
   });
+};
+$(document).on("click", "#save", function () {
+  fileName = "InsData.php";
+  inputData = getInputData();
+  sendData = inputData;
+  myAjax.myAjax(fileName, sendData);
+  let targetId = ajaxReturnData[0]["id"];
+  tableData = getTableData($("#error_table tbody tr"));
+  tableData.push(targetId);
+  fileName = "InsMaterialData.php";
+  sendData = JSON.stringify(tableData);
+  console.log(sendData);
+  myAjax.myAjax(fileName, sendData);
+  clearInputData();
+  makeSummaryTable();
+});
+$(document).on("click", "#update", function () {
+  fileName = "UpdateData.php";
+  inputData = getInputData();
+  inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
+  sendData = inputData;
+  myAjax.myAjax(fileName, sendData);
+  clearInputData();
+  makeSummaryTable();
+});
+function getTableData(tableTrObj) {
+  var tableData = [];
+  tableTrObj.each(function (index, element) {
+    var tr = [];
+    $(this)
+      .find("td")
+      .each(function (index, element) {
+        if ($(this).find("input").length) {
+          tr.push($(this).find("input").val());
+        } else if ($(this).find("select").length) {
+          tr.push($(this).find("select").val());
+        } else {
+          tr.push($(this).html());
+        }
+      });
+    tableData.push(tr);
+  });
+  return tableData;
 }

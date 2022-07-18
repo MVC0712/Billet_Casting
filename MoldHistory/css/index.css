@@ -3,7 +3,7 @@ body {
   border: solid 1px #0000cc;
   display: flex;
   flex-direction: column;
-  height: calc(800px - 2px);
+  height: calc(760px - 2px);
   width: calc(800px - 2px);
 }
 input{
@@ -36,11 +36,11 @@ select {
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 60%;
+  height: 62%;
 }
 .bottom__wrapper {
   width: 80%;
-  height: 20%;
+  height: 35%;
   display: flex;
   flex-direction: row;
 }
@@ -108,18 +108,29 @@ flex-direction: row;
 #check_date {
   width: 100px;
 }
+.button_area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#save,
+#update {
+  width: 60px;
+  height: 20px;
+  margin: 20px;
+}
 #add_error {
   width: 100%;
   height: 20px;
   padding: 0;
   margin: 0;
 }
-
 #error_table {
   margin-left: 20px;
 }
 #error_table tbody {
-  height: 110px;
+  height: 200px;
   width: 315px;
   overflow: auto;
 }
