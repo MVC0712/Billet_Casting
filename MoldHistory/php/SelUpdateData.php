@@ -7,8 +7,8 @@ if ($dbh->getInstance() === null) {
 $targetId = "";
 $targetId = $_POST['targetId'];
 try {
-    $sql = "SELECT id, mea_date, file_url_1, file_url_2, file_url_3 
-    FROM t_mea_file 
+    $sql = "SELECT *
+    FROM t_mold_history 
     WHERE id = '$targetId'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
