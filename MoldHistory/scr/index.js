@@ -43,6 +43,7 @@ const myAjax = {
 $(function () {
   fillSelectBox(pos, "position");
   fillSelectBox(error, "error");
+  makeSummaryTable();
 });
 
 function fillSelectBox(arr, targetDom) {
@@ -54,12 +55,12 @@ function fillSelectBox(arr, targetDom) {
   });
 };
 
-function makeFileListTable() {
+function makeSummaryTable() {
   var fileName = "SelSummary.php";
   var sendData = {
   };
   myAjax.myAjax(fileName, sendData);
-  fillTableBody(ajaxReturnData, $("#file_list__table tbody"));
+  fillTableBody(ajaxReturnData, $("#summary_table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -103,6 +104,31 @@ $(document).on("change", "#error", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
 });
+$(document).on("click", "#summary_table tbody tr", function (e) {
+  let fileName = "SelUpdateData.php";
+  let sendData;
+  if (!$(this).hasClass("selected-record")) {
+    $(this).parent().find("tr").removeClass("selected-record");
+    $(this).addClass("selected-record");
+    $("#selected__tr").removeAttr("id");
+    $(this).attr("id", "selected__tr");
+    sendData = {
+      targetId: $("#selected__tr").find("td").eq(0).html(),
+    };
+    myAjax.myAjax(fileName, sendData);
+    putDataToInput(ajaxReturnData);
+    $("#add_error").text("Add");
+  } else {
+    // deleteDialog.showModal();
+  }
+  $("#save").attr("disabled", true);
+  $("#update").attr("disabled", false);
+  // checkUpdate();
+  makeError();
+  $(".save-data").each(function (index, element) {
+    $(this).removeClass("no-input").addClass("complete-input");
+  });
+});
 $(document).on("click", "#error_table tbody tr", function (e) {
   if (!$(this).hasClass("selected-record")) {
     $(this).parent().find("tr").removeClass("selected-record");
@@ -132,6 +158,7 @@ $("#add_error").on("click", function () {
       let sendData = new Object();
       fileName = "AddError.php";
       sendData = {
+        mold_history_id: $("#selected__tr td:nth-child(1)").text(),
         position: $("#position").val(),
         error: $("#error").val(),
         note: $("#note").val(),
@@ -145,9 +172,9 @@ $("#add_error").on("click", function () {
   }
 });
 function makeError() {
-  fileName = "SelAddMaterial.php";
+  fileName = "SelError.php";
   sendData = {
-    id: $("#selected__tr td:nth-child(1)").text(),
+    mold_history_id : $("#selected__tr td:nth-child(1)").text(),
   };
   myAjax.myAjax(fileName, sendData);
   $("#error_table tbody").empty();
@@ -172,7 +199,7 @@ function makeError() {
 $(document).on("change", "#error_table tbody tr", function () {
   let sendData = new Object();
   let fileName;
-  fileName = "UpdateAddMaterial.php";
+  fileName = "UpdateError.php";
   sendData = {
     id: $("#selected__error td:nth-child(1)").html(),
     position : $("#selected__error td:nth-child(2) select").val(),
@@ -180,7 +207,7 @@ $(document).on("change", "#error_table tbody tr", function () {
     note: $("#selected__error td:nth-child(4) input").val(),
   };
   console.log(sendData);
-  // myAjax.myAjax(fileName, sendData);
+  myAjax.myAjax(fileName, sendData);
 });
 function posOption(seletedId) {
   let targetDom = $("<select>");
@@ -356,7 +383,7 @@ $(document).on("click", "#save", function () {
   let targetId = ajaxReturnData[0]["id"];
   tableData = getTableData($("#error_table tbody tr"));
   tableData.push(targetId);
-  fileName = "InsMaterialData.php";
+  fileName = "InsErrorData.php";
   sendData = JSON.stringify(tableData);
   console.log(sendData);
   myAjax.myAjax(fileName, sendData);
