@@ -2,7 +2,7 @@
 
  set dbUser=root
  set dbPassword=""
- set backupDir="D:\backupdatawebreport"
+ set backupDir="C:\xampp\htdocs\Billet_Casting\Lib"
  set mysqldump="C:\xampp\mysql\bin\mysqldump.exe"
  set mysqlDataDir="C:\xampp\mysql\data"
 
@@ -26,4 +26,4 @@ for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "d
 @REM       mkdir %backupDir%\%dirName%
  )
 
- %mysqldump% --host="localhost" --user=%dbUser% --password=%dbPassword% --single-transaction --add-drop-table --all-databases > %backupDir%\%YYYY%\%MM%\%datestamp%".sql"
+ %mysqldump% --host="localhost" --user=%dbUser% --password=%dbPassword% --single-transaction --add-drop-table --all-databases > %backupDir%\"database.sql"
