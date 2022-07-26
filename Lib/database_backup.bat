@@ -12,18 +12,5 @@ for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "d
 
      set "datestamp=%YYYY%%MM%%DD%" & set "timestamp=%HH%%Min%%Sec%"
      set "fullstamp=%YYYY%%MM%%DD%_%HH%%Min%"
-@REM echo datestamp: "%datestamp%"
-@REM echo timestamp: "%timestamp%"
-@REM echo fullstamp: "%fullstamp%"
-
- :: switch to the "data" folder
  pushd %mysqlDataDir%
-
- :: iterate over the folder structure in the "data" folder to get the databases
- for /d %%f in (*) do (
-
-@REM  if not exist %backupDir%\%dirName%\ (
-@REM       mkdir %backupDir%\%dirName%
- )
-
  %mysqldump% --host="localhost" --user=%dbUser% --password=%dbPassword% --single-transaction --add-drop-table --all-databases > %backupDir%\%YYYY%\%MM%\%datestamp%".sql"
