@@ -10,7 +10,7 @@ input {
 .left__wrapper {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 24%;
   height: 100%;
 }
 #file_upload {
