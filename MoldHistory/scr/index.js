@@ -118,11 +118,16 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
     myAjax.myAjax(fileName, sendData);
     putDataToInput(ajaxReturnData);
     $("#add_error").text("Add");
+    $("#update").attr("disabled", false);
   } else {
     // deleteDialog.showModal();
+    $(this).parent().find("tr").removeClass("selected-record");
+    $("#selected__tr").removeAttr("id");
+    $("#update").attr("disabled", true);
+    $("#add_error").text("Save");
   }
   $("#save").attr("disabled", true);
-  $("#update").attr("disabled", false);
+  // $("#update").attr("disabled", false);
   // checkUpdate();
   makeError();
   $(".save-data").each(function (index, element) {

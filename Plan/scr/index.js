@@ -264,7 +264,7 @@ function downloadExcelFile(donwloadFileName) {
   const a = document.createElement("a");
   document.body.appendChild(a);
   a.download = donwloadFileName;
-  a.href = "../../FileDownLoad/ExcelFile/" + donwloadFileName;
+  a.href = "/../../Billet_Casting/FileDownLoad/ExcelFile/" + donwloadFileName;
   a.click();
   a.remove();
 }
