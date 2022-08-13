@@ -27,7 +27,7 @@ try {
 FROM
     t_plan
         LEFT JOIN
-    m_material_element ON t_plan.product_type = m_material_element.id
+    m_material_element ON t_plan.product_type = m_material_element.material_type
         LEFT JOIN
     m_material_type ON m_material_type.id = t_plan.product_type
         LEFT JOIN
