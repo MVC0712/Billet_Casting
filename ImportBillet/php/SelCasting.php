@@ -8,15 +8,9 @@ $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
     t_casting.id,
+    DATE_FORMAT(product_date,'%y/%m/%d') AS product_date,
     code,
-    product_date,
-    material_type,
-    melting_start,
-    melting_end,
-    melting_gas_start,
-    melting_gas_end,
-    casting_start,
-    casting_end
+    material_type
 FROM
     billet_casting.t_casting
         LEFT JOIN

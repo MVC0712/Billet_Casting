@@ -1,0 +1,179 @@
+body {
+  margin: 4px;
+  border: solid 1px #0000cc;
+  display: flex;
+  flex-direction: column;
+  height: calc(600px - 2px);
+  width: calc(850px - 2px);
+}
+#import_date,
+#import_start_date,
+#import_end_date {
+  width: 100px;
+}
+#save__button {
+  margin: 0px;
+  height: 20px;
+  width: 50px;
+}
+.summary__wrapper {
+  height: calc(598px - 2px);
+  display: flex;
+  align-content: space-around;
+  justify-content: space-around;
+  flex-direction: row;
+}
+#casting_table tbody {
+  height: 500px;
+  width: 150px;
+  overflow: auto;
+}
+#casting_table th:nth-child(1),
+#casting_table td:nth-child(1) {
+  display: none;
+}
+#casting_table th:nth-child(2),
+#casting_table td:nth-child(2) {
+  width: 60px;
+}
+#casting_table th:nth-child(3),
+#casting_table td:nth-child(3) {
+  width: 30px;
+}
+#casting_table th:nth-child(4),
+#casting_table td:nth-child(4) {
+  width: 35px;
+}
+#add__table tbody {
+  height: 520px;
+  width: 315px;
+  overflow: hidden;
+}
+#add__table th:nth-child(1),
+#add__table td:nth-child(1) {
+  display: none;
+}
+#add__table th:nth-child(2),
+#add__table td:nth-child(2) {
+  width: 40px;
+}
+#add__table th:nth-child(3),
+#add__table td:nth-child(3) {
+  width: 40px;
+}
+#add__table td:nth-child(3) input
+{
+  width: 35px;
+  border: none;
+}
+#add__table th:nth-child(4),
+#add__table td:nth-child(4) {
+  width: 50px;
+}
+#add__table th:nth-child(5),
+#add__table td:nth-child(5) {
+  width: 50px;
+}
+#add__table td:nth-child(5) select {
+  width: 50px;
+  text-align: left;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+}
+#add__table th:nth-child(6),
+#add__table td:nth-child(6) {
+  width: 30px;
+}
+#add__table td:nth-child(6) input {
+  width: 26px;
+  text-align: left;
+  border: none;
+}
+#add__table th:nth-child(7),
+#add__table td:nth-child(7) {
+  width: 70px;
+}
+#add__table td:nth-child(7) input {
+  width: 68px;
+  text-align: left;
+  border: none;
+}
+
+#summary__table tbody {
+  height: 500px;
+  width: 380px;
+  overflow: auto;
+}
+#summary__table th:nth-child(1),
+#summary__table td:nth-child(1) {
+  display: none;
+}
+#summary__table th:nth-child(2),
+#summary__table td:nth-child(2) {
+  width: 80px;
+}
+#summary__table th:nth-child(3),
+#summary__table td:nth-child(3) {
+  width: 40px;
+}
+#summary__table td:nth-child(3) input {
+  width: 110px;
+  border-width: 0;
+  border: none;
+  text-align: left;
+}
+#summary__table th:nth-child(4),
+#summary__table td:nth-child(4) {
+  width: 40px;
+}
+#summary__table td:nth-child(4) select {
+  width: 130px;
+  border-width: 0;
+}
+
+#summary__table th:nth-child(5),
+#summary__table td:nth-child(5) {
+  width: 50px;
+}
+#summary__table td:nth-child(5) select {
+  width: 130px;
+  border-width: 0;
+}
+
+#summary__table th:nth-child(6),
+#summary__table td:nth-child(6) {
+  width: 40px;
+}
+#summary__table td:nth-child(6) input {
+  width: 50px;
+  text-align: center;
+  border: none;
+}
+#summary__table th:nth-child(7),
+#summary__table td:nth-child(7) {
+  width: 30px;
+}
+#summary__table td:nth-child(7) input {
+  width: 60px;
+  text-align: center;
+  border: none;
+}
+#summary__table th:nth-child(8),
+#summary__table td:nth-child(8) {
+  width: 60px;
+}
+.class1 {
+  display: inline-block;
+  align-items:center;
+}
+.input1 {
+  display: inline-block;
+  width: 200px;
+  padding-left: 20px;
+}
+button {
+  width:90px;
+  height:20px;
+}

@@ -308,9 +308,7 @@ $("#file_url").html("No file");
 $(".need-clear").each(function (index, element) {
   $(this).val("").removeClass("complete-input").addClass("no-input");
 });
-}
-
-
+};
 $(document).on("change", "#scrap_type", function() {
   addScrapCheck();
   if ($(this).val() != 0) {
