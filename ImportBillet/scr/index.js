@@ -77,13 +77,13 @@ $(document).on("click", "#casting_table tbody tr", function (e) {
     let material = $(this).find("td:nth-child(4)").html();
       var newTr = $("<tr>");
 
-      $("<td>").html(code).appendTo(newTr);
+      $("<td>").html(codeid).appendTo(newTr);
       $("<td>").html(code).appendTo(newTr);
       $("<td>").append(makeInput("")).appendTo(newTr);
       $("<td>").html(material).appendTo(newTr);
       $("<td>").append(makeBilletLength("")).appendTo(newTr);
       $("<td>").append(makeInput("0")).appendTo(newTr);
-      $("<td>").append(makeInput("").removeClass("number-input").addClass("text-input")).appendTo(newTr);
+      $("<td>").append(makeInput("").removeClass("no-input")).appendTo(newTr);
       $(newTr).appendTo("#add__table tbody");
       // $(this).remove();
   }
@@ -198,12 +198,12 @@ function getTableData(tableTrObj) {
       });
     tableData.push(tr);
   });
-  console.log(tableData);
+  // console.log(tableData);
   return tableData;
 };
 $(document).on("click", "#save__button", function () {
   var fileName = "InsData.php";
-  tableData = getTableDataInput($("#add__table tbody tr"))
+  tableData = getTableData($("#add__table tbody tr"))
     console.log(tableData); 
     jsonData = JSON.stringify(tableData);
     
@@ -214,5 +214,16 @@ $(document).on("click", "#save__button", function () {
     console.log(sendData);
   // myAjax.myAjax(fileName, sendData);
   // makeSummaryTable();
-  // clearInputData();
+  $("#add__table tbody tr").remove();
+});
+
+$(document).on("click", "#add__table tbody tr", function (e) {
+  if (!$(this).hasClass("add-record")) {
+    $(this).parent().find("tr").removeClass("add-record");
+    $(this).addClass("add-record");
+    $("#add__tr").removeAttr("id");
+    $(this).attr("id", "add__tr");
+  } else {
+      // $(this).remove();
+  }
 });

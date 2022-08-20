@@ -6,6 +6,9 @@ body {
   height: calc(600px - 2px);
   width: calc(850px - 2px);
 }
+.add-record {
+  background-color: aqua;
+}
 #import_date,
 #import_start_date,
 #import_end_date {
