@@ -117,6 +117,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
     };
     myAjax.myAjax(fileName, sendData);
     putDataToInput(ajaxReturnData);
+    makeError();
     $("#add_error").text("Add");
     $("#update").attr("disabled", false);
   } else {
@@ -129,7 +130,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
   $("#save").attr("disabled", true);
   // $("#update").attr("disabled", false);
   // checkUpdate();
-  makeError();
+  // makeError();
   $(".save-data").each(function (index, element) {
     $(this).removeClass("no-input").addClass("complete-input");
   });

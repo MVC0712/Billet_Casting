@@ -19,6 +19,9 @@ body {
   height: 20px;
   width: 50px;
 }
+.quantity {
+  background-color: aqua;
+}
 .summary__wrapper {
   height: calc(598px - 2px);
   display: flex;
@@ -115,57 +118,31 @@ body {
 }
 #summary__table th:nth-child(2),
 #summary__table td:nth-child(2) {
-  width: 80px;
+  width: 60px;
 }
 #summary__table th:nth-child(3),
 #summary__table td:nth-child(3) {
   width: 40px;
 }
-#summary__table td:nth-child(3) input {
-  width: 110px;
-  border-width: 0;
-  border: none;
-  text-align: left;
-}
 #summary__table th:nth-child(4),
 #summary__table td:nth-child(4) {
   width: 40px;
 }
-#summary__table td:nth-child(4) select {
-  width: 130px;
-  border-width: 0;
-}
-
 #summary__table th:nth-child(5),
 #summary__table td:nth-child(5) {
   width: 50px;
 }
-#summary__table td:nth-child(5) select {
-  width: 130px;
-  border-width: 0;
-}
-
 #summary__table th:nth-child(6),
 #summary__table td:nth-child(6) {
   width: 40px;
-}
-#summary__table td:nth-child(6) input {
-  width: 50px;
-  text-align: center;
-  border: none;
 }
 #summary__table th:nth-child(7),
 #summary__table td:nth-child(7) {
   width: 30px;
 }
-#summary__table td:nth-child(7) input {
-  width: 60px;
-  text-align: center;
-  border: none;
-}
 #summary__table th:nth-child(8),
 #summary__table td:nth-child(8) {
-  width: 60px;
+  width: 80px;
 }
 .class1 {
   display: inline-block;
