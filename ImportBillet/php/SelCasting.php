@@ -4,7 +4,7 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-$datetime = date("Y-m-d H:i:s");
+$code_input = $_POST['code_input'];
 try {
     $sql = "SELECT 
     t_casting.id,
@@ -15,6 +15,7 @@ FROM
     billet_casting.t_casting
         LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
+    WHERE t_casting.code LIKE '%$code_input%'
     ORDER BY product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

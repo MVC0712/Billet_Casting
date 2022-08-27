@@ -16,6 +16,8 @@
             <button id="homogenizing_input">Homogenizing Input</button>
             <button id="cutting_input">Cutting Input</button>
             <button id="mea_file">Measurement File</button>
+            <button id="import">Import</button>
+            <button id="export">Export</button>
       </div>
       <div>
         <table id="summary_table" style="height: 450px;">
@@ -65,6 +67,12 @@
       });
       $(document).on("click", "#mea_file", function () {
         window.open("/Billet_Casting/Measurement");
+      });
+      $(document).on("click", "#import", function () {
+        window.open("/Billet_Casting/Importbillet");
+      });
+      $(document).on("click", "#export", function () {
+        window.open("/Billet_Casting/Exportbillet");
       });
       </script>
       <script>

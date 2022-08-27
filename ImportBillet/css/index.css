@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(600px - 2px);
-  width: calc(850px - 2px);
+  width: calc(1000px - 2px);
 }
 .add-record {
   background-color: aqua;
@@ -52,7 +52,7 @@ body {
 }
 #add__table tbody {
   height: 520px;
-  width: 315px;
+  width: 385px;
   overflow: hidden;
 }
 #add__table th:nth-child(1),
@@ -69,12 +69,12 @@ body {
 }
 #add__table td:nth-child(3) input
 {
-  width: 35px;
+  width: 37px;
   border: none;
 }
 #add__table th:nth-child(4),
 #add__table td:nth-child(4) {
-  width: 50px;
+  width: 55px;
 }
 #add__table th:nth-child(5),
 #add__table td:nth-child(5) {
@@ -92,24 +92,36 @@ body {
 #add__table td:nth-child(6) {
   width: 30px;
 }
-#add__table td:nth-child(6) input {
+#add__table td:nth-child(6) select {
+  width: 30px;
+  text-align: left;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+}
+#add__table th:nth-child(7),
+#add__table td:nth-child(7) {
+  width: 30px;
+}
+#add__table td:nth-child(7) input {
   width: 26px;
   text-align: left;
   border: none;
 }
-#add__table th:nth-child(7),
-#add__table td:nth-child(7) {
-  width: 70px;
+#add__table th:nth-child(8),
+#add__table td:nth-child(8) {
+  width:100px;
 }
-#add__table td:nth-child(7) input {
-  width: 68px;
+#add__table td:nth-child(8) input {
+  width: 98px;
   text-align: left;
   border: none;
 }
 
 #summary__table tbody {
   height: 500px;
-  width: 380px;
+  width: 435px;
   overflow: auto;
 }
 #summary__table th:nth-child(1),
@@ -142,7 +154,11 @@ body {
 }
 #summary__table th:nth-child(8),
 #summary__table td:nth-child(8) {
-  width: 80px;
+  width: 30px;
+}
+#summary__table th:nth-child(9),
+#summary__table td:nth-child(9) {
+  width: 100px;
 }
 .class1 {
   display: inline-block;

@@ -4,6 +4,21 @@ let fileName;
 let sendData = new Object();
 let ajaxReturnData;
 
+let pos = [{id: 0, type: "--"},
+          {id: 1, type: "A2"},
+          {id: 2, type: "A3"},
+          {id: 3, type: "B1"},
+          {id: 4, type: "B2"},
+          {id: 5, type: "B3"},
+          {id: 6, type: "B4"},
+          {id: 7, type: "C1"},
+          {id: 8, type: "C2"},
+          {id: 9, type: "C3"},
+          {id: 10, type: "C4"},
+          {id: 11, type: "D2"},
+          {id: 12, type: "D3"}
+        ];
+
 const myAjax = {
   myAjax: function (fileName, sendData) {
     $.ajax({
@@ -50,7 +65,7 @@ $(function () {
 function makeCastingTable() {
   var fileName = "SelCasting.php";
   var sendData = {
-      dummy: "dummy",
+    code_input: $("#code_input").val(),
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#casting_table tbody"));
@@ -58,7 +73,8 @@ function makeCastingTable() {
 function makeSummaryTable() {
   var fileName = "SelSummary.php";
   var sendData = {
-      dummy: "dummy",
+    start: $("#import_start_date").val(),
+    end: $("#import_end_date").val(),
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
@@ -90,6 +106,7 @@ $(document).on("click", "#casting_table tbody tr", function (e) {
       $("<td>").append(makeInput("")).appendTo(newTr);
       $("<td>").html(material).appendTo(newTr);
       $("<td>").append(makeBilletLength("")).appendTo(newTr);
+      $("<td>").append(makeBilletPos("0")).appendTo(newTr);
       $("<td>").append(makeInput("7")
         .removeClass("no-input number-input")
         .addClass("quantity")
@@ -132,7 +149,28 @@ function makeBilletLength(seletedId) {
     }
   });
   return targetDom;
-}
+};
+function makeBilletPos(position) {
+  let targetDom = $("<select>");
+  pos.forEach(function(element) {
+    if (element["id"] == position) {
+      $("<option>")
+        .html(element["type"])
+        .val(element["id"])
+        .prop("selected", true)
+        .appendTo(targetDom);
+    } else {
+      $("<option>")
+        .html(element["type"])
+        .val(element["id"])
+        .appendTo(targetDom);
+    }
+  });
+  return targetDom;
+};
+$(document).on("keyup", "#code_input", function() {
+  makeCastingTable();
+});
 $(document).on("change", "#import_date", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");

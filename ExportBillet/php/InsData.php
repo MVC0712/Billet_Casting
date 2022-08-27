@@ -5,18 +5,18 @@ if ($dbh->getInstance() === null) {
     die("No database connection");
 }
   $data = "";
-  $import_date = "";
+  $export_date = "";
 
   $data = $_POST['data'];
-  $import_date = $_POST['import_date'];
+  $export_date = $_POST['export_date'];
   $data_json = json_decode($data);
 
 try {
     foreach ($data_json as $val) {
-        $sql_paramater[] = "('{$val[0]}', '{$val[2]}', '{$val[4]}', '{$val[5]}', '{$val[6]}', '{$import_date}')";
+        $sql_paramater[] = "('{$val[0]}', '{$val[3]}', '{$export_date}')";
     };
-    $sql = "INSERT INTO t_import ";
-    $sql = $sql."(casting_id ,bundle, billet_length, quantity, note, import_date) VALUES ";
+    $sql = "INSERT INTO t_export ";
+    $sql = $sql."(import_id, note, export_date) VALUES ";
     $sql = $sql.join(",", $sql_paramater);
 
     $stmt = $dbh->getInstance()->prepare($sql);

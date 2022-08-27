@@ -4,26 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Import Billet</title>
+    <title>Export Billet</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <header>Import Billet</header>
+    <header>Export Billet</header>
     <div class="summary__wrapper">
-      <dialog class="dialog__wrapper" id="delete__dialog">
-        Do you Delete?
-        <button id="delete-dialog-cancel__button">Cancel</button>
-        <button id="delete-dialog-delete__button">Delete</button>
-      </dialog>
-
-      <table id="casting_table">
+      <table id="import_table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Prd date</th>
-            <th>Code</th>
-            <th>Mate</th>
+            <th><input id="code_input"></th>
+            <th>Lot.Bun-Mate:Qty</th>
+            <th>Length</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -34,10 +28,7 @@
           <tr>
             <th>id</th>
             <th>Code</th>
-            <th>Bundle</th>
-            <th>Material</th>
             <th>Length</th>
-            <th>Qty</th>
             <th>Note</th>
           </tr>
         </thead>
@@ -45,9 +36,9 @@
       </table>
         <div style="display: flex; align-items:center; padding-bottom: 5px; justify-content: space-around;">
           <div style="display: flex;">
-            <div style="width: 70px; background-color: blue; color: white;">Import at</div>
+            <div style="width: 70px; background-color: blue; color: white;">Export at</div>
               <input
-              id="import_date"
+              id="export_date"
               class="no-input save-data need-clear"
               type="date"
             />
@@ -57,27 +48,14 @@
   </div>
   <div>
   <div>
-  <input
-  id="import_start_date"
-  type="date"
-/>
-→
-<input
-id="import_end_date"
-type="date"
-/>
-<!-- <button id="download_excel" style="margin: 0; padding:0; display: initial;">Tải về</button> -->
-<!-- <input
-style="width: 100px; text-align: left;"
-id="die_number"
-type="text"
-/> -->
+  <input id="export_start_date" type="date"/>→
+  <input id="export_end_date" type="date"/>
 </div>
   <table id="summary__table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Imp date</th>
+        <th>Exp date</th>
         <th>Lot</th>
         <th>Bundle</th>
         <th>Material</th>
@@ -88,7 +66,6 @@ type="text"
     </thead>
     <tbody></tbody>
   </table>
-  <!-- <button id="download_excel" style="margin: 0; padding:0;">Tải về</button> -->
 </div>
     </div>
 

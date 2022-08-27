@@ -42,23 +42,24 @@ $(function () {
   var formatDate = function(date) {
     return date.getFullYear()  + '-' + formatDateComponent(date.getMonth() + 1) + '-' + formatDateComponent(date.getDate()) ;
   };
-  $("#import_start_date").val(formatDate(MonthFirstDate));
-  $("#import_end_date").val(formatDate(MonthLastDate));
+  $("#export_start_date").val(formatDate(MonthFirstDate));
+  $("#export_end_date").val(formatDate(MonthLastDate));
   makeCastingTable();
   makeSummaryTable();
 });
 function makeCastingTable() {
-  var fileName = "SelCasting.php";
+  var fileName = "SelImport.php";
   var sendData = {
-      dummy: "dummy",
+    code_input: $("#code_input").val(),
   };
   myAjax.myAjax(fileName, sendData);
-  fillTableBody(ajaxReturnData, $("#casting_table tbody"));
+  fillTableBody(ajaxReturnData, $("#import_table tbody"));
 };
 function makeSummaryTable() {
   var fileName = "SelSummary.php";
   var sendData = {
-      dummy: "dummy",
+    start: $("#export_start_date").val(),
+    end: $("#export_end_date").val(),
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
@@ -73,32 +74,26 @@ function fillTableBody(data, tbodyDom) {
       $(newTr).appendTo(tbodyDom);
   });
 };
-$(document).on("click", "#casting_table tbody tr", function (e) {
+$(document).on("click", "#import_table tbody tr", function (e) {
   if (!$(this).hasClass("selected-record")) {
     $(this).parent().find("tr").removeClass("selected-record");
     $(this).addClass("selected-record");
     $("#selected__tr").removeAttr("id");
     $(this).attr("id", "selected__tr");
   } else {
-    let codeid = $(this).find("td:nth-child(1)").html();
-    let code = $(this).find("td:nth-child(3)").html();
-    let material = $(this).find("td:nth-child(4)").html();
+    let impid = $(this).find("td:nth-child(1)").html();
+    let lot_bun_mate_qty = $(this).find("td:nth-child(3)").html();
+    let length = $(this).find("td:nth-child(4)").html();
       var newTr = $("<tr>");
 
-      $("<td>").html(codeid).appendTo(newTr);
-      $("<td>").html(code).appendTo(newTr);
-      $("<td>").append(makeInput("")).appendTo(newTr);
-      $("<td>").html(material).appendTo(newTr);
-      $("<td>").append(makeBilletLength("")).appendTo(newTr);
-      $("<td>").append(makeInput("7")
-        .removeClass("no-input number-input")
-        .addClass("quantity")
-      ).appendTo(newTr);
+      $("<td>").html(impid).appendTo(newTr);
+      $("<td>").html(lot_bun_mate_qty).appendTo(newTr);
+      $("<td>").html(length).appendTo(newTr);
       $("<td>").append(makeInput("")
         .removeClass("no-input number-input")
       ).appendTo(newTr);
       $(newTr).appendTo("#add__table tbody");
-      // $(this).remove();
+      $(this).remove();
   }
   checkSave();
 });
@@ -133,7 +128,10 @@ function makeBilletLength(seletedId) {
   });
   return targetDom;
 }
-$(document).on("change", "#import_date", function() {
+$(document).on("keyup", "#code_input", function() {
+  makeCastingTable();
+});
+$(document).on("change", "#export_date", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
@@ -143,7 +141,7 @@ $(document).on("change", "#import_date", function() {
 });
 function checkSave() {
   let check = true;
-  if ($("#add__table tbody tr").length==0 || $("#import_date").val()=="") {
+  if ($("#add__table tbody tr").length==0 || $("#export_date").val()=="") {
     check = false;
   }
   $("#add__table tbody input").each(function() {
@@ -217,13 +215,13 @@ $(document).on("click", "#save__button", function () {
     jsonData = JSON.stringify(tableData);
     var sendData = {
         data : jsonData,
-        import_date : $("#import_date").val(),
+        export_date : $("#export_date").val(),
     };
     console.log(sendData);
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
   $("#add__table tbody tr").remove();
-  $("#import_date").val("").removeClass("complete-input").addClass("no-input");
+  $("#export_date").val("").removeClass("complete-input").addClass("no-input");
   checkSave();
 });
 $(document).on("click", "#add__table tbody tr", function (e) {
