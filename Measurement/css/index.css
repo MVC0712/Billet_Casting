@@ -14,12 +14,12 @@ body {
 }.left__wrapper {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 65%;
 }
 .right__wrapper {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 35%;
 }
 .bottom__wrapper {
   width: 100%;
@@ -42,13 +42,13 @@ input {
   display: inline-block;
   cursor: pointer;
   border: solid 1px #0000ff;
-  width: 300px;
+  width: 180px;
   height: 20px;
 }
 #preview__button_1,
 #preview__button_2,
 #preview__button_3 {
-  width: 50px;
+  width: 30px;
   margin: 0;
 }
 .input-block__outer {
@@ -61,7 +61,7 @@ input {
   justify-content: right;
 }
 .input__title {
-  width: 80px;
+  width: 55px;
 }
 .input_title input {
   height: 20px;
@@ -102,7 +102,7 @@ object {
 }
 #file_list__table thead tr th:nth-child(2),
 #file_list__table tbody tr td:nth-child(2) {
-  width: 65px;
+  width: 50px;
 }
 #file_list__table thead tr th:nth-child(3),
 #file_list__table tbody tr td:nth-child(3),
@@ -110,5 +110,5 @@ object {
 #file_list__table tbody tr td:nth-child(4),
 #file_list__table thead tr th:nth-child(5),
 #file_list__table tbody tr td:nth-child(5) {
-  width: 100px;
+  width: 145px;
 }
