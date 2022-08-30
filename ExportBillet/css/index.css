@@ -51,7 +51,7 @@ body {
   width: 35px;
 }
 #add__table tbody {
-  height: 520px;
+  height: 350px;
   width: 200px;
   overflow: hidden;
 }
@@ -147,4 +147,17 @@ body {
 button {
   width:90px;
   height:20px;
+}
+#stock_table tbody {
+  height: 150px;
+  overflow: auto;
+}
+#stock_table th:nth-child(1),
+#stock_table td:nth-child(1) {
+  width: 120px;
+}
+#stock_table th:nth-child(2),
+#stock_table td:nth-child(2) {
+  width: 40px;
+  text-align: center;
 }

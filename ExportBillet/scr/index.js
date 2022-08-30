@@ -46,6 +46,7 @@ $(function () {
   $("#export_end_date").val(formatDate(MonthLastDate));
   makeCastingTable();
   makeSummaryTable();
+  makeStockTable();
 });
 function makeCastingTable() {
   var fileName = "SelImport.php";
@@ -63,6 +64,13 @@ function makeSummaryTable() {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
+};
+function makeStockTable() {
+  var fileName = "SelStock.php";
+  var sendData = {
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#stock_table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();

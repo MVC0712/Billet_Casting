@@ -37,14 +37,19 @@
         <div style="display: flex; align-items:center; padding-bottom: 5px; justify-content: space-around;">
           <div style="display: flex;">
             <div style="width: 70px; background-color: blue; color: white;">Export at</div>
-              <input
-              id="export_date"
-              class="no-input save-data need-clear"
-              type="date"
-            />
+              <input id="export_date" class="no-input save-data need-clear" type="date" />
           </div>
           <button disabled id="save__button">Save</button>
         </div>
+        <table id="stock_table">
+          <thead>
+            <tr>
+              <th>Material Type</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
   </div>
   <div>
   <div>
