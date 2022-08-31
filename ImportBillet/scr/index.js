@@ -307,7 +307,13 @@ $(document).on("click", "#summary__table tbody tr", function (e) {
     $("#update__tr").removeAttr("id");
     $(this).attr("id", "update__tr");
   } else {
-      // $(this).remove();
+    // deleteDialog.showModal();
+  let pas = prompt("Please enter your Password", "******");
+    if (pas == '01910297') {
+      deleteDialog.showModal();
+    } else {
+      alert("Wrong pas");
+    }
   }
 });
 $(document).on("change", "#summary__table tbody tr td", function () {
@@ -325,5 +331,18 @@ $(document).on("change", "#summary__table tbody tr td", function () {
   };
   console.log(sendData);
   myAjax.myAjax(fileName, sendData);
+  makeSummaryTable();
+});
+$(document).on("click", "#delete-dialog-cancel__button", function () {
+  deleteDialog.close();
+});
+$(document).on("click", "#delete-dialog-delete__button", function () {
+  let fileName = "DeleteData.php";
+  sendData = {
+    targetId : $("#update__tr td:nth-child(1)").html(),
+  };
+  console.log(sendData);
+  myAjax.myAjax(fileName, sendData);
+  deleteDialog.close();
   makeSummaryTable();
 });
