@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(600px - 2px);
-  width: calc(1000px - 2px);
+  width: calc(1100px - 2px);
 }
 .add-record {
   background-color: aqua;
@@ -121,7 +121,7 @@ body {
 
 #summary__table tbody {
   height: 500px;
-  width: 435px;
+  width: 493px;
   overflow: auto;
 }
 #summary__table th:nth-child(1),
@@ -130,7 +130,12 @@ body {
 }
 #summary__table th:nth-child(2),
 #summary__table td:nth-child(2) {
-  width: 60px;
+  width: 100px;
+}
+#summary__table td:nth-child(2) input {
+  width: 96px;
+  text-align: left;
+  border: none;
 }
 #summary__table th:nth-child(3),
 #summary__table td:nth-child(3) {
@@ -140,6 +145,11 @@ body {
 #summary__table td:nth-child(4) {
   width: 40px;
 }
+#summary__table td:nth-child(4) input {
+  width: 37px;
+  text-align: left;
+  border: none;
+}
 #summary__table th:nth-child(5),
 #summary__table td:nth-child(5) {
   width: 50px;
@@ -148,17 +158,41 @@ body {
 #summary__table td:nth-child(6) {
   width: 40px;
 }
+#summary__table td:nth-child(6) select {
+  width: 37px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+}
 #summary__table th:nth-child(7),
 #summary__table td:nth-child(7) {
   width: 30px;
+}
+#summary__table td:nth-child(7) select {
+  width: 27px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
 }
 #summary__table th:nth-child(8),
 #summary__table td:nth-child(8) {
   width: 30px;
 }
+#summary__table td:nth-child(8) input {
+  width: 26px;
+  text-align: left;
+  border: none;
+}
 #summary__table th:nth-child(9),
 #summary__table td:nth-child(9) {
-  width: 100px;
+  width: 120px;
+}
+#summary__table td:nth-child(9) input {
+  width: 116px;
+  text-align: left;
+  border: none;
 }
 .class1 {
   display: inline-block;
@@ -172,4 +206,7 @@ body {
 button {
   width:90px;
   height:20px;
+}
+.update-sel {
+  background-color: #e4f500;
 }

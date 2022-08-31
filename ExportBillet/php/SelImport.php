@@ -34,7 +34,9 @@ WHERE
             import_id
         FROM
             t_export)
-            AND t_casting.code LIKE '%$code_input%'";
+            AND t_casting.code LIKE '%$code_input%'
+            
+ORDER BY t_casting.code DESC";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

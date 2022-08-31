@@ -231,6 +231,7 @@ $(document).on("click", "#save__button", function () {
   $("#add__table tbody tr").remove();
   $("#export_date").val("").removeClass("complete-input").addClass("no-input");
   checkSave();
+  makeStockTable();
 });
 $(document).on("click", "#add__table tbody tr", function (e) {
   if (!$(this).hasClass("add-record")) {
