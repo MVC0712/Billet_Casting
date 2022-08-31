@@ -308,7 +308,7 @@ $(document).on("click", "#summary__table tbody tr", function (e) {
     $(this).attr("id", "update__tr");
   } else {
     // deleteDialog.showModal();
-  let pas = prompt("Please enter your Password", "******");
+  let pas = prompt("Please enter your Password", "********");
     if (pas == '01910297') {
       deleteDialog.showModal();
     } else {
