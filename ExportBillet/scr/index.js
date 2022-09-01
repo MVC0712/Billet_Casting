@@ -243,3 +243,31 @@ $(document).on("click", "#add__table tbody tr", function (e) {
       // $(this).remove();
   }
 });
+$(document).on("click", "#summary__table tbody tr", function (e) {
+  if (!$(this).hasClass("update-sel")) {
+    $(this).parent().find("tr").removeClass("update-sel");
+    $(this).addClass("update-sel");
+    $("#update__tr").removeAttr("id");
+    $(this).attr("id", "update__tr");
+  } else {
+  let pas = prompt("Please enter your Password", "********");
+    if (pas == '01910926') {
+      deleteDialog.showModal();
+    } else {
+      alert("Wrong pas");
+    }
+  }
+});
+$(document).on("click", "#delete-dialog-cancel__button", function () {
+  deleteDialog.close();
+});
+$(document).on("click", "#delete-dialog-delete__button", function () {
+  let fileName = "DeleteData.php";
+  sendData = {
+    targetId : $("#update__tr td:nth-child(1)").html(),
+  };
+  console.log(sendData);
+  myAjax.myAjax(fileName, sendData);
+  deleteDialog.close();
+  makeSummaryTable();
+});
