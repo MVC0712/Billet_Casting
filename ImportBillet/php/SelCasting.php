@@ -15,7 +15,7 @@ FROM
     billet_casting.t_casting
         LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
-    WHERE t_casting.code LIKE '%$code_input%'
+    WHERE t_casting.code LIKE '%$code_input%' OR material_type LIKE '%$code_input%'
     ORDER BY product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

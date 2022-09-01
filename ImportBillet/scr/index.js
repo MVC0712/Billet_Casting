@@ -300,6 +300,12 @@ $(document).on("click", "#add__table tbody tr", function (e) {
       // $(this).remove();
   }
 });
+$(document).on("change", "#import_start_date", function (e) {
+  makeSummaryTable();
+});
+$(document).on("change", "#import_end_date", function (e) {
+  makeSummaryTable();
+});
 $(document).on("click", "#summary__table tbody tr", function (e) {
   if (!$(this).hasClass("update-sel")) {
     $(this).parent().find("tr").removeClass("update-sel");
