@@ -31,7 +31,7 @@ body {
 }
 #import_table tbody {
   height: 500px;
-  width: 225px;
+  width: 235px;
   overflow: auto;
 }
 #import_table th:nth-child(1),
@@ -44,7 +44,7 @@ body {
 }
 #import_table th:nth-child(3),
 #import_table td:nth-child(3) {
-  width: 100px;
+  width: 110px;
 }
 #import_table th:nth-child(4),
 #import_table td:nth-child(4) {

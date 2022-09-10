@@ -6,6 +6,7 @@ if ($dbh->getInstance() === null) {
 }
 $start = $_POST['start'];
 $end = $_POST['end'];
+$search = $_POST['search'];
 try {
     $sql = "SELECT 
     t_import.id,
@@ -27,7 +28,9 @@ FROM
         LEFT JOIN
     m_material_type ON t_casting.product_type = m_material_type.id
     WHERE t_import.import_date BETWEEN '$start' AND '$end'
-    ORDER BY t_casting.code DESC";
+        AND (t_casting.code LIKE '%$search%' 
+        OR material_type LIKE '%$search%')
+    ORDER BY id ASC";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

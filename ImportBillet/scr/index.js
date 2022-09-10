@@ -75,6 +75,7 @@ function makeSummaryTable() {
   var sendData = {
     start: $("#import_start_date").val(),
     end: $("#import_end_date").val(),
+    search: $("#search_summary_input").val(),
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
@@ -131,7 +132,7 @@ $(document).on("click", "#casting_table tbody tr", function (e) {
       $("<td>").html(code).appendTo(newTr);
       $("<td>").append(makeInput("")).appendTo(newTr);
       $("<td>").html(material).appendTo(newTr);
-      $("<td>").append(makeBilletLength("")).appendTo(newTr);
+      $("<td>").append(makeBilletLength(0).addClass("no-input len-input")).appendTo(newTr);
       $("<td>").append(makeBilletPos("0")).appendTo(newTr);
       $("<td>").append(makeInput("7")
         .removeClass("no-input number-input")
@@ -154,6 +155,9 @@ function makeInput(qty) {
 function makeBilletLength(seletedId) {
   let targetDom = $("<select>");
   var length=[{
+    "id": "0",
+    "length": "--",
+  },{
     "id": "1",
     "length": "1200",
   },{
@@ -215,6 +219,11 @@ function checkSave() {
       check = false;
     }
   });
+  $("#add__table tbody select").each(function() {
+    if ($(this).hasClass("no-input")) {
+      check = false;
+    }
+  });
   if (check) {
     $("#save__button").attr("disabled", false);
   } else {
@@ -242,6 +251,14 @@ function getTableData(tableTrObj) {
 };
 $(document).on("keyup", ".number-input", function() {
   if($.isNumeric($(this).val())){
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkSave();
+});
+$(document).on("change", ".len-input", function() {
+  if($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
       $(this).removeClass("complete-input").addClass("no-input");
@@ -304,6 +321,8 @@ $(document).on("change", "#import_start_date", function (e) {
   makeSummaryTable();
 });
 $(document).on("change", "#import_end_date", function (e) {
+  makeSummaryTable();
+});$(document).on("keyup", "#search_summary_input", function() {
   makeSummaryTable();
 });
 $(document).on("click", "#summary__table tbody tr", function (e) {
