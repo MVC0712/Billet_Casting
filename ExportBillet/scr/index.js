@@ -57,7 +57,7 @@ function makeCastingTable() {
   fillTableBody(ajaxReturnData, $("#import_table tbody"));
 };
 function makeSummaryTable() {
-  var fileName = "SelStockByCodeLength.php";
+  var fileName = "SelSummary.php";
   var sendData = {
     start: $("#export_start_date").val(),
     end: $("#export_end_date").val(),
@@ -146,6 +146,12 @@ $(document).on("change", "#export_date", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkSave();
+});
+$(document).on("change", "#export_start_date", function() {
+  makeSummaryTable()
+});
+$(document).on("change", "#export_end_date", function() {
+  makeSummaryTable()
 });
 function checkSave() {
   let check = true;

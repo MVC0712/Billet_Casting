@@ -11,7 +11,10 @@ try {
     t_export.id,
     DATE_FORMAT(export_date, '%y-%m-%d') AS export_date,
     t_casting.code,
-    t_import.bundle,
+    CASE
+        WHEN bundle <= 9 THEN CONCAT(0, bundle)
+        ELSE bundle
+    END AS bundle,
     m_material_type.material_type,
     CASE
         WHEN billet_length = 1 THEN 1200
