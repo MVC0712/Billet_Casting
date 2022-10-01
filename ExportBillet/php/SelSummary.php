@@ -31,7 +31,7 @@ FROM
         LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
     WHERE t_export.export_date BETWEEN '$start' AND '$end'
-    ORDER BY t_casting.code DESC";
+    ORDER BY export_date ASC";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

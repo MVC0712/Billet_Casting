@@ -53,7 +53,7 @@ body {
 #add__table tbody {
   height: 520px;
   width: 385px;
-  overflow: hidden;
+  overflow: auto;
 }
 #add__table th:nth-child(1),
 #add__table td:nth-child(1) {
