@@ -67,6 +67,7 @@ $(document).on("click", "#casting__table tbody tr", function (e) {
       $("#save__button").attr("disabled", true);
       $("#update__button").attr("disabled", false);
     } else {
+      checkInput();
       $("#save__button").attr("disabled", false);
       $("#update__button").attr("disabled", true);
     }
@@ -82,7 +83,7 @@ $(document).on("click", "#casting__table tbody tr", function (e) {
   } else {
     // deleteDialog.showModal();
   }
-  checkInput();
+  // checkInput();
 });
 $(document).on("click", "#save__button", function () {
   fileName = "InsData.php";
@@ -151,8 +152,10 @@ function checkInput() {
   };
   if (check) {
     $("#save__button").attr("disabled", false);
+    $("#update__button").attr("disabled", true);
   } else {
     $("#save__button").attr("disabled", true);
+    $("#update__button").attr("disabled", false);
   } 
 };
 function getInputData() {
