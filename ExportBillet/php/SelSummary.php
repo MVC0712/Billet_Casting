@@ -15,6 +15,21 @@ try {
         WHEN bundle <= 9 THEN CONCAT(0, bundle)
         ELSE bundle
     END AS bundle,
+    CASE
+        WHEN billet_position = 1 THEN 'A2'
+        WHEN billet_position = 2 THEN 'A3'
+        WHEN billet_position = 3 THEN 'B1'
+        WHEN billet_position = 4 THEN 'B2'
+        WHEN billet_position = 5 THEN 'B3'
+        WHEN billet_position = 6 THEN 'B4'
+        WHEN billet_position = 7 THEN 'C1'
+        WHEN billet_position = 8 THEN 'C2'
+        WHEN billet_position = 9 THEN 'C3'
+        WHEN billet_position = 10 THEN 'C4'
+        WHEN billet_position = 11 THEN 'D2'
+        WHEN billet_position = 12 THEN 'D3'
+        ELSE '--'
+    END AS billet_pos,
     m_material_type.material_type,
     CASE
         WHEN billet_length = 1 THEN 1200

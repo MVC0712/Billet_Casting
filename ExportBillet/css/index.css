@@ -109,7 +109,7 @@ body {
 }
 #summary__table th:nth-child(2),
 #summary__table td:nth-child(2) {
-  width: 60px;
+  width: 55px;
 }
 #summary__table th:nth-child(3),
 #summary__table td:nth-child(3) {
@@ -121,19 +121,23 @@ body {
 }
 #summary__table th:nth-child(5),
 #summary__table td:nth-child(5) {
-  width: 50px;
+  width: 25px;
 }
 #summary__table th:nth-child(6),
 #summary__table td:nth-child(6) {
-  width: 40px;
+  width: 50px;
 }
 #summary__table th:nth-child(7),
 #summary__table td:nth-child(7) {
-  width: 30px;
+  width: 40px;
 }
 #summary__table th:nth-child(8),
 #summary__table td:nth-child(8) {
-  width: 80px;
+  width: 30px;
+}
+#summary__table th:nth-child(9),
+#summary__table td:nth-child(9) {
+  width: 60px;
 }
 .class1 {
   display: inline-block;
