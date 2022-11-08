@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Billet</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/indexV2.css" />
+  </head>
+  <body>
+    <header>Import Billet</header>
+    <div class="summary__wrapper">
+      <dialog class="dialog__wrapper" id="delete__dialog">
+        Do you want to Delete?
+        <button id="delete-dialog-cancel__button">Cancel</button>
+        <button id="delete-dialog-delete__button">Delete</button>
+      </dialog>
+
+      <table id="casting_table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th><input id="code_input"></th>
+            <th>Code</th>
+            <th>Mate</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div>
+      <table id="add__table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Code</th>
+            <th>Bundle</th>
+            <th>Material</th>
+            <th>Length</th>
+            <th>Pos</th>
+            <th>Qty</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+        <div style="display: flex; align-items:center; padding-bottom: 5px; justify-content: space-around;">
+          <div style="display: flex;">
+            <div style="width: 70px; background-color: blue; color: white;">Import at</div>
+              <input
+              id="import_date"
+              class="no-input save-data need-clear"
+              type="date"
+            />
+          </div>
+          <select id="staff_id" class="save-data need-clear no-input">
+            <option value="0">-----</option>
+            <option value="1">MVC</option>
+            <option value="2">VCT</option>
+          </select>
+          <button disabled id="save__button">Save</button>
+        </div>
+  </div>
+  <div>
+  <div>
+  <input id="import_start_date" type="date"/>→
+  <input id="import_end_date" type="date"/>
+  <input id="search_summary_input" style="width: 120px">
+</div>
+  <table id="summary__table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imp date</th>
+        <th>Lot</th>
+        <th>Bundle</th>
+        <th>Material</th>
+        <th>Length</th>
+        <th>Pos</th>
+        <th>Qty</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+    </div>
+
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/indexV2.js"></script>
+  </body>
+</html>

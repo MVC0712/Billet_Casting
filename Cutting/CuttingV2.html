@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cutting Page</title>
+    <link rel="stylesheet" href="../lib/main.css" />
+    <link rel="stylesheet" href="./css/indexV2.css" />
+  </head>
+
+  <body>
+    <header>Cutting Page</header>
+
+<div class="main__wrapper">
+  <div class="left__wrapper">
+    <table id="casting__table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Code</th>
+          <th>Type</th>
+          <th>Cast date</th>
+          <th>Save</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div class="right__wrapper">
+  <table id="data__table" >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th colspan="2">Process</th>
+        <th>Pos</th>
+        <th>A2</th>
+        <th>A3</th>
+        <th>B1</th>
+        <th>B2</th>
+        <th>B3</th>
+        <th>B4</th>
+        <th>C1</th>
+        <th>C2</th>
+        <th>C3</th>
+        <th>C4</th>
+        <th>D2</th>
+        <th>D3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>Siêu âm</td>
+        <td><div>Đầu</div><div>Đuôi</div></td>
+        <td><input id="A2H" type="text"class="no-input save-data need-clear"><input id="A2E" type="text"class="no-input save-data need-clear"></td>
+        <td><input id="A3H" type="text" class="no-input save-data need-clear"><input id="A3E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B1H" type="text" class="no-input save-data need-clear"><input id="B1E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B2H" type="text" class="no-input save-data need-clear"><input id="B2E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B3H" type="text" class="no-input save-data need-clear"><input id="B3E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B4H" type="text" class="no-input save-data need-clear"><input id="B4E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C1H" type="text" class="no-input save-data need-clear"><input id="C1E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C2H" type="text" class="no-input save-data need-clear"><input id="C2E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C3H" type="text" class="no-input save-data need-clear"><input id="C3E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C4H" type="text" class="no-input save-data need-clear"><input id="C4E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D2H" type="text" class="no-input save-data need-clear"><input id="D2E" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D3H" type="text" class="no-input save-data need-clear"><input id="D3E" type="text" class="no-input save-data need-clear"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td style="display: none;"></td>
+        <td colspan="2">Bề mặt</td>
+        <td><select id="A2S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="A3S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="B1S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="B2S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="B3S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="B4S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="C1S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="C2S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="C3S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="C4S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="D2S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+        <td><select id="D3S" type="text" class="save-data">
+          <option value="0">OK</option>
+          <option value="1">NG</option>
+          <option value="3">Test</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td style="display: none;"></td>
+        <td colspan="2">Chiều dài SP</td>
+        <td><input id="A2L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="A3L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B1L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B2L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B3L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B4L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C1L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C2L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C3L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C4L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D2L" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D3L" type="text" class="no-input save-data need-clear"></td>
+      </tr>
+      <tr style="display: none;">
+        <td>ID</td>
+        <td>NaOH</td>
+        <td><div>Đầu</div><div>Đuôi</div></td>
+        <td><input id="A2EH" type="text" class="save-data need-clear"><input id="A2EE" type="text" class="save-data need-clear"></td>
+        <td><input id="A3EH" type="text" class="save-data need-clear"><input id="A3EE" type="text" class="save-data need-clear"></td>
+        <td><input id="B1EH" type="text" class="save-data need-clear"><input id="B1EE" type="text" class="save-data need-clear"></td>
+        <td><input id="B2EH" type="text" class="save-data need-clear"><input id="B2EE" type="text" class="save-data need-clear"></td>
+        <td><input id="B3EH" type="text" class="save-data need-clear"><input id="B3EE" type="text" class="save-data need-clear"></td>
+        <td><input id="B4EH" type="text" class="save-data need-clear"><input id="B4EE" type="text" class="save-data need-clear"></td>
+        <td><input id="C1EH" type="text" class="save-data need-clear"><input id="C1EE" type="text" class="save-data need-clear"></td>
+        <td><input id="C2EH" type="text" class="save-data need-clear"><input id="C2EE" type="text" class="save-data need-clear"></td>
+        <td><input id="C3EH" type="text" class="save-data need-clear"><input id="C3EE" type="text" class="save-data need-clear"></td>
+        <td><input id="C4EH" type="text" class="save-data need-clear"><input id="C4EE" type="text" class="save-data need-clear"></td>
+        <td><input id="D2EH" type="text" class="save-data need-clear"><input id="D2EE" type="text" class="save-data need-clear"></td>
+        <td><input id="D3EH" type="text" class="save-data need-clear"><input id="D3EE" type="text" class="save-data need-clear"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>Cắt</td>
+        <td><div>Đầu</div><div>Đuôi</div></td>
+        <td><input id="A2CH" type="text" class="no-input save-data need-clear"><input id="A2CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="A3CH" type="text" class="no-input save-data need-clear"><input id="A3CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B1CH" type="text" class="no-input save-data need-clear"><input id="B1CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B2CH" type="text" class="no-input save-data need-clear"><input id="B2CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B3CH" type="text" class="no-input save-data need-clear"><input id="B3CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B4CH" type="text" class="no-input save-data need-clear"><input id="B4CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C1CH" type="text" class="no-input save-data need-clear"><input id="C1CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C2CH" type="text" class="no-input save-data need-clear"><input id="C2CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C3CH" type="text" class="no-input save-data need-clear"><input id="C3CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C4CH" type="text" class="no-input save-data need-clear"><input id="C4CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D2CH" type="text" class="no-input save-data need-clear"><input id="D2CE" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D3CH" type="text" class="no-input save-data need-clear"><input id="D3CE" type="text" class="no-input save-data need-clear"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>SL cắt tt</td>
+        <td><div>1200</div><div>600</div></td>
+        <td><input id="A2Q12" type="text" class="no-input save-data need-clear"><input id="A2Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="A3Q12" type="text" class="no-input save-data need-clear"><input id="A3Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B1Q12" type="text" class="no-input save-data need-clear"><input id="B1Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B2Q12" type="text" class="no-input save-data need-clear"><input id="B2Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B3Q12" type="text" class="no-input save-data need-clear"><input id="B3Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B4Q12" type="text" class="no-input save-data need-clear"><input id="B4Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C1Q12" type="text" class="no-input save-data need-clear"><input id="C1Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C2Q12" type="text" class="no-input save-data need-clear"><input id="C2Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C3Q12" type="text" class="no-input save-data need-clear"><input id="C3Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C4Q12" type="text" class="no-input save-data need-clear"><input id="C4Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D2Q12" type="text" class="no-input save-data need-clear"><input id="D2Q6" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D3Q12" type="text" class="no-input save-data need-clear"><input id="D3Q6" type="text" class="no-input save-data need-clear"></td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td style="display: none;"></td>
+        <td colspan="2">Chiều dài mẫu</td>
+        <td><input id="A2TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="A3TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B1TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B2TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B3TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="B4TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C1TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C2TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C3TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="C4TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D2TL" type="text" class="no-input save-data need-clear"></td>
+        <td><input id="D3TL" type="text" class="no-input save-data need-clear"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="input-block__outer staff_id_outer">
+    <div class="input__title staff_id_title">
+      Người nhập
+    </div>
+    <div>
+      <select id="staff_id" class="save-data need-clear no-input">
+        <option value="0">-----</option>
+        <option value="1">MVC</option>
+        <option value="2">VCT</option>
+      </select>
+    </div>
+  </div>
+  <table id="add_scrap_table">
+    <thead>
+      <tr>
+        <th>Loại PP</th>
+        <th>Khối lượng</th>
+        <th><button id="add_scrap" disabled>Save</button></th>
+      </tr>
+      <tr>
+        <th><select id="scrap_type" class="no-input need-clear">
+          <option value="0">No</option>
+          <option value="1">Xỉ</option>
+          <option value="2">Nhôm dư</option>
+          <option value="3">Cắt</option>
+        </select></th>
+        <th><input type="text" id="scrap_weight" class="no-input need-clear"></th>
+        <th><input type="text" id="scrap_note"></th>
+      </tr>
+    </thead>
+  </table>
+  <table id="scrap_table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Loại PP</th>
+        <th>Khối lượng</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>1</td>
+        <td><select name="" id=""></select></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr> -->
+    </tbody>
+  </table>
+  <div class="input-block__outer file_outer">
+    <div class="input__title file_title">
+      File
+    </div>
+    <div>
+      <input type="file" id="file_upload" class="need-clear">
+      <label id="file_url" for="file_upload">No file</label>
+    </div>
+    <button id="preview__button" class="input__title aluminium_ingot_title">
+      Preview
+    </button>
+  </div>
+  <div class="button__wrapper">
+  <button id="save__button" disabled>Save</button>
+  <button id="update__button" disabled>Update</button>
+</div>
+</div>
+</div>
+
+    <script src="../lib/jquery.min.js"></script>
+    <script src="./scr/indexV2.js"></script>
+  </body>
+</html>
