@@ -48,7 +48,6 @@ function selSelectCode() {
       dummy: "dummy",
   };
   myAjax.myAjax(fileName, sendData);
-  console.log(ajaxReturnData);
   selectCode = ajaxReturnData;
   fillInputBox(selectCode);
   selectCode =[];
@@ -179,6 +178,9 @@ function checkInput() {
       check = false;
     }
   });
+  if ($("#staff_id").val() == 0) {
+    check = false;
+  };
   if (check) {
     $("#save__button").attr("disabled", false);
   } else {
@@ -188,6 +190,9 @@ function checkInput() {
 function getInputData() {
   let inputData = new Object();
     $(".input-group input.save-data").each(function (index, element) {
+      inputData[$(this).attr("id")] = $(this).val();
+    });
+    $(".input-group select.save-data").each(function (index, element) {
       inputData[$(this).attr("id")] = $(this).val();
     });
     $("#data__table input.save-data").each(function (index, element) {
