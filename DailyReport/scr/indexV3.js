@@ -639,6 +639,7 @@ function checkInput() {
     if ($(this).val() == "") {
       check = false;
     }
+    console.log($(this).val())
   });
   $(".top__wrapper select .save-data").each(function() {
     if ($(this).val() == 0) {
