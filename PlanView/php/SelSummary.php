@@ -59,7 +59,7 @@ t_plan.product_type,
 ORDER BY o ASC;
   ";
   $sql = $sql2.$sql3;
-  // print_r($sql);
+  print_r($sql);
 try {
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

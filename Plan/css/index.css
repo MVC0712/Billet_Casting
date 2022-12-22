@@ -29,6 +29,7 @@ input {
 .code_outer {
   width: 170px;
   margin-right: 10px;
+  display: none;
 }
 .code_title {
   width: 70px;
@@ -37,72 +38,72 @@ input {
   width: 100px;
 }
 .product_date_outer {
-  width: 200px;
+  width: 140px;
   margin-right: 10px;
 }
 .product_date_title {
-  width: 100px;
+  width: 40px;
 }
 #product_date {
   width: 100px;
 }
 .product_type_outer {
-  width: 170px;
+  width: 80px;
   margin-right: 10px;
 }
 .product_type_title {
-  width: 120px;
+  width: 20px;
 }
 .product_dim_outer {
-  width: 170px;
+  width: 80px;
   margin-right: 10px;
 }
 .product_dim_title {
-  width: 120px;
+  width: 40px;
 }
 #product_type,
 #product_dim {
-  width: 70px;
+  width: 50px;
 }
 .extrusion_scrap_outer {
-  width: 300px;
+  width: 120px;
   margin-right: 10px;
 }
 .extrusion_scrap_title {
-  width: 70px;
+  width: 55px;
 }
 #extrusion_scrap {
-  width: 50px;
+  width: 40px;
 }
 .casting_scrap_outer {
-  width: 170px;
+  width: 120px;
   margin-right: 10px;
 }
 .casting_scrap_title {
-  width: 100px;
+  width: 55px;
 }
 #casting_scrap {
-  width: 50px;
+  width: 40px;
 }
 .aluminium_ingot_outer {
-  width: 140px;
+  width: 120px;
   margin-right: 10px;
 }
 .aluminium_ingot_title {
-  width: 70px;
+  width: 65px;
 }
 #aluminium_ingot {
-  width: 50px;
+  width: 40px;
 }
 .aluminium_orther_outer {
-  width: 150px;
+  width: 80px;
   margin-right: 10px;
 }
 .aluminium_orther_title {
-  width: 45px;
+  width: 40px;
 }
 #aluminium_orther {
-  width: 50px;
+  width: 40px;
 }
 #save,
 #update,
@@ -125,10 +126,10 @@ input {
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2) {
-  width: 106px;
+  width: 100px;
 }
 #summary_table tbody tr td:nth-child(2) input {
-  width: 100px;
+  width: 94px;
   border: none;
 }
 #summary_table thead tr th:nth-child(3),
@@ -136,7 +137,7 @@ input {
   width: 70px;
 }
 #summary_table tbody tr td:nth-child(3) select {
-  width: 64px;
+  width: 70px;
   border: none;
 }
 #summary_table thead tr th:nth-child(4),
@@ -148,43 +149,23 @@ input {
   border: none;
 }
 #summary_table thead tr th:nth-child(5),
-#summary_table tbody tr td:nth-child(5) {
-  width: 70px;
-}
-#summary_table tbody tr td:nth-child(5) input {
-  width: 64px;
-  border: none;
-}
+#summary_table tbody tr td:nth-child(5),
 #summary_table thead tr th:nth-child(6),
-#summary_table tbody tr td:nth-child(6) {
-  width: 70px;
-}
-#summary_table tbody tr td:nth-child(6) input {
-  width: 64px;
-  border: none;
-}
+#summary_table tbody tr td:nth-child(6),
 #summary_table thead tr th:nth-child(7),
-#summary_table tbody tr td:nth-child(7) {
-  width: 70px;
-}
-#summary_table tbody tr td:nth-child(7) input {
-  width: 64px;
-  border: none;
-}
+#summary_table tbody tr td:nth-child(7),
 #summary_table thead tr th:nth-child(8),
-#summary_table tbody tr td:nth-child(8) {
-  width: 70px;
-}
-#summary_table tbody tr td:nth-child(8) input {
-  width: 64px;
-  border: none;
-}
+#summary_table tbody tr td:nth-child(8),
 #summary_table thead tr th:nth-child(9),
 #summary_table tbody tr td:nth-child(9) {
-  width: 70px;
+  width: 50px;
 }
+#summary_table tbody tr td:nth-child(5) input,
+#summary_table tbody tr td:nth-child(6) input,
+#summary_table tbody tr td:nth-child(7) input,
+#summary_table tbody tr td:nth-child(8) input,
 #summary_table tbody tr td:nth-child(9) input {
-  width: 64px;
+  width: 44px;
   border: none;
 }
 #summary_table thead tr th:nth-child(10),
