@@ -1,7 +1,7 @@
 let ajaxReturnData;
 let ajaxReturnData1;
 let ajaxReturnData2;
-
+let ctx = document.getElementById('chart_area').getContext('2d');
 const myAjax = {
   myAjax: function (fileName, sendData) {
     $.ajax({
@@ -27,6 +27,12 @@ const getDateTime = (date) => {
     const hours = getTwoDigits(date.getHours());
     const mins = getTwoDigits(date.getMinutes());
     return `${year}-${month}-${day} ${hours}:${mins}:00`;
+};
+const getDate = (date) => {
+  const day = getTwoDigits(date.getDate());
+  const month = getTwoDigits(date.getMonth() + 1);
+  const year = date.getFullYear();
+  return `${day}-${month}`;
 }
 $(function() {
   var now = new Date();
@@ -54,7 +60,8 @@ function makeSummaryTable() {
     sendObj["end_s"] = $("#end").val();
     myAjax.myAjax(fileName, sendObj);
     fillTableBody(ajaxReturnData, $("#summary__table tbody"));
-    Total();
+    // Total();
+    drawChart();
 }
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -104,7 +111,7 @@ var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 var months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 function renderHead(div, start, end) {
     var c_year = start.getFullYear();
-    var r_year = "<tr> <th rowspan='4' style ='width: 150px;'>Production number</th> ";
+    var r_year = "<tr> <th rowspan='4' style ='width: 45px;'>Value</th> ";
     var r_year1 = "<tr style='display:none;'><th style='display:none;'></th><th style='display:none;'></th>";
     var daysInYear = 0;
 
@@ -138,7 +145,8 @@ function renderHead(div, start, end) {
     r_days2 += "</tr>";
     r_year += '<th colspan="' + (daysInYear) + '">' + c_year + '</th>';
     r_year1 += '<th>' + c_year + '</th>';
-    r_year += "<th rowspan='4' style ='width: 40px;'>Total</th></tr>";
+    // r_year += "<th rowspan='4' style ='width: 40px;'>Total</th></tr>";
+    r_year += "</tr>";
     r_year += "</tr>";
     r_year1 += "</tr>";
     r_month += '<th colspan="' + (daysInMonth) + '">' + months[c_month] + '</th>';
@@ -161,5 +169,134 @@ function Total() {
     - Number($(this).find("td").eq(1).html());
     $(this).append('<td>'+sum+'</td>');
     console.log(sum);
+  });
+};
+
+function drawChart() {
+  var fileName = "SelSummaryForChartFull.php";
+  var sendObj = new Object();
+  sendObj["start_s"] = $('#std').val();
+  sendObj["end_s"] = $("#end").val();
+  myAjax.myAjax(fileName, sendObj);
+  dataPl = ajaxReturnData[0];
+  dataAc = ajaxReturnData[1];
+  TTdataPl = ajaxReturnData[3];
+  TTdataAc = ajaxReturnData[2];
+  Pl = [];
+  Ac = [];
+  TTPl = [];
+  TTAc = [];
+  for (const el in dataPl) {
+    Pl.push(dataPl[el]);
+  }
+  Pl.shift();
+  for (const el in dataAc) {
+    Ac.push(dataAc[el]);
+  }
+  Ac.shift();
+
+  for (const el in TTdataPl) {
+    TTPl.push(TTdataPl[el]);
+  }
+  TTPl.shift();
+  for (const el in TTdataAc) {
+    TTAc.push(TTdataAc[el]);
+  }
+  TTAc.shift();
+  var daysOfYear = [];
+  for (var d = new Date($("#std").val()); d <= new Date($("#end").val()); d.setDate(d.getDate() + 1)) {
+      daysOfYear.push(getDate(new Date(d)));
+  }
+  var data = {
+    labels: daysOfYear,
+    datasets: [{
+        label: "Actual (ton)",
+        backgroundColor: "rgba(225,0,0,0.4)",
+        borderColor: "red",
+        borderCapStyle: 'square',
+        pointBorderColor: "black",
+        pointBackgroundColor: "white",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "yellow",
+        pointHoverBorderColor: "brown",
+        data: Pl,
+        spanGaps: true,
+        type: 'bar',
+        yAxisID: 'y',
+      }, {
+        label: "Plan (ton)",
+        backgroundColor: "rgba(167,105,0,0.4)",
+        borderColor: "rgb(167, 105, 0)",
+        borderCapStyle: 'butt',
+        pointBorderColor: "white",
+        pointBackgroundColor: "black",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "brown",
+        pointHoverBorderColor: "yellow",
+        data: Ac,
+        type: 'bar',
+        yAxisID: 'y',
+      }, {
+        label: "Total Actual (ton)",
+        backgroundColor: "green",
+        borderColor: "green",
+        borderCapStyle: 'square',
+        pointBorderColor: "black",
+        pointBackgroundColor: "green",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "green",
+        pointHoverBorderColor: "yellow",
+        data: TTAc,
+        type: 'line',
+        yAxisID: 'y1',
+      }, {
+        label: "Total Plan (ton)",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        borderCapStyle: 'butt',
+        pointBorderColor: "white",
+        pointBackgroundColor: "blue",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "blue",
+        pointHoverBorderColor: "yellow",
+        data: TTPl,
+        type: 'line',
+        yAxisID: 'y1',
+      },   
+    ]
+  };
+  var options = {
+    spanGaps: false,
+    pointHoverBorderWidth: 2,
+    pointRadius: 4,
+    pointHitRadius: 10,
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    borderDash: [],
+    lineTension: 0.1,
+    fill: false,
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    }
+  };
+  new Chart(ctx, {
+    data: data,
+    options: options
   });
 };

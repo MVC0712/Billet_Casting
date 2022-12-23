@@ -8,10 +8,10 @@ $start_s = "";
 $end_s = "";
 $sql ="";
 $sql1 = "";
-// $start_s = $_POST['start_s'];
-// $end_s = $_POST['end_s'];
-$start_s = '2022-07-01';
-$end_s = '2022-07-05';
+$start_s = $_POST['start_s'];
+$end_s = $_POST['end_s'];
+// $start_s = '2022-07-01';
+// $end_s = '2022-07-05';
 
 $begin = new DateTime($start_s);
 $end = new DateTime($end_s);
@@ -24,25 +24,32 @@ foreach ($period as $dt) {
 }
 $sql1 = $sql1."
 SELECT 
-id,
-  '2' AS o,
-  product_type,
+    '1' AS o,
+    'Actual' AS a,
+    'Actual' AS b,
 ";
 foreach ($period as $dt) {
   $di = $dt->format("Y-m-d");
   $din = $dt->format("Ymd");
   $sql1 = $sql1 ." MAX(CASE WHEN 
     t_casting.product_date = '" . $di . "' 
-  THEN 
-    t_casting.water_temp else '' END) AS '_" . $din ."',";
+  THEN t10.weight ELSE '' END) AS '_" . $din ."',";
 }
   $sql2 = substr(trim($sql1), 0, -1);
   $sql2 = $sql2." FROM
   t_casting
-UNION SELECT 
-id,
-'1' AS o,
-t_plan.product_type,
+      LEFT JOIN
+  (SELECT 
+      t_add_material.t_casting AS cid, SUM(weight) weight
+  FROM
+      t_add_material
+  GROUP BY t_add_material.t_casting) t10 ON t_casting.id = t10.cid
+      LEFT JOIN
+  m_material_type ON m_material_type.id = t_casting.product_type
+UNION SELECT
+'2' AS o,
+'Plan' AS a,
+'Plan' AS b,
 ";
   $sql3="";
   foreach ($period as $dtp) {
@@ -50,8 +57,7 @@ t_plan.product_type,
   $dpn = $dtp->format("Ymd");
   $sql3 = $sql3 ." MAX(CASE WHEN 
     t_plan.product_date ='". $dp ."' 
-  THEN 
-    t_plan.code else '' END) AS '_". $dpn ."',";
+    THEN extrusion_scrap + casting_scrap + aluminium_ingot + aluminium_orther ELSE '' END) AS '_". $dpn ."',";
 }
   $sql3 = substr(trim($sql3), 0, -1);
   $sql3 = $sql3." FROM
@@ -59,7 +65,7 @@ t_plan.product_type,
 ORDER BY o ASC;
   ";
   $sql = $sql2.$sql3;
-  print_r($sql);
+  // print_r($sql);
 try {
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

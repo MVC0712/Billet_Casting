@@ -1,5 +1,5 @@
 body {
-  width: calc(1200px - 2px);
+  width: calc(1250px - 2px);
 }
 
 .main__wrapper {
@@ -59,7 +59,7 @@ div.calendar {
 
 #summary__table {
   /* width: 1170px; */
-  height: 535px;
+  /* height: 535px; */
 }
 
 #summary__table th {
@@ -80,9 +80,10 @@ position:sticky;
 }
 
 #summary__table tbody {
-  height: 475px;
-  /* width: 1135px; */
+  height: 45px;
+  /* height: 475px; */
   width: 100%;
+  overflow: auto;
 }
 
 #summary__table tr:nth-child(2n) {
@@ -95,12 +96,12 @@ background-color: #d2cdff;
 }
 
 #summary__table tr td:nth-child(3) {
-  width: 150px;
+  width: 45px;
   text-align: left;
 }
 
 #summary__table tr td:nth-child(n+4) {
-  width: 28px;
+  width: 35px;
 }
 
 #summary__table tr td:nth-child(2) {
@@ -108,17 +109,17 @@ background-color: #d2cdff;
 }
 
 #summary__table tr th:nth-child(n+2) {
-  width: 28px;
+  width: 35px;
 }
 
 #summary__table tbody tr:nth-child(2n) {
   border-bottom: 2px solid rgb(0, 0, 0);
 }
 
-#summary__table tr td:last-child {
+/* #summary__table tr td:last-child {
 background: #fff9f9;
 width: 40px;
-}
+} */
 
 #summary__table tbody tr.selected-record {
   background-color: #c2ecff;
