@@ -11,6 +11,7 @@
     <header>Home Page</header>
       <div style="flex-direction: row; display:flex;">
             <button id="plan">Plan</button>
+            <button id="plan_view">Plan View</button>
             <button id="mold_history">Mold History</button>
             <button id="daily_input">Daily Input</button>
             <button id="homogenizing_input">Homogenizing Input</button>
@@ -45,6 +46,10 @@
       <script>
         $(document).on("click", "#plan", function () {
           window.open("/Billet_Casting/Plan");
+        });
+
+        $(document).on("click", "#plan_view", function () {
+          window.open("/Billet_Casting/PlanView");
         });
 
         $(document).on("click", "#mold_history", function () {

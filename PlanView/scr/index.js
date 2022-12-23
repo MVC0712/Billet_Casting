@@ -173,7 +173,7 @@ function Total() {
 };
 
 function drawChart() {
-  var fileName = "SelSummaryForChartFull.php";
+  var fileName = "SelForChart.php";
   var sendObj = new Object();
   sendObj["start_s"] = $('#std').val();
   sendObj["end_s"] = $("#end").val();
@@ -182,10 +182,14 @@ function drawChart() {
   dataAc = ajaxReturnData[1];
   TTdataPl = ajaxReturnData[3];
   TTdataAc = ajaxReturnData[2];
+  TTdataPlOk = ajaxReturnData[4];
+  TTdataAcOk = ajaxReturnData[5];
   Pl = [];
   Ac = [];
   TTPl = [];
   TTAc = [];
+  TTPlOk = [];
+  TTAcOk = [];
   for (const el in dataPl) {
     Pl.push(dataPl[el]);
   }
@@ -203,6 +207,15 @@ function drawChart() {
     TTAc.push(TTdataAc[el]);
   }
   TTAc.shift();
+
+  for (const el in TTdataPlOk) {
+    TTPlOk.push(TTdataPlOk[el]);
+  }
+  TTPlOk.shift();
+  for (const el in TTdataAcOk) {
+    TTAcOk.push(TTdataAcOk[el]);
+  }
+  TTAcOk.shift();
   var daysOfYear = [];
   for (var d = new Date($("#std").val()); d <= new Date($("#end").val()); d.setDate(d.getDate() + 1)) {
       daysOfYear.push(getDate(new Date(d)));
@@ -266,6 +279,34 @@ function drawChart() {
         data: TTPl,
         type: 'line',
         yAxisID: 'y1',
+      }, {
+        label: "Plan Ok (ton)",
+        backgroundColor: "rgba(0, 255, 0, 0.4)",
+        borderColor: "green",
+        borderCapStyle: 'square',
+        pointBorderColor: "black",
+        pointBackgroundColor: "green",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "green",
+        pointHoverBorderColor: "yellow",
+        data: TTAcOk,
+        type: 'bar',
+        yAxisID: 'y',
+      }, {
+        label: "Actual Ok (ton)",
+        backgroundColor: "rgba(0, 0, 255, 0.4)",
+        borderColor: "blue",
+        borderCapStyle: 'butt',
+        pointBorderColor: "white",
+        pointBackgroundColor: "blue",
+        pointBorderWidth: 1,
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: "blue",
+        pointHoverBorderColor: "yellow",
+        data: TTPlOk,
+        type: 'bar',
+        yAxisID: 'y',
       },   
     ]
   };
