@@ -102,6 +102,7 @@ $(document).on("change", "#check_date", function() {
       $(this).removeClass("complete-input").addClass("no-input");
   }
   checkInput();
+  $("#add_error").text("Save");
 });
 $(document).on("change", "#position", function() {
   addErrorCheck();
@@ -176,6 +177,7 @@ $("#add_error").on("click", function () {
         .append($("<td>").append(posOption($("#position").val())))
         .append($("<td>").append(errorOption($("#error").val())))
         .append($("<td>").append($("<input>").val($("#note").val())))
+        .append($("<td>").append($("<button class='remove'>RM</button>")))
         .appendTo("#error_table tbody");
       $(this).prop("disabled", true);
       $("#position").val("0").focus().removeClass("complete-input").addClass("no-input");
@@ -222,6 +224,7 @@ function makeError() {
       $("<td>").html(trVal[tdVal]).appendTo(newTr);
     }
     });
+    $("<td>").append($("<button class='remove'>RM</button>")).appendTo(newTr);
     $(newTr).appendTo("#error_table tbody");
   });
 };
@@ -446,4 +449,11 @@ function getTableData(tableTrObj) {
     tableData.push(tr);
   });
   return tableData;
-}
+};
+
+$(document).on("click", "#error_table tbody tr td button", function (e) {
+  console.log($(this).parent().parent());
+  if ($(this).parent().parent().hasClass("selected-record")) {
+    $(this).parent().parent().remove();
+  }
+});
