@@ -5,6 +5,7 @@ if ($dbh->getInstance() === null) {
     die("No database connection");
 }
 $id = $_POST['targetId'];
+$code = $_POST['code'];
 $A2CGR = $_POST['A2CGR'];
 $A2CTH = $_POST['A2CTH'];
 $A2MID = $_POST['A2MID'];
@@ -109,7 +110,8 @@ try {
     D3RE = '$D3RE',
     check_date = '$check_date',
     file_url= '$file_url',
-    staff_id= '$staff_id'
+    staff_id= '$staff_id',
+    code= '$code'
     WHERE id= '$id'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

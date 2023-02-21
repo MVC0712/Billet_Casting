@@ -6,7 +6,7 @@ if ($dbh->getInstance() === null) {
 }
 
 try {
-    $sql = "SELECT id, check_date
+    $sql = "SELECT id, check_date, code
     FROM t_mold_history 
     ORDER BY check_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);

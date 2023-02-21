@@ -128,6 +128,14 @@ $(document).on("change", "#staff_id", function() {
   }
   checkInput();
 });
+$(document).on("keyup", ".number-input", function() {
+  if($.isNumeric($(this).val())){
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+});
 $(document).on("click", "#summary_table tbody tr", function (e) {
   let fileName = "SelUpdateDataV2.php";
   let sendData;

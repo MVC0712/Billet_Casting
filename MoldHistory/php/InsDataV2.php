@@ -4,7 +4,7 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-
+$code = $_POST['code'];
 $A2CGR = $_POST['A2CGR'];
 $A2CTH = $_POST['A2CTH'];
 $A2MID = $_POST['A2MID'];
@@ -65,14 +65,14 @@ try {
         C1CGR, C1CTH, C1MID, C1RE, C2CGR, C2CTH, C2MID, C2RE, 
         C3CGR, C3CTH, C3MID, C3RE, C4CGR, C4CTH, C4MID, C4RE, 
         D2CGR, D2CTH, D2MID, D2RE, D3CGR, D3CTH, D3MID, D3RE, 
-        check_date, file_url, staff_id) VALUES (
+        check_date, file_url, staff_id, code) VALUES (
         '$A2CGR', '$A2CTH', '$A2MID', '$A2RE', '$A3CGR', '$A3CTH', '$A3MID', '$A3RE', 
         '$B1CGR', '$B1CTH', '$B1MID', '$B1RE', '$B2CGR', '$B2CTH', '$B2MID', '$B2RE', 
         '$B3CGR', '$B3CTH', '$B3MID', '$B3RE', '$B4CGR', '$B4CTH', '$B4MID', '$B4RE',
         '$C1CGR', '$C1CTH', '$C1MID', '$C1RE', '$C2CGR', '$C2CTH', '$C2MID', '$C2RE', 
         '$C3CGR', '$C3CTH', '$C3MID', '$C3RE', '$C4CGR', '$C4CTH', '$C4MID', '$C4RE', 
         '$D2CGR', '$D2CTH', '$D2MID', '$D2RE', '$D3CGR', '$D3CTH', '$D3MID', '$D3RE', 
-        '$check_date', '$file_url', '$staff_id')";
+        '$check_date', '$file_url', '$staff_id', '$code')";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
 

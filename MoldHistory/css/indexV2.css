@@ -226,7 +226,11 @@ flex-direction: row;
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2){
-  width: 130px;
+  width: 90px;
+}
+#summary_table thead tr th:nth-child(3),
+#summary_table tbody tr td:nth-child(3){
+  width: 35px;
 }
 #staff_id {
   width: 190px;
