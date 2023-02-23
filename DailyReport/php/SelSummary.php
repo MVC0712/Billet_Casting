@@ -15,6 +15,7 @@ try {
     melting_end,
     melting_gas_start,
     melting_gas_end,
+    (melting_gas_end-melting_gas_start),
     casting_start,
     casting_end
 FROM

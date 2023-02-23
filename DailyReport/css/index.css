@@ -372,7 +372,7 @@ input {
 }
 #summary_table tbody {
   height: 95px;
-  width: 780px;
+  width: 740px;
   overflow: auto;
 }
 #summary_table thead tr th:nth-child(1),
@@ -381,7 +381,7 @@ input {
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2) {
-  width: 60px;
+  width: 40px;
 }
 #summary_table thead tr th:nth-child(3),
 #summary_table tbody tr td:nth-child(3) {
@@ -389,7 +389,7 @@ input {
 }
 #summary_table thead tr th:nth-child(4),
 #summary_table tbody tr td:nth-child(4) {
-  width: 80px;
+  width: 50px;
 }
 #summary_table thead tr th:nth-child(5),
 #summary_table tbody tr td:nth-child(5) {
@@ -401,17 +401,22 @@ input {
 }
 #summary_table thead tr th:nth-child(7),
 #summary_table tbody tr td:nth-child(7) {
-  width: 80px;
+  width: 70px;
 }
 #summary_table thead tr th:nth-child(8),
 #summary_table tbody tr td:nth-child(8) {
-  width: 80px;
+  width: 70px;
 }
 #summary_table thead tr th:nth-child(9),
 #summary_table tbody tr td:nth-child(9) {
-  width: 100px;
+  width: 80px;
+  text-align: center;
 }
 #summary_table thead tr th:nth-child(10),
 #summary_table tbody tr td:nth-child(10) {
-  width: 100px;
+  width: 75px;
+}
+#summary_table thead tr th:nth-child(11),
+#summary_table tbody tr td:nth-child(11) {
+  width: 75px;
 }
