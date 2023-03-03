@@ -8,10 +8,13 @@ $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "SELECT 
     id,
+    code,
     DATE_FORMAT(homo_start, '%Y-%m-%d %H:%i') AS homo_start,
     DATE_FORMAT(homo_end, '%Y-%m-%d %H:%i') AS homo_end,
     gas_start,
-    gas_end
+    gas_end,
+    gas_end - gas_start AS gas_use
+
     FROM
     t_homo
     ORDER BY homo_end DESC;";

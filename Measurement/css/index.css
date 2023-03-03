@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(600px - 2px);
-  width: calc(800px - 2px);
+  width: calc(900px - 2px);
 }
 .top__wrapper {
   display: flex;
@@ -14,7 +14,7 @@ body {
 }.left__wrapper {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 70%;
 }
 .right__wrapper {
   display: flex;
@@ -93,7 +93,7 @@ object {
 }
 #file_list__table tbody {
   height: 120px;
-  /* width: 150px; */
+  width: 630px;
   overflow: auto;
 }
 #file_list__table thead tr th:nth-child(1),
@@ -102,7 +102,7 @@ object {
 }
 #file_list__table thead tr th:nth-child(2),
 #file_list__table tbody tr td:nth-child(2) {
-  width: 50px;
+  width: 60px;
 }
 #file_list__table thead tr th:nth-child(3),
 #file_list__table tbody tr td:nth-child(3),
@@ -110,5 +110,5 @@ object {
 #file_list__table tbody tr td:nth-child(4),
 #file_list__table thead tr th:nth-child(5),
 #file_list__table tbody tr td:nth-child(5) {
-  width: 145px;
+  width: 180px;
 }

@@ -153,6 +153,7 @@ select {
 
 #summary_table tbody {
   height: 155px;
+  width: 545px;
   overflow: auto;
 }
 #summary_table thead tr th:nth-child(1),
@@ -160,15 +161,22 @@ select {
   display: none;
 }
 #summary_table thead tr th:nth-child(2),
-#summary_table tbody tr td:nth-child(2),
+#summary_table tbody tr td:nth-child(2) {
+  width: 30px;
+}
 #summary_table thead tr th:nth-child(3),
-#summary_table tbody tr td:nth-child(3) {
+#summary_table tbody tr td:nth-child(3),
+#summary_table thead tr th:nth-child(4),
+#summary_table tbody tr td:nth-child(4) {
   width: 120px;
 }
-#summary_table thead tr th:nth-child(4),
-#summary_table tbody tr td:nth-child(4),
+
 #summary_table thead tr th:nth-child(5),
-#summary_table tbody tr td:nth-child(5) {
+#summary_table tbody tr td:nth-child(5),
+#summary_table thead tr th:nth-child(6),
+#summary_table tbody tr td:nth-child(6),
+#summary_table thead tr th:nth-child(7),
+#summary_table tbody tr td:nth-child(7) {
   width: 80px;
 }
 #staff_id {
