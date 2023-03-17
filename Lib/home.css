@@ -2,17 +2,17 @@ body {
   width: calc(1100px - 2px);
 }
 #summary_table {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 #summary_table tbody {
   height: 480px;
-  width: 1065px;
+  width: 1090px;
   overflow: auto;
 }
 #summary_table thead tr th:nth-child(1),
 #summary_table tbody tr td:nth-child(1) {
   /* display: none; */
-  width: 25px;
+  width: 15px;
 }
 #summary_table thead tr th:nth-child(2),
 #summary_table tbody tr td:nth-child(2) {
@@ -82,4 +82,20 @@ body {
 #summary_table thead tr th:nth-child(24),
 #summary_table tbody tr td:nth-child(24) {
   width: 45px;
+}
+#summary_table thead tr th:nth-child(25),
+#summary_table tbody tr td:nth-child(25) {
+  width: 30px;
+}
+ header div button {
+  background-color:rgb(205, 255, 182);
+  color: blue;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  width: 55px;
 }

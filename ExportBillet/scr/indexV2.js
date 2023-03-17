@@ -264,7 +264,7 @@ $(document).on("click", "#summary__table tbody tr", function (e) {
     $(this).attr("id", "update__tr");
   } else {
   let pas = prompt("Please enter your Password", "********");
-    if (pas == '01910926') {
+  if ((pas == '01910926') || (pas == '02216872')) {
       deleteDialog.showModal();
     } else {
       alert("Wrong pas");

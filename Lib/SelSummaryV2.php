@@ -6,7 +6,14 @@ if ($dbh->getInstance() === null) {
 }
 $start = $_POST['start'];
 $end = $_POST['end'];
-$datetime = date("Y-m-d H:i:s");
+$material = $_POST['material'];
+
+if ($material == 0) {
+    $add = "";
+} else {
+    $add = " AND m_material_type.id LIKE '$material'";
+};
+
 try {
     $sql = "SELECT 
     t_casting.code,
@@ -34,7 +41,8 @@ try {
     CONCAT(ROUND(((tc.tt1200*132 + tc.tt600*66)/tc.total_output)*100,1), '%') AS OkOutPut,
     CONCAT(ROUND(((tc.tt1200*132 + tc.tt600*66)/SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
       input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + 
-      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)))*100,1),'%') AS OkTotal
+      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)))*100,1),'%') AS OkTotal,
+      (melting_gas_end-melting_gas_start)
 FROM
     t_casting
         LEFT JOIN (
@@ -131,7 +139,7 @@ WHERE
 GROUP BY t_add_material.t_casting) t100000 ON t_casting.id = t100000.ppig_id
 LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
-WHERE t_casting.product_date BETWEEN '$start' AND '$end'
+WHERE t_casting.product_date BETWEEN '$start' AND '$end' $add
 GROUP BY t_casting.id
 ORDER BY t_casting.product_date DESC;";
     $stmt = $dbh->getInstance()->prepare($sql);

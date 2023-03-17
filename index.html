@@ -29,7 +29,13 @@
               <th>Ngày đúc</th>
               <th colspan="2"><input type="date" id="end" style="width: 97px;"></th>
               <th>Kết thúc</th>
-              <th>Material</th>
+              <!-- <th>Material</th> -->
+              <th><select id="material">
+                <option value="0">No</option>
+                <option value="1">6061</option>
+                <option value="2">6063</option>
+                <option value="3">6N01A</option>
+              </select></th>
               <th>Total Weight ①</th>
               <th>Total Ingot</th>
               <th>Total Scrap</th>
@@ -48,6 +54,7 @@
               <th>Total 600</th>
               <th>③/②</th>
               <th>③/①</th>
+              <th>Gas used</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -143,6 +150,7 @@
           var sendData = {
               start: st,
               end: en,
+              material: $("#material").val()
           };
           myAjax.myAjax(fileName, sendData);
           fillTableBody(ajaxReturnData, $("#summary_table tbody"));
@@ -162,6 +170,9 @@
           makeSummaryTable();
         });
         $(document).on("change", "#end", function () {
+          makeSummaryTable();
+        });
+        $(document).on("change", "#material", function () {
           makeSummaryTable();
         });
       </script>
