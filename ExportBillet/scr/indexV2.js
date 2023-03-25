@@ -61,6 +61,7 @@ function makeSummaryTable() {
   var sendData = {
     start: $("#export_start_date").val(),
     end: $("#export_end_date").val(),
+    code: $("#export_code").val(),
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
@@ -152,6 +153,9 @@ $(document).on("change", "#export_start_date", function() {
   makeSummaryTable()
 });
 $(document).on("change", "#export_end_date", function() {
+  makeSummaryTable()
+});
+$(document).on("keyup", "#export_code", function() {
   makeSummaryTable()
 });
 function checkSave() {

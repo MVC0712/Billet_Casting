@@ -6,6 +6,7 @@ if ($dbh->getInstance() === null) {
 }
 $start = $_POST['start'];
 $end = $_POST['end'];
+$code = $_POST['code'];
 try {
     $sql = "SELECT 
     t_export.id,
@@ -45,7 +46,7 @@ FROM
     t_casting ON t_casting.id = t_import.casting_id
         LEFT JOIN
     m_material_type ON m_material_type.id = t_casting.product_type
-    WHERE t_export.export_date BETWEEN '$start' AND '$end'
+    WHERE t_export.export_date BETWEEN '$start' AND '$end' AND t_casting.code LIKE '%$code%'
     ORDER BY export_date ASC, t_export.id ASC";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
