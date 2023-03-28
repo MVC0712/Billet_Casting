@@ -26,7 +26,7 @@ try {
       input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)) AS total_input,
     t10000.tt_ppig,
     t10.weight - t10000.tt_ppig,
-    SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t100000.tt_pphk, 0)) AS total_input_hk,
+    ROUND(SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t100000.tt_pphk, 0)), 1) AS total_input_hk,
     SUM(input_cr_1 + input_cr_2) AS input_cr,
     SUM(input_cu_1 + input_cu_2) AS input_cu,
     SUM(input_fe_1 + input_fe_2) AS input_fe,
