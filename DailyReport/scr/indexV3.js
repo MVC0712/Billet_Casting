@@ -89,6 +89,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
     $(this).removeClass("no-input").addClass("complete-input");
   });
   Total();
+  changeElement();
 });
 function MaterialNameCode() {
   var fileName = "SelMaterialName.php";
@@ -140,11 +141,33 @@ $(document).on("keyup", "#code", function() {
 $(document).on("change", "#product_type", function() {
   if ($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
-      var fileName = "SelMaterialElement.php";
-      var sendData = {
-        product_type: $("#product_type").val(),
-      };
-      myAjax.myAjax(fileName, sendData);
+    //   var fileName = "SelMaterialElement.php";
+    //   var sendData = {
+    //     product_type: $("#product_type").val(),
+    //   };
+    //   myAjax.myAjax(fileName, sendData);
+    // $("#si_req").text(ajaxReturnData[0]["si"]);
+    // $("#mg_req").text(ajaxReturnData[0]["mg"]);
+    // $("#mn_req").text(ajaxReturnData[0]["mn"]);
+    // $("#cr_req").text(ajaxReturnData[0]["cr"]);
+    // $("#cu_req").text(ajaxReturnData[0]["cu"]);
+    // $("#fe_req").text(ajaxReturnData[0]["fe"]);
+    // $("#zn_req").text(ajaxReturnData[0]["zn"]);
+    // $("#ti_b_req").text(ajaxReturnData[0]["ti_b"]);
+    changeElement();
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+  checkUpdate();
+});
+
+function changeElement() {
+    var fileName = "SelMaterialElement.php";
+    var sendData = {
+      product_type: $("#product_type").val(),
+    };
+    myAjax.myAjax(fileName, sendData);
     $("#si_req").text(ajaxReturnData[0]["si"]);
     $("#mg_req").text(ajaxReturnData[0]["mg"]);
     $("#mn_req").text(ajaxReturnData[0]["mn"]);
@@ -153,12 +176,8 @@ $(document).on("change", "#product_type", function() {
     $("#fe_req").text(ajaxReturnData[0]["fe"]);
     $("#zn_req").text(ajaxReturnData[0]["zn"]);
     $("#ti_b_req").text(ajaxReturnData[0]["ti_b"]);
-  } else {
-      $(this).removeClass("complete-input").addClass("no-input");
-  }
-  checkInput();
-  checkUpdate();
-});
+}
+
 $(document).on("keyup", "#extrusion_scrap", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
