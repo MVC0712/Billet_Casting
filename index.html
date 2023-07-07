@@ -10,6 +10,7 @@
   <body>
     <header>Home Page</header>
       <div style="flex-direction: row; display:flex;">
+            <button id="import_material">Import Material</button>
             <button id="plan">Plan</button>
             <button id="plan_view">Plan View</button>
             <button id="mold_history">Mold History</button>
@@ -62,6 +63,10 @@
       </div>
       <script src="./Lib/jquery.min.js"></script>
       <script>
+        $(document).on("click", "#import_material", function () {
+          window.open("/Billet_Casting/ImportMaterial");
+        });
+
         $(document).on("click", "#plan", function () {
           window.open("/Billet_Casting/Plan");
         });

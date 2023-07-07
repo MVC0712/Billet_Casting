@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Material</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header>Import Material</header>
+    <div class="summary__wrapper">
+      <dialog class="dialog__wrapper" id="delete__dialog">
+        Do you want to Delete?
+        <button id="delete-dialog-cancel__button">Cancel</button>
+        <button id="delete-dialog-delete__button">Delete</button>
+      </dialog>
+      <div>
+        <table id="material_table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Code</th>
+              <td><input id="code_name" class="no-input save-data need-clear text-input"/></td>
+            </tr>
+            <tr>
+              <th>Material</th>
+              <td><select class="no-input save-data need-clear select-input" id="material_id"></select></td>
+            </tr>
+            <!-- <tr>
+              <th>Dimention</th>
+              <td><select class="no-input save-data need-clear select-input" id="dimention_id"></select></td>
+            </tr>
+            <tr>
+              <th>Lenght</th>
+              <td><select id="length_id" class="no-input save-data need-clear select-input" >
+                <option value="0">NO</option>
+                <option value="1">1200</option>
+                <option value="2">600</option>
+              </select></td>
+            </tr>
+            <tr>
+              <th>Origin</th>
+              <td><select class="no-input save-data need-clear select-input"  id="material_origin_id"></select></td>
+            </tr> -->
+            <tr>
+              <th>Weight</th>
+              <td><input id="weight" class="no-input save-data need-clear number-input"/></td>
+            </tr>
+            <tr>
+              <th>Staff</th>
+              <td><select class="no-input save-data need-clear select-input" id="staff_id"></select></td>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <td><input type="date" id="import_date" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <button disabled id="add__button">Add</button>
+      </div>
+      <div>
+        <!-- <select class="no-input save-data need-clear" id="staff_id"></select>
+        <input type="date" id="import_date" /> -->
+        <table id="add__table">
+          <thead>
+            <tr>
+              <th>Code name</th>
+              <th>Material</th>
+              <!-- <th>Dimention</th>
+              <th>Length</th>
+              <th>Origin</th> -->
+              <th>Weight</th>
+              <th>RM</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button disabled id="save__button">Save</button>
+      </div>
+  <div>
+  <div>
+  <input id="import_start_date" type="date"/>→
+  <input id="import_end_date" type="date"/>
+  <input id="search_summary_input" style="width: 120px">
+</div>
+  <table id="summary__table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imp date</th>
+        <th>Code name</th>
+        <th>Material</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+    </div>
+
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
+  </body>
+</html>
