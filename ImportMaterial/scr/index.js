@@ -70,26 +70,6 @@ function fillTableBody(data, tbodyDom) {
       $(newTr).appendTo(tbodyDom);
   });
 };
-// function fillTableBody(data, tbodyDom) {
-//   $(tbodyDom).empty();
-//     data.forEach(function(trVal) {
-//       var newTr = $("<tr>");
-//       Object.keys(trVal).forEach(function(tdVal) {
-//           if (tdVal == "billet_length") {
-//               $("<td>").append(makeBilletLength(trVal[tdVal])).appendTo(newTr);
-//           } else if (tdVal == "import_date") {
-//               $("<td>").append(makeImpDate(trVal[tdVal])).appendTo(newTr);
-//           } else if (tdVal == "billet_position") {
-//               $("<td>").append(makeBilletPos(trVal[tdVal])).appendTo(newTr);
-//           } else if ((tdVal == "quantity")||(tdVal == "bundle")||(tdVal == "note")) {
-//               $("<td>").append(makeInput(trVal[tdVal]).removeClass("no-input number-input")).appendTo(newTr);
-//           } else {
-//               $("<td>").html(trVal[tdVal]).appendTo(newTr);
-//           }
-//       });
-//       $(newTr).appendTo(tbodyDom);
-//   });
-// };
 function makeImpDate(impDate) {
   let targetDom = $("<input>");
   targetDom.attr("type", "date");
@@ -151,11 +131,8 @@ function selmaterialOrigin() {
 };
 $(document).on("click", "#add__button", function (e) {
   var newTr = $("<tr>");
-  $("<td>").html(makeInput($("#code_name").val())).appendTo(newTr);
+  $("<td>").html(makeInputCode($("#code_name").val())).appendTo(newTr);
   $("<td>").html(makeMaterial($("#material_id").val())).appendTo(newTr);
-  // $("<td>").html(makeDimention($("#dimention_id").val())).appendTo(newTr);
-  // $("<td>").html(makeBilletLength($("#length_id").val())).appendTo(newTr);
-  // $("<td>").html(makeOrigin($("#material_origin_id").val())).appendTo(newTr);
   $("<td>").html(makeInput($("#weight").val())).appendTo(newTr);
   $("<td>").append($("<button class='remove'>RM</button>")).appendTo(newTr);
   $(newTr).appendTo("#add__table tbody");
@@ -166,6 +143,12 @@ function makeInput(qty) {
   let targetDom = $("<input>");
   targetDom.attr("type", "text");
   targetDom.val(qty).addClass("number-input");
+  return targetDom;
+}
+function makeInputCode(qty) {
+  let targetDom = $("<input>");
+  targetDom.attr("type", "text");
+  targetDom.val(qty).addClass("regex-text");
   return targetDom;
 }
 function makeOrigin(seletedId) {
@@ -385,6 +368,20 @@ $(document).on("change", ".select-input", function() {
   checkSave();
   checkAdd();
 });
+$(document).on("keyup", ".regex-text", function() {
+  if(inputCheck($(this).val())){
+    $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkSave();
+  checkAdd();
+});
+function inputCheck(val) {
+  // sampleInput = "N11-NG-12345";
+  let regexp = /^[A-Z]{1}[0-9]{2}-NG-[0-9]+$/;
+  return regexp.test(val);
+};
 function getTableData(tableTrObj) {
   var tableData = [];
   tableTrObj.each(function (index, element) {
@@ -416,7 +413,7 @@ $(document).on("click", "#save__button", function () {
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
   $("#add__table tbody tr").remove();
-  $("#code_name").val("").removeClass("complete-input").addClass("no-input");
+  $("#code_name").val("N11-NG-").removeClass("complete-input").addClass("no-input");
   $("#material_id").val(0).removeClass("complete-input").addClass("no-input");
   $("#weight").val("").removeClass("complete-input").addClass("no-input");
   $("#staff_id").val(0).removeClass("complete-input").addClass("no-input");
@@ -462,23 +459,6 @@ $(document).on("click", "#summary__table tbody tr", function (e) {
     }
   }
 });
-// $(document).on("change", "#summary__table tbody tr td", function () {
-//   let sendData = new Object();
-//   let fileName;
-//   fileName = "UpdateData.php";
-//   sendData = {
-//     targetId : $("#update__tr td:nth-child(1)").html(),
-//     import_date : $("#update__tr td:nth-child(2) input").val(),
-//     billet_position : $("#update__tr td:nth-child(7) select").val(),
-//     bundle : $("#update__tr td:nth-child(4) input").val(),
-//     billet_length : $("#update__tr td:nth-child(6) select").val(),
-//     quantity : $("#update__tr td:nth-child(8) input").val(),
-//     note : $("#update__tr td:nth-child(9) input").val(),
-//   };
-//   console.log(sendData);
-//   myAjax.myAjax(fileName, sendData);
-//   makeSummaryTable();
-// });
 $(document).on("click", "#delete-dialog-cancel__button", function () {
   deleteDialog.close();
 });
