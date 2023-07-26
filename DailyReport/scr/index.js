@@ -3,6 +3,8 @@ let inputData = new Object();
 let fileName;
 let sendData = new Object();
 let ajaxReturnData;
+let from_import = false;
+let from_import_data = "";
 
 const myAjax = {
   myAjax: function (fileName, sendData) {
@@ -31,10 +33,10 @@ const getDateTime = (date) => {
     const mins = getTwoDigits(date.getMinutes());
     return `${year}-${month}-${day} ${hours}:${mins}:00`;
 }
-// sendObj["maintenance_start"] =getDateTime(new Date($("#maintenance_start").val()));
 $(function () {
   MaterialNameCode();
   makeSummaryTable();
+  selStaff();
   var now = new Date();
   var MonthLastDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
   var MonthFirstDate = new Date(now.getFullYear(), (now.getMonth() + 12) % 12, 1);
@@ -66,7 +68,7 @@ function fillTableBody(data, tbodyDom) {
   });
 };
 $(document).on("click", "#summary_table tbody tr", function (e) {
-  let fileName = "SelUpdateData.php";
+  let fileName = "SelUpdateDataV3.php";
   let sendData;
   if (!$(this).hasClass("selected-record")) {
     $(this).parent().find("tr").removeClass("selected-record");
@@ -89,6 +91,7 @@ $(document).on("click", "#summary_table tbody tr", function (e) {
     $(this).removeClass("no-input").addClass("complete-input");
   });
   Total();
+  changeElement();
 });
 function MaterialNameCode() {
   var fileName = "SelMaterialName.php";
@@ -101,6 +104,20 @@ function MaterialNameCode() {
   ajaxReturnData.forEach(function(value) {
       $("#material").append(
           $("<option>").val(value["id"]).html(value["material_name"])
+      );
+  });
+};
+function selStaff() {
+  var fileName = "SelStaff.php";
+  var sendData = {
+      dummy: "dummy",
+  };
+  myAjax.myAjax(fileName, sendData);
+  $("#staff_id option").remove();
+  $("#staff_id").append($("<option>").val(0).html("NO"));
+  ajaxReturnData.forEach(function(value) {
+      $("#staff_id").append(
+          $("<option>").val(value["id"]).html(value["name"])
       );
   });
 };
@@ -126,11 +143,20 @@ $(document).on("keyup", "#code", function() {
 $(document).on("change", "#product_type", function() {
   if ($(this).val() != 0) {
       $(this).removeClass("no-input").addClass("complete-input");
-      var fileName = "SelMaterialElement.php";
-      var sendData = {
-        product_type: $("#product_type").val(),
-      };
-      myAjax.myAjax(fileName, sendData);
+    changeElement();
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+  checkUpdate();
+});
+
+function changeElement() {
+    var fileName = "SelMaterialElement.php";
+    var sendData = {
+      product_type: $("#product_type").val(),
+    };
+    myAjax.myAjax(fileName, sendData);
     $("#si_req").text(ajaxReturnData[0]["si"]);
     $("#mg_req").text(ajaxReturnData[0]["mg"]);
     $("#mn_req").text(ajaxReturnData[0]["mn"]);
@@ -139,12 +165,8 @@ $(document).on("change", "#product_type", function() {
     $("#fe_req").text(ajaxReturnData[0]["fe"]);
     $("#zn_req").text(ajaxReturnData[0]["zn"]);
     $("#ti_b_req").text(ajaxReturnData[0]["ti_b"]);
-  } else {
-      $(this).removeClass("complete-input").addClass("no-input");
-  }
-  checkInput();
-  checkUpdate();
-});
+}
+
 $(document).on("keyup", "#extrusion_scrap", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
@@ -215,7 +237,15 @@ $(document).on("keyup", "#material_weight", function() {
   checkInput();
   checkUpdate();
 });
-
+$(document).on("change", "#staff_id", function() {
+  if ($(this).val() != 0) {
+    $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+    $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkInput();
+  checkUpdate();
+});
 $(document).on("keyup", "#melting_table thead input", function() {
   if ($(this).val() != "") {
       $(this).removeClass("no-input").addClass("complete-input");
@@ -295,37 +325,76 @@ $(document).on("click", "#preview__button", function () {
 $("#add_material").on("click", function () {
   switch ($(this).text()) {
     case "Save":
-      $("<tr>")
+      if (from_import && from_import_data != "") {
+        $("<tr>")
+        .append("<td></td>")
+        .append($("<td>").append(MaterialNameOption(from_import_data.origin)))
+        .append($("<td>").append(MaterialNameTypeOption(from_import_data.material_type_cast)))
+        .append($("<td>").append($("<input>").val(from_import_data.weight)))
+        .append($("<td>").append($("<input>").val(from_import_data.code_name)))
+        .append($("<td>").append(from_import_data.id))
+        .appendTo("#material_table tbody");
+        $(this).prop("disabled", true);
+        $("#material").val("0").focus().removeClass("complete-input").addClass("no-input");
+        $("#material_type").val("0").removeClass("complete-input").addClass("no-input");
+        $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_note").val("");
+        break;
+      } else {
+        $("<tr>")
         .append("<td></td>")
         .append($("<td>").append(MaterialNameOption($("#material").val())))
         .append($("<td>").append(MaterialNameTypeOption($("#material_type").val())))
         .append($("<td>").append($("<input>").val($("#material_weight").val())))
         .append($("<td>").append($("<input>").val($("#material_note").val())))
         .appendTo("#material_table tbody");
-      $(this).prop("disabled", true);
-      $("#material").val("0").focus().removeClass("complete-input").addClass("no-input");
-      $("#material_type").val("0").removeClass("complete-input").addClass("no-input");
-      $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
-      $("#material_note").val("");
-    break;
+        $(this).prop("disabled", true);
+        $("#material").val("0").focus().removeClass("complete-input").addClass("no-input");
+        $("#material_type").val("0").removeClass("complete-input").addClass("no-input");
+        $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_note").val("");
+        break;
+      }
     case "Add":
-      let fileName;
-      let sendData = new Object();
-      fileName = "AddMaterial.php";
-      sendData = {
-        t_casting: $("#selected__tr td:nth-child(1)").text(),
-        material: $("#material").val(),
-        material_type: $("#material_type").val(),
-        weight: $("#material_weight").val(),
-        note: $("#material_note").val(),
-      };
-      myAjax.myAjax(fileName, sendData);
-      makeAddMaterial();
-      $("#material").val("").removeClass("complete-input").addClass("no-input");
-      $("#material_type").val("").removeClass("complete-input").addClass("no-input");
-      $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
-      $("#add_material").prop("disabled", true);
-    break;
+      if (from_import && from_import_data != "") {
+        let fileName;
+        let sendData = new Object();
+        fileName = "AddMaterial.php";
+        sendData = {
+          t_casting: $("#selected__tr td:nth-child(1)").text(),
+          material: from_import_data.origin,
+          material_type: from_import_data.material_type_cast,
+          weight: from_import_data.weight,
+          note: from_import_data.code_name,
+          import_material_id: from_import_data.id
+        };
+        myAjax.myAjax(fileName, sendData);
+        makeAddMaterial();
+        $("#material").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_type").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
+        $("#add_material").prop("disabled", true);
+        break;
+      } else {
+        let fileName;
+        let sendData = new Object();
+        fileName = "AddMaterial.php";
+        sendData = {
+          t_casting: $("#selected__tr td:nth-child(1)").text(),
+          material: $("#material").val(),
+          material_type: $("#material_type").val(),
+          weight: $("#material_weight").val(),
+          note: $("#material_note").val(),
+          import_material_id: null
+        };
+        myAjax.myAjax(fileName, sendData);
+        makeAddMaterial();
+        $("#material").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_type").val("").removeClass("complete-input").addClass("no-input");
+        $("#material_weight").val("").removeClass("complete-input").addClass("no-input");
+        $("#add_material").prop("disabled", true);
+        break;
+      }
   }
   Total();
 });
@@ -414,10 +483,14 @@ function MaterialNameOption(seletedId) {
 }
 function MaterialNameTypeOption(seletedId) {
   let targetDom = $("<select>");
-
+  if (from_import && from_import_data !="") {
+    material_name_id = from_import_data.origin
+  } else {
+    material_name_id = $("#material").val();
+  }
   fileName = "SelMaterialNameType.php";
   sendData = {
-    material_name_id: $("#material").val(),
+    material_name_id
   };
   myAjax.myAjax(fileName, sendData);
   ajaxReturnData.forEach(function(element) {
@@ -553,7 +626,7 @@ function ajaxFileUpload() {
 }
 
 $(document).on("click", "#save", function () {
-  fileName = "InsData.php";
+  fileName = "InsDataV3.php";
   inputData = getInputData();
   sendData = inputData;
   myAjax.myAjax(fileName, sendData);
@@ -568,7 +641,7 @@ $(document).on("click", "#save", function () {
   makeSummaryTable();
 });
 $(document).on("click", "#update", function () {
-  fileName = "UpdateData.php";
+  fileName = "UpdateDataV3.php";
   inputData = getInputData();
   inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
   sendData = inputData;
@@ -617,6 +690,7 @@ function checkInput() {
     if ($(this).val() == "") {
       check = false;
     }
+    console.log($(this).val())
   });
   $(".top__wrapper select .save-data").each(function() {
     if ($(this).val() == 0) {
@@ -649,21 +723,21 @@ function checkInput() {
 };
 function checkUpdate() {
   let check = true;
-  // $(".top__wrapper input .save-data").each(function() {
-  //   if ($(this).val() == "") {
-  //     check = false;
-  //   }
-  // });
-  // $(".top__wrapper select .save-data").each(function() {
-  //   if ($(this).val() == 0) {
-  //     check = false;
-  //   }
-  // });
-  // $(".material__wrapper .right__material input").each(function() {
-  //   if ($(this).val() == "") {
-  //     check = false;
-  //   }
-  // });
+  $(".top__wrapper input .save-data").each(function() {
+    if ($(this).val() == "") {
+      check = false;
+    }
+  });
+  $(".top__wrapper select .save-data").each(function() {
+    if ($(this).val() == 0) {
+      check = false;
+    }
+  });
+  $(".material__wrapper .right__material input").each(function() {
+    if ($(this).val() == "") {
+      check = false;
+    }
+  });
   if (!$("#summary_table tbody tr").hasClass("selected-record")) {
       check = false;
     }
@@ -673,4 +747,57 @@ function checkUpdate() {
     $("#update").attr("disabled", true);
   } 
   return check;
+};
+
+function calTotal(id, type) {
+  var total = 0;
+  $("#material_table tbody tr").each(function (index, element) {
+    if ($(this).find("td:nth-child(2) select").val() == type) {
+      total += parseInt($(this).find("td:nth-child(4) input").val());
+// console.log(total);
+    }
+    $("#" + id).html(total);
+  });
+};
+function Total() {
+  calTotal("plextrusion", 1);
+  calTotal("pldiscard", 2);
+  calTotal("plcut", 3);
+  calTotal("plcast", 4);
+  calTotal("plgcng", 5);
+  calTotal("plingot", 6);
+  calTotal("plalloy", 7);
+  calTotal("plorther", 8);
+  var total = 0;
+    $("#material_table tbody tr").each(function (index, element) {
+      total += parseInt($(this).find("td:nth-child(4) input").val());
+    }
+  );
+  $("#ttmate").html(total);
+};
+
+$(document).on("keyup", "#material_note", function() {
+  if (inputCheck($(this).val())) {
+    fileName = "CheckImportMaterial.php";
+      sendData = {
+        material_note: $("#material_note").val(),
+      };
+      myAjax.myAjax(fileName, sendData);
+      console.log(ajaxReturnData);
+      if(ajaxReturnData.length != 0) {
+        $("#add_material").prop("disabled", false);
+        from_import = true;
+        from_import_data = ajaxReturnData[0];
+      } else {
+        from_import = false;
+        from_import_data = "";
+      }
+  } else {
+    $("#add_material").prop("disabled", true);
+  }
+});
+function inputCheck(val) {
+  // sampleInput = "N11-NG-12345";
+  let regexp = /^[A-Z]{1}[0-9]{2}-NG-[0-9]+$/;
+  return regexp.test(val);
 };
