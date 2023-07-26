@@ -11,6 +11,8 @@
   <body>
     <header>Import Material</header>
     <div class="summary__wrapper">
+      <div style="display: flex; flex-direction:column;">
+      <div style="display: flex;">
       <dialog class="dialog__wrapper" id="delete__dialog">
         Do you want to Delete?
         <button id="delete-dialog-cancel__button">Cancel</button>
@@ -26,6 +28,14 @@
           </thead>
           <tbody>
             <tr>
+              <th>Origin</th>
+              <td><select id="origin">
+                <option value="N11">Extrusion</option>
+                <option value="N14">Billet Casting</option>
+                <option value="V44">Cylinder</option>
+              </select></td>
+            </tr>
+            <tr>
               <th>Code</th>
               <td><input id="code_name" value="N11-NG-" class="no-input save-data need-clear text-input regex-text"/></td>
             </tr>
@@ -33,22 +43,6 @@
               <th>Material</th>
               <td><select class="no-input save-data need-clear select-input" id="material_id"></select></td>
             </tr>
-            <!-- <tr>
-              <th>Dimention</th>
-              <td><select class="no-input save-data need-clear select-input" id="dimention_id"></select></td>
-            </tr>
-            <tr>
-              <th>Lenght</th>
-              <td><select id="length_id" class="no-input save-data need-clear select-input" >
-                <option value="0">NO</option>
-                <option value="1">1200</option>
-                <option value="2">600</option>
-              </select></td>
-            </tr>
-            <tr>
-              <th>Origin</th>
-              <td><select class="no-input save-data need-clear select-input"  id="material_origin_id"></select></td>
-            </tr> -->
             <tr>
               <th>Weight</th>
               <td><input id="weight" class="no-input save-data need-clear number-input"/></td>
@@ -66,16 +60,11 @@
         <button disabled id="add__button">Add</button>
       </div>
       <div>
-        <!-- <select class="no-input save-data need-clear" id="staff_id"></select>
-        <input type="date" id="import_date" /> -->
         <table id="add__table">
           <thead>
             <tr>
               <th>Code name</th>
               <th>Material</th>
-              <!-- <th>Dimention</th>
-              <th>Length</th>
-              <th>Origin</th> -->
               <th>Weight</th>
               <th>RM</th>
             </tr>
@@ -84,25 +73,39 @@
         </table>
         <button disabled id="save__button">Save</button>
       </div>
-  <div>
-  <div>
-  <input id="import_start_date" type="date"/>→
-  <input id="import_end_date" type="date"/>
-  <input id="search_summary_input" style="width: 120px">
-</div>
-  <table id="summary__table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Imp date</th>
-        <th>Code name</th>
-        <th>Material</th>
-        <th>Weight</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
+    </div>
+    <div>
+      <input id="import_start_date" type="date"/>→
+      <input id="import_end_date" type="date"/>
+      <input id="search_summary_input" style="width: 120px">
+    </div>
+      <table id="summary__table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imp date</th>
+            <th>Code name</th>
+            <th>Material</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  <div style="width:fit-content">
+    <table id="remain__table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Imp date</th>
+          <th><input id="search_remain_input" style="width: 110px; height:18px;border: 0"></th>
+          <th>Material</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
     </div>
 
     <script src="../Lib/jquery.min.js"></script>

@@ -45,6 +45,7 @@ $(function () {
   $("#import_end_date").val(formatDate(MonthLastDate));
   $("#import_date").val(formatDate(now));
   makeSummaryTable();
+  makeRemainTable();
   selStaff();
   selMaterialType();
   selDimention();
@@ -59,6 +60,14 @@ function makeSummaryTable() {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
+};
+function makeRemainTable() {
+  var fileName = "SelRemain.php";
+  var sendData = {
+    search: $("#search_remain_input").val(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#remain__table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -136,7 +145,8 @@ $(document).on("click", "#add__button", function (e) {
   $("<td>").html(makeInput($("#weight").val())).appendTo(newTr);
   $("<td>").append($("<button class='remove'>RM</button>")).appendTo(newTr);
   $(newTr).appendTo("#add__table tbody");
-
+  resetValue();
+  changeOrigin();
   checkSave();
 });
 function makeInput(qty) {
@@ -377,6 +387,50 @@ $(document).on("keyup", ".regex-text", function() {
   checkSave();
   checkAdd();
 });
+$(document).on("keyup", "#code_name", function() {
+  if (inputCheck($(this).val())) {
+    fileName = "CheckImportMaterial.php";
+    sendData = {
+      code_name: $("#code_name").val(),
+    };
+    myAjax.myAjax(fileName, sendData);
+    if(ajaxReturnData.length == 0) {
+      $("#code_name").removeClass("no-input").addClass("complete-input");
+    } else {
+      $("#code_name").removeClass("complete-input").addClass("no-input");
+    }
+  }
+  checkAdd();
+});
+$(document).on("keyup", "#weight", function() {
+  if (50 < $(this).val() && $(this).val()<3000 && $.isNumeric($(this).val())) {
+    $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+    $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkAdd();
+});
+$(document).on("change", "#origin", function() {
+  changeOrigin();
+});
+function changeOrigin() {
+  switch ($("#origin").val()) {
+    case "N11":
+      $("#code_name").val("N11-NG-");
+    break;
+    case "N14":
+      $("#code_name").val("N14-NG-")
+    break;
+    case "V44":
+      $("#code_name").val("V44-NG-")
+    break;
+  }
+};
+function resetValue() {
+  $("#weight").val("").removeClass("complete-input").addClass("no-input");
+  $("#code_name").removeClass("complete-input").addClass("no-input").focus();
+  checkAdd();
+};
 function inputCheck(val) {
   // sampleInput = "N11-NG-12345";
   let regexp = /^[A-Z]{1}[0-9]{2}-NG-[0-9]+$/;
@@ -413,10 +467,11 @@ $(document).on("click", "#save__button", function () {
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
   $("#add__table tbody tr").remove();
-  $("#code_name").val("N11-NG-").removeClass("complete-input").addClass("no-input");
+  // $("#code_name").val("N11-NG-").removeClass("complete-input").addClass("no-input");
   $("#material_id").val(0).removeClass("complete-input").addClass("no-input");
   $("#weight").val("").removeClass("complete-input").addClass("no-input");
   $("#staff_id").val(0).removeClass("complete-input").addClass("no-input");
+  changeOrigin();
   checkSave();
   checkAdd();
 });
