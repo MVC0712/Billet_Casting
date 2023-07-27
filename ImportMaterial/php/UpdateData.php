@@ -4,37 +4,22 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-$targetId = "";
-$import_date = "";
-$billet_position = "";
-$bundle = "";
-$billet_length = "";
-$quantity = "";
+$id = "";
 $note = "";
 
-$targetId = $_POST["targetId"];
-$import_date = $_POST["import_date"];
-$billet_position = $_POST["billet_position"];
-$bundle = $_POST["bundle"];
-$billet_length = $_POST["billet_length"];
-$quantity = $_POST["quantity"];
+$id = $_POST["id"];
 $note = $_POST["note"];
 
 try {
-    $sql = "UPDATE t_import SET
-        import_date = '$import_date',
-        billet_position = '$billet_position',
-        bundle = '$bundle',
-        billet_length = '$billet_length',
-        quantity = '$quantity',
+    $sql = "UPDATE t_import_material SET
         note = '$note'
-    WHERE id = '$targetId'";
+    WHERE id = '$id'";
 
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
 } 
 catch(PDOException $e) {
-    echo $e;
+    echo ($e->errorInfo[2]);
 }
 ?>

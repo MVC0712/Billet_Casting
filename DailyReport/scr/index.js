@@ -427,11 +427,11 @@ function makeAddMaterial() {
         $("<td>")
             .append(MaterialNameTypeOpt(trVal[tdVal], trVal.material))
             .appendTo(newTr);
-    } else if ((tdVal == "weight") || (tdVal == "note")) {
-      $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
-    } else {
-      $("<td>").html(trVal[tdVal]).appendTo(newTr);
-    }
+      } else if ((tdVal == "weight") || (tdVal == "note")) {
+        $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
+      } else {
+        $("<td>").html(trVal[tdVal]).appendTo(newTr);
+      }
     });
     $(newTr).appendTo("#material_table tbody");
   });

@@ -74,7 +74,11 @@ function fillTableBody(data, tbodyDom) {
   data.forEach(function(trVal) {
       let newTr = $("<tr>");
       Object.keys(trVal).forEach(function(tdVal, index) {
+        if ((tdVal == "note")) {
+          $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
+        } else {
           $("<td>").html(trVal[tdVal]).appendTo(newTr);
+        }
       });
       $(newTr).appendTo(tbodyDom);
   });
@@ -143,6 +147,7 @@ $(document).on("click", "#add__button", function (e) {
   $("<td>").html(makeInputCode($("#code_name").val())).appendTo(newTr);
   $("<td>").html(makeMaterial($("#material_id").val())).appendTo(newTr);
   $("<td>").html(makeInput($("#weight").val())).appendTo(newTr);
+  $("<td>").html(makeInput($("#note").val())).appendTo(newTr);
   $("<td>").append($("<button class='remove'>RM</button>")).appendTo(newTr);
   $(newTr).appendTo("#add__table tbody");
   resetValue();
@@ -529,5 +534,18 @@ $(document).on("click", "#delete-dialog-delete__button", function () {
   console.log(sendData);
   myAjax.myAjax(fileName, sendData);
   deleteDialog.close();
+  makeSummaryTable();
+});
+
+$(document).on("change", "#summary__table tbody tr", function () {
+  let sendData = new Object();
+  let fileName;
+  fileName = "UpdateData.php";
+  sendData = {
+    id: $("#update__tr td:nth-child(1)").html(),
+    note: $("#update__tr td:nth-child(7) input").val(),
+  };
+  console.log(sendData);
+  myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
 });
