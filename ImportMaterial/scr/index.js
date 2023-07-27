@@ -69,6 +69,13 @@ function makeRemainTable() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#remain__table tbody"));
 };
+function makeSummaryRemainTable() {
+  var fileName = "SelSummaryRemain.php";
+  var sendData = {
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#summary_remain__table tbody"));
+};
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
   data.forEach(function(trVal) {
