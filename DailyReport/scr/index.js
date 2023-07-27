@@ -68,7 +68,7 @@ function fillTableBody(data, tbodyDom) {
   });
 };
 $(document).on("click", "#summary_table tbody tr", function (e) {
-  let fileName = "SelUpdateDataV3.php";
+  let fileName = "SelUpdateData.php";
   let sendData;
   if (!$(this).hasClass("selected-record")) {
     $(this).parent().find("tr").removeClass("selected-record");
@@ -396,6 +396,8 @@ $("#add_material").on("click", function () {
         break;
       }
   }
+  from_import = false;
+  from_import_data = "";
   Total();
 });
 function add_material_check() {
@@ -626,7 +628,7 @@ function ajaxFileUpload() {
 }
 
 $(document).on("click", "#save", function () {
-  fileName = "InsDataV3.php";
+  fileName = "InsData.php";
   inputData = getInputData();
   sendData = inputData;
   myAjax.myAjax(fileName, sendData);
@@ -641,7 +643,7 @@ $(document).on("click", "#save", function () {
   makeSummaryTable();
 });
 $(document).on("click", "#update", function () {
-  fileName = "UpdateDataV3.php";
+  fileName = "UpdateData.php";
   inputData = getInputData();
   inputData["targetId"] = $("#selected__tr").find("td").eq(0).html();
   sendData = inputData;

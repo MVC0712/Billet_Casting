@@ -90,6 +90,7 @@ $refined_time_2 = $_POST['refined_time_2'];
 $water_temp = $_POST['water_temp'];
 $casting_speed = $_POST['casting_speed'];
 $oil_preasure = $_POST['oil_preasure'];
+$staff_id = $_POST['staff_id'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "UPDATE t_casting SET 
@@ -167,7 +168,8 @@ try {
     refined_time_2 = '$refined_time_2' ,
     water_temp = '$water_temp',
     casting_speed = '$casting_speed' ,
-    oil_preasure = '$oil_preasure'
+    oil_preasure = '$oil_preasure',
+    staff_id = '$staff_id'
     WHERE id= '$id'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

@@ -496,8 +496,12 @@ $(document).on("change", "#import_start_date", function (e) {
 });
 $(document).on("change", "#import_end_date", function (e) {
   makeSummaryTable();
-});$(document).on("keyup", "#search_summary_input", function() {
+});
+$(document).on("keyup", "#search_summary_input", function() {
   makeSummaryTable();
+});
+$(document).on("keyup", "#search_remain_input", function() {
+  makeRemainTable();
 });
 $(document).on("click", "#summary__table tbody tr", function (e) {
   if (!$(this).hasClass("update-sel")) {

@@ -82,7 +82,8 @@ try {
     refined_time_2,
     water_temp,
     casting_speed,
-    oil_preasure
+    oil_preasure,
+    staff_id
 FROM
     t_casting
 WHERE id = '$targetId'";

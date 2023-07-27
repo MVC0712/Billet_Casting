@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(600px - 2px);
-  width: calc(870px - 2px);
+  width: calc(820px - 2px);
 }
 select,
 input {

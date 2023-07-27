@@ -90,6 +90,7 @@ $refined_time_2 = $_POST['refined_time_2'];
 $water_temp = $_POST['water_temp'];
 $casting_speed = $_POST['casting_speed'];
 $oil_preasure = $_POST['oil_preasure'];
+$staff_id = $_POST['staff_id'];
 $datetime = date("Y-m-d H:i:s");
 try {
     $sql = "INSERT INTO t_casting
@@ -103,7 +104,7 @@ try {
     me_mg_1, me_mg_2, me_mg_3, me_mn_1, me_mn_2, me_mn_3, me_si_1, me_si_2, me_si_3,
     me_ti_b_1, me_ti_b_2, me_ti_b_3, me_zn_1, me_zn_2, me_zn_3, melting_end,
     melting_gas_end, melting_gas_start, melting_start, melting_temp, product_date, product_dim,
-    product_type, refined_time_1, refined_time_2, water_temp, oil_preasure, casting_speed) VALUES 
+    product_type, refined_time_1, refined_time_2, water_temp, oil_preasure, casting_speed, staff_id) VALUES 
     ('$air_pressure', '$al_temp_cast', '$al_temp_gate', '$aluminium_ingot', '$aluminium_orther',
     '$break_time', '$casting_end', '$casting_scrap', '$casting_start', '$code', '$extrusion_scrap',
     '$file_url', '$flux_1', '$flux_2', '$hydro_time_1', '$hydro_time_2', '$hydro_time_3', '$hydro_time_4',
@@ -114,7 +115,7 @@ try {
     '$me_mg_1', '$me_mg_2', '$me_mg_3', '$me_mn_1', '$me_mn_2', '$me_mn_3', '$me_si_1', '$me_si_2', '$me_si_3',
     '$me_ti_b_1', '$me_ti_b_2', '$me_ti_b_3', '$me_zn_1', '$me_zn_2', '$me_zn_3', '$melting_end',
     '$melting_gas_end', '$melting_gas_start', '$melting_start', '$melting_temp', '$product_date', '$product_dim',
-    '$product_type', '$refined_time_1', '$refined_time_2', '$water_temp', '$oil_preasure', '$casting_speed')";
+    '$product_type', '$refined_time_1', '$refined_time_2', '$water_temp', '$oil_preasure', '$casting_speed', '$staff_id')";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
 

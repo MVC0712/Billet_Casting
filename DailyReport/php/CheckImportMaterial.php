@@ -40,8 +40,11 @@ try {
     code_name
     FROM
         t_import_material
-    WHERE
-        t_import_material.code_name  = '$material_note'";
+        WHERE '$material_note' NOT IN (SELECT 
+                    note
+                FROM
+                    t_add_material)
+        AND t_import_material.code_name = '$material_note'";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
