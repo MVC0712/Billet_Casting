@@ -427,6 +427,8 @@ function makeAddMaterial() {
         $("<td>")
             .append(MaterialNameTypeOpt(trVal[tdVal], trVal.material))
             .appendTo(newTr);
+      } else if (((trVal.import_material_id != 0) && (trVal.import_material_id != null)) && (tdVal == "note")) {
+        $("<td>").html(trVal[tdVal]).appendTo(newTr);
       } else if ((tdVal == "weight") || (tdVal == "note")) {
         $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
       } else {

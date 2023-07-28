@@ -176,7 +176,7 @@ button {
 #staff_id option { direction: rtl; }
 
 #remain__table tbody {
-  height: 550px;
+  height: 360px;
   width: 275px;
   overflow: auto;
 }
@@ -213,4 +213,22 @@ button {
 #remain__table th:nth-child(9),
 #remain__table td:nth-child(9) {
   width: 120px;
+}
+
+#summary_remain__table tbody {
+  height: 170px;
+  width: 275px;
+  overflow: auto;
+}
+#summary_remain__table th:nth-child(1),
+#summary_remain__table td:nth-child(1) {
+  width: 65px;
+}
+#summary_remain__table th:nth-child(2),
+#summary_remain__table td:nth-child(2) {
+  width: 65px;
+}
+#summary_remain__table th:nth-child(3),
+#summary_remain__table td:nth-child(3) {
+  width: 90px;
 }

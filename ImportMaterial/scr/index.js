@@ -46,6 +46,7 @@ $(function () {
   $("#import_date").val(formatDate(now));
   makeSummaryTable();
   makeRemainTable();
+  makeSummaryRemainTable();
   selStaff();
   selMaterialType();
   selDimention();

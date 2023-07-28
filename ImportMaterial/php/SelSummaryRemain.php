@@ -4,7 +4,6 @@ $dbh = new DBHandler();
 if ($dbh->getInstance() === null) {
     die("No database connection");
 }
-$search = $_POST['search'];
 try {
     $sql = "SELECT 
     CASE
