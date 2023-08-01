@@ -47,6 +47,7 @@ $(function () {
   makeSummaryTable();
   makeRemainTable();
   makeSummaryRemainTable();
+  makeSummaryInputTable();
   selStaff();
   selMaterialType();
   selDimention();
@@ -76,6 +77,16 @@ function makeSummaryRemainTable() {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary_remain__table tbody"));
+};
+function makeSummaryInputTable() {
+  var fileName = "SelSummaryInput.php";
+  var sendData = {
+    start: $("#import_start_date").val(),
+    end: $("#import_end_date").val(),
+    search: $("#search_summary_input").val(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#summary_input__table tbody"));
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -479,6 +490,7 @@ $(document).on("click", "#save__button", function () {
     };
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
+  makeSummaryInputTable();
   $("#add__table tbody tr").remove();
   // $("#code_name").val("N11-NG-").removeClass("complete-input").addClass("no-input");
   $("#material_id").val(0).removeClass("complete-input").addClass("no-input");
@@ -506,12 +518,15 @@ $(document).on("click", "#add__table tbody tr td button", function (e) {
 });
 $(document).on("change", "#import_start_date", function (e) {
   makeSummaryTable();
+  makeSummaryInputTable();
 });
 $(document).on("change", "#import_end_date", function (e) {
   makeSummaryTable();
+  makeSummaryInputTable();
 });
 $(document).on("keyup", "#search_summary_input", function() {
   makeSummaryTable();
+  makeSummaryInputTable();
 });
 $(document).on("keyup", "#search_remain_input", function() {
   makeRemainTable();
@@ -543,6 +558,7 @@ $(document).on("click", "#delete-dialog-delete__button", function () {
   myAjax.myAjax(fileName, sendData);
   deleteDialog.close();
   makeSummaryTable();
+  makeSummaryInputTable();
 });
 
 $(document).on("change", "#summary__table tbody tr", function () {
@@ -556,4 +572,5 @@ $(document).on("change", "#summary__table tbody tr", function () {
   console.log(sendData);
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
+  makeSummaryInputTable();
 });
