@@ -439,25 +439,36 @@ $(document).on("change", "#origin", function() {
 });
 function changeOrigin() {
   switch ($("#origin").val()) {
-    case "N11":
+    case "N11NG":
       $("#code_name").val("N11-NG-");
     break;
-    case "N14":
+    case "N11DI":
+      $("#code_name").val("N11-DI-");
+    break;
+    case "N14NG":
       $("#code_name").val("N14-NG-")
+    break;
+    case "N14HE":
+      $("#code_name").val("N14-HE-")
     break;
     case "V44":
       $("#code_name").val("V44-NG-")
     break;
+    case "V33":
+      $("#code_name").val("V33-NG-")
+    break;
   }
+  $("#code_name").removeClass("complete-input").addClass("no-input").focus();
 };
 function resetValue() {
+  $("#note").val("");
   $("#weight").val("").removeClass("complete-input").addClass("no-input");
   $("#code_name").removeClass("complete-input").addClass("no-input").focus();
   checkAdd();
 };
 function inputCheck(val) {
   // sampleInput = "N11-NG-12345";
-  let regexp = /^[A-Z]{1}[0-9]{2}-NG-[0-9]+$/;
+  let regexp = /^[A-Z]{1}[0-9]{2}-[N|D|H][G|I|E]-[0-9]+$/;
   return regexp.test(val);
 };
 function getTableData(tableTrObj) {

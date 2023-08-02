@@ -30,8 +30,8 @@ body {
   flex-direction: row;
 }
 #import_table tbody {
-  height: 500px;
-  width: 235px;
+  height: 550px;
+  width: 245px;
   overflow: auto;
 }
 #import_table th:nth-child(1),
@@ -44,7 +44,7 @@ body {
 }
 #import_table th:nth-child(3),
 #import_table td:nth-child(3) {
-  width: 110px;
+  width: 120px;
 }
 #import_table th:nth-child(4),
 #import_table td:nth-child(4) {
@@ -178,4 +178,7 @@ button {
 }
 .update-sel {
   background-color: #e4f500;
+}
+#code_input {
+  width: 55px;
 }
