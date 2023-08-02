@@ -49,6 +49,7 @@
           <div>
             <select id="product_dim" class="save-data complete-input">
               <option value="1">9 inch</option>
+              <option value="3">12 inch</option>
               <option value="2">14 inch</option>
             </select>
           </div>
@@ -87,6 +88,18 @@
             <input type="text" id="aluminium_orther" class="save-data need-clear complete-input no-need number-input">
           </div>
         </div>
+        <div class="input-block__outer staff_id_outer">
+          <div class="input__title staff_id_title">
+            Người nhập
+          </div>
+          <div>
+            <select id="staff_id" class="save-data need-clear no-input">
+              <option value="0">-----</option>
+              <option value="1">MVC</option>
+              <option value="2">VCT</option>
+            </select>
+          </div>
+        </div>
         <div class="input-block__outer file_outer">
           <div class="input__title file_title">
             File
@@ -101,7 +114,6 @@
         </div>
       </div>
       </div>
-      <!-- <br> -->
       <div class="material__wrapper">
         <div class="left__material">
         <div>
@@ -129,7 +141,6 @@
             </thead>
           </table>
         </div>
-        <!-- <br> -->
         <div>
           <table id="material_table">
             <thead>
@@ -146,7 +157,50 @@
           </table>
         </div>
       </div>
-      <div class="right__material">
+      <div class="right__material right_material__wrapper">
+        <table id="summary_material_table">
+          <thead>
+            <tr>
+              <th colspan="2">Tổng vật liệu</th>
+            </tr>
+            <tr>
+              <th>PL Đùn</th>
+              <th id="plextrusion">0</th>
+            </tr>
+            <tr>
+              <th>Discard</th>
+              <th id="pldiscard">0</th>
+            </tr>
+            <tr>
+              <th>PL Cắt</th>
+              <th id="plcut">0</th>
+            </tr>
+            <tr>
+              <th>PL Đúc</th>
+              <th id="plcast">0</th>
+            </tr>
+            <tr>
+              <th>GC NG</th>
+              <th id="plgcng">0</th>
+            </tr>
+            <tr>
+              <th>Al 99.7%</th>
+              <th id="plingot">0</th>
+            </tr>
+            <tr>
+              <th>Al Alloy</th>
+              <th id="plalloy">0</th>
+            </tr>
+            <tr>
+              <th>Khác</th>
+              <th id="plorther">0</th>
+            </tr>
+            <tr>
+              <th>Tổng</th>
+              <th id="ttmate">0</th>
+            </tr>
+          </thead>
+        </table>
         <table id="melting_table">
           <thead>
             <tr>
@@ -195,25 +249,25 @@
               <tr>
                 <th>id</th>
                 <th rowspan="2">Tiêu chuẩn</th>
+                <th>Al-Cu(%Cu)</th>
                 <th>Al-Si(%Si)</th>
                 <th>Mg(%Mg)</th>
+                <th>Al-Zn(%Zn)</th>
+                <th>Al-Fe(%Fe)</th>
                 <th>Al-Mn(%Mn)</th>
                 <th>Al-Cr(%Cr)</th>
-                <th>Al-Cu(%Cu)</th>
-                <th>Al-Fe(%Fe)</th>
-                <th>Al-Zn(%Zn)</th>
                 <th>Al-Ti-B</th>
                 <th rowspan="2">Flux(Kg)</th>
               </tr>
               <tr>
                 <th>id</th>
+                <th id="cu_req">Al-Cu</th>
                 <th id="si_req">Al-Si</th>
                 <th id="mg_req">Mg</th>
+                <th id="zn_req">Al-Zn</th>
+                <th id="fe_req">Al-Fe</th>
                 <th id="mn_req">Al-Mn</th>
                 <th id="cr_req">Al-Cr</th>
-                <th id="cu_req">Al-Cu</th>
-                <th id="fe_req">Al-Fe</th>
-                <th id="zn_req">Al-Zn</th>
                 <th id="ti_b_req">Al-Ti-B</th>
               </tr>
             </thead>
@@ -221,62 +275,62 @@
               <tr>
                 <td>id</td>
                 <td>Đo lần 1(%)</td>
+                <td><input type="text" id="me_cu_1" class="no-input save-data need-clear number-input"></td>
                 <td><input type="text" id="me_si_1" class="no-input save-data need-clear number-input"></td>
                 <td><input type="text" id="me_mg_1" class="no-input save-data need-clear number-input"></td>
+                <td><input type="text" id="me_zn_1" class="no-input save-data need-clear number-input"></td>
+                <td><input type="text" id="me_fe_1" class="no-input save-data need-clear number-input"></td>
                 <td><input type="text" id="me_mn_1" class="no-input save-data need-clear number-input"></td>
                 <td><input type="text" id="me_cr_1" class="no-input save-data need-clear number-input"></td>
-                <td><input type="text" id="me_cu_1" class="no-input save-data need-clear number-input"></td>
-                <td><input type="text" id="me_fe_1" class="no-input save-data need-clear number-input"></td>
-                <td><input type="text" id="me_zn_1" class="no-input save-data need-clear number-input"></td>
                 <td><input type="text" id="me_ti_b_1" class="no-input save-data need-clear number-input"></td>
                 <td rowspan="2"><input type="text" id="flux_1" class="no-input save-data need-clear number-input"></td>
               </tr>
               <tr>
                 <td>id</td>
                 <td>KLHK1(Kg)</td>
+                <td><input type="text" id="input_cu_1" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_si_1" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_mg_1" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="input_zn_1" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="input_fe_1" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_mn_1" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_cr_1" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_cu_1" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_fe_1" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_zn_1" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_ti_b_1" class="save-data need-clear no-need number-input"></td>
               </tr>
               <tr>
                 <td>id</td>
                 <td>Đo lần 2(%)</td>
+                <td><input type="text" id="me_cu_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_si_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_mg_2" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="me_zn_2" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="me_fe_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_mn_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_cr_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_cu_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_fe_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_zn_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_ti_b_2" class="save-data need-clear no-need number-input"></td>
                 <td rowspan="2"><input type="text" id="flux_2" class="save-data need-clear no-need number-input"></td>
               </tr>
               <tr>
                 <td>id</td>
                 <td>KLHK2(Kg)</td>
+                <td><input type="text" id="input_cu_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_si_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_mg_2" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="input_zn_2" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="input_fe_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_mn_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_cr_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_cu_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_fe_2" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="input_zn_2" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="input_ti_b_2" class="save-data need-clear no-need number-input"></td>
               </tr>
               <td>id</td>
                 <td>Đo lần 3(%)</td>
+                <td><input type="text" id="me_cu_3" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_si_3" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_mg_3" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="me_zn_3" class="save-data need-clear no-need number-input"></td>
+                <td><input type="text" id="me_fe_3" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_mn_3" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_cr_3" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_cu_3" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_fe_3" class="save-data need-clear no-need number-input"></td>
-                <td><input type="text" id="me_zn_3" class="save-data need-clear no-need number-input"></td>
                 <td><input type="text" id="me_ti_b_3" class="save-data need-clear no-need number-input"></td>
                 <td></td>
             </tbody>
@@ -306,23 +360,16 @@
             <tr>
               <th>Áp lực khí</th>
               <th><input type="text" id="air_pressure" class="no-input save-data need-clear number-input"></th>
-            <!-- </tr>
-            <tr> -->
               <th>Nhiệt độ nước</th>
               <th><input type="text" id="water_temp" class="no-input save-data need-clear number-input"></th>
             </tr>
             <tr>
               <th>Áp lực dầu</th>
               <th><input type="text" id="oil_preasure" class="no-input save-data need-clear number-input"></th>
-            <!-- </tr>
-            <tr> -->
               <th>Tốc độ đúc</th>
               <th><input type="text" id="casting_speed" class="no-input save-data need-clear number-input"></th>
             </tr>
           </thead>
-          <!-- <tbody>
-
-          </tbody> -->
         </table>
       </div>
       <div class="right__material">
@@ -378,11 +425,12 @@
             <th>id</th>
             <th>Mã đúc</th>
             <th>Ngày SX</th>
-            <th>Mã vật liệu</th>
+            <th>Vật liệu</th>
             <th>Bắt đầu nung</th>
             <th>Kết thúc nung</th>
             <th>Gas bắt đầu</th>
             <th>Gas kết thúc</th>
+            <th>Gas đã dùng</th>
             <th>Bắt đầu đúc</th>
             <th>Kết thúc đúc</th>
           </tr>
@@ -390,22 +438,6 @@
         <tbody></tbody>
       </table>
     </div>
-      <!-- <div>
-        <table id="summary_table">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Casting Start</th>
-              <th>Casting End</th>
-              <th>Al Temp Gate</th>
-              <th>Al Temp Cast</th>
-              <th>Air pressure</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div> -->
-
     <script src="../Lib/jquery.min.js"></script>
     <script src="./scr/index.js"></script>
   </body>

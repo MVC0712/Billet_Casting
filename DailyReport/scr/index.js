@@ -328,10 +328,10 @@ $("#add_material").on("click", function () {
       if (from_import && from_import_data != "") {
         $("<tr>")
         .append("<td></td>")
-        .append($("<td>").append(MaterialNameOption(from_import_data.origin)))
-        .append($("<td>").append(MaterialNameTypeOption(from_import_data.material_type_cast)))
-        .append($("<td>").append($("<input>").val(from_import_data.weight)))
-        .append($("<td>").append($("<input>").val(from_import_data.code_name)))
+        .append($("<td>").append(MaterialNameOption2(from_import_data.origin)))
+        .append($("<td>").append(MaterialNameTypeOption2(from_import_data.material_type_cast)))
+        .append($("<td>").append($("<input>").val(from_import_data.weight).prop('disabled', 'disabled')))
+        .append($("<td>").append($("<input>").val(from_import_data.code_name).prop('disabled', 'disabled')))
         .append($("<td>").append(from_import_data.id))
         .appendTo("#material_table tbody");
         $(this).prop("disabled", true);
@@ -419,20 +419,34 @@ function makeAddMaterial() {
   ajaxReturnData.forEach(function (trVal) {
     var newTr = $("<tr>");
     Object.keys(trVal).forEach(function (tdVal) {
-      if (tdVal == "material") {
-        $("<td>")
-            .append(MaterialNameOption(trVal[tdVal]))
-            .appendTo(newTr);
-      } else if (tdVal == "material_type") {
-        $("<td>")
-            .append(MaterialNameTypeOpt(trVal[tdVal], trVal.material))
-            .appendTo(newTr);
-      } else if (((trVal.import_material_id != 0) && (trVal.import_material_id != null)) && (tdVal == "note")) {
-        $("<td>").html(trVal[tdVal]).appendTo(newTr);
-      } else if ((tdVal == "weight") || (tdVal == "note")) {
-        $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
+      if (((trVal.import_material_id != 0) && (trVal.import_material_id != null))) {
+        if (tdVal == "material") {
+          $("<td>")
+              .append(MaterialNameOption2(trVal[tdVal]))
+              .appendTo(newTr);
+        } else if (tdVal == "material_type") {
+          $("<td>")
+              .append(MaterialNameTypeOpt2(trVal[tdVal], trVal.material))
+              .appendTo(newTr);
+        } else if ((tdVal == "weight") || (tdVal == "note")) {
+          $("<td>").append($("<input>").val(trVal[tdVal]).prop('disabled', 'disabled')).appendTo(newTr);
+        } else {
+          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+        }
       } else {
-        $("<td>").html(trVal[tdVal]).appendTo(newTr);
+        if (tdVal == "material") {
+          $("<td>")
+              .append(MaterialNameOption(trVal[tdVal]))
+              .appendTo(newTr);
+        } else if (tdVal == "material_type") {
+          $("<td>")
+              .append(MaterialNameTypeOpt(trVal[tdVal], trVal.material))
+              .appendTo(newTr);
+        } else if ((tdVal == "weight") || (tdVal == "note")) {
+          $("<td>").append($("<input>").val(trVal[tdVal])).appendTo(newTr);
+        } else {
+          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+        }
       }
     });
     $(newTr).appendTo("#material_table tbody");
@@ -440,6 +454,29 @@ function makeAddMaterial() {
 };
 function MaterialNameTypeOpt(seletedId, material) {
   let targetDom = $("<select>");
+  fileName = "SelMaterialNameType.php";
+  sendData = {
+    material_name_id: material,
+  };
+  myAjax.myAjax(fileName, sendData);
+  ajaxReturnData.forEach(function(element) {
+      if (element["id"] == seletedId) {
+          $("<option>")
+              .html(element["material_name_type"])
+              .val(element["id"])
+              .prop("selected", true)
+              .appendTo(targetDom);
+      } else {
+          $("<option>")
+              .html(element["material_name_type"])
+              .val(element["id"])
+              .appendTo(targetDom);
+      }
+  });
+  return targetDom;
+}
+function MaterialNameTypeOpt2(seletedId, material) {
+  let targetDom = $("<select>").prop('disabled', 'disabled');
   fileName = "SelMaterialNameType.php";
   sendData = {
     material_name_id: material,
@@ -487,6 +524,59 @@ function MaterialNameOption(seletedId) {
 }
 function MaterialNameTypeOption(seletedId) {
   let targetDom = $("<select>");
+  if (from_import && from_import_data !="") {
+    material_name_id = from_import_data.origin
+  } else {
+    material_name_id = $("#material").val();
+  }
+  fileName = "SelMaterialNameType.php";
+  sendData = {
+    material_name_id
+  };
+  myAjax.myAjax(fileName, sendData);
+  ajaxReturnData.forEach(function(element) {
+      if (element["id"] == seletedId) {
+          $("<option>")
+              .html(element["material_name_type"])
+              .val(element["id"])
+              .prop("selected", true)
+              .appendTo(targetDom);
+      } else {
+          $("<option>")
+              .html(element["material_name_type"])
+              .val(element["id"])
+              .appendTo(targetDom);
+      }
+  });
+  return targetDom;
+};
+
+function MaterialNameOption2(seletedId) {
+  let targetDom = $("<select>").prop('disabled', 'disabled');
+
+  fileName = "SelMaterialName.php";
+  sendData = {
+      ng_code: "%",
+  };
+  myAjax.myAjax(fileName, sendData);
+  ajaxReturnData.forEach(function(element) {
+      if (element["id"] == seletedId) {
+          $("<option>")
+              .html(element["material_name"])
+              .val(element["id"])
+              .prop("selected", true)
+              .appendTo(targetDom);
+      } else {
+          $("<option>")
+              .html(element["material_name"])
+              .val(element["id"])
+              .appendTo(targetDom);
+      }
+  });
+  return targetDom;
+}
+function MaterialNameTypeOption2(seletedId) {
+  let targetDom = $("<select>").prop('disabled', 'disabled');
   if (from_import && from_import_data !="") {
     material_name_id = from_import_data.origin
   } else {
@@ -802,6 +892,6 @@ $(document).on("keyup", "#material_note", function() {
 });
 function inputCheck(val) {
   // sampleInput = "N11-NG-12345";
-  let regexp = /^[A-Z]{1}[0-9]{2}-NG-[0-9]+$/;
+  let regexp = /^[A-Z]{1}[0-9]{2}-[N|D|H][G|I|E]-[0-9]+$/;
   return regexp.test(val);
 };

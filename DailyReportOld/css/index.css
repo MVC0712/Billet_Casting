@@ -176,7 +176,7 @@ input {
 }
 #material_table tbody {
   height: 140px;
-  width: 430px;
+  width: 455px;
   overflow: auto;
 }
 #add_material_table {
@@ -207,6 +207,9 @@ input {
 #material_table tbody tr td:nth-child(5),
 #add_material_table thead tr th:nth-child(4) {
   width: 100px;
+}
+#material_table tbody tr td:nth-child(6) {
+  width: 30px;
 }
 #material_table tbody tr td:nth-child(2) input {
   width: 90px;
@@ -419,4 +422,37 @@ input {
 #summary_table thead tr th:nth-child(11),
 #summary_table tbody tr td:nth-child(11) {
   width: 75px;
+}
+
+.right_material__wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#summary_material_table {
+  margin-right: 10px;
+}
+#summary_material_table tbody {
+  height: 140px;
+  width: 430px;
+  overflow: auto;
+}
+
+#summary_material_table thead tr th:nth-child(1),
+#summary_material_table tbody tr td:nth-child(1){
+  width: 60px;
+}
+#summary_material_table thead tr th:nth-child(2),
+#summary_material_table tbody tr td:nth-child(2) {
+  width: 50px;
+}
+#staff_id {
+  width: 200px;
+}
+.staff_id_title {
+  width: 150px;
+}
+.staff_id_outer {
+  width: 300px;
+  margin-right: 10px;
 }

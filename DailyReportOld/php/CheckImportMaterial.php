@@ -10,10 +10,8 @@ try {
     t_import_material.id,
     weight,
     CASE 
-        WHEN LEFT(code_name, 6) = 'N11-NG' THEN '1'
-        WHEN LEFT(code_name, 6) = 'N11-DI' THEN '2'
-        WHEN LEFT(code_name, 6) = 'N14-HE' THEN '3'
-        WHEN LEFT(code_name, 6) = 'N14-NG' THEN '4'
+        WHEN LEFT(code_name, 3) = 'N11' THEN '1'
+        WHEN LEFT(code_name, 3) = 'N14' THEN '4'
         ELSE '5'
     END AS origin,
     CASE 

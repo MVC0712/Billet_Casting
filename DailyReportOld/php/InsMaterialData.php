@@ -13,9 +13,9 @@ try {
 
     if(count($data_json) > 0){
         foreach($data_json as $val){
-          $sql_paramater[] = "('{$targetId}', '{$val[1]}', '{$val[2]}', '{$val[3]}', '{$val[4]}')";
+          $sql_paramater[] = "('{$targetId}', '{$val[1]}', '{$val[2]}', '{$val[3]}', '{$val[4]}', '{$val[5]}')";
         }
-        $sql = "INSERT INTO t_add_material (t_casting, material, material_type, weight, note) VALUES ".join(",", $sql_paramater);
+        $sql = "INSERT INTO t_add_material (t_casting, material, material_type, weight, note, import_material_id) VALUES ".join(",", $sql_paramater);
         $stmt = $dbh->getInstance()->prepare($sql);
         $stmt->execute();
       }

@@ -427,7 +427,7 @@ $(document).on("keyup", "#code_name", function() {
   checkAdd();
 });
 $(document).on("keyup", "#weight", function() {
-  if (50 < $(this).val() && $(this).val()<3000 && $.isNumeric($(this).val())) {
+  if (20 < $(this).val() && $(this).val()<3000 && $.isNumeric($(this).val())) {
     $(this).removeClass("no-input").addClass("complete-input");
   } else {
     $(this).removeClass("complete-input").addClass("no-input");
