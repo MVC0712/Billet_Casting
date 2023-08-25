@@ -126,6 +126,81 @@ $(document).on("click", "#preview__button_2", function () {
 $(document).on("click", "#preview__button_3", function () {
   getFileUpload(3);
 });
+
+$(document).on("keyup", "#total_weight", function() {
+  if($.isNumeric($(this).val())){
+    $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+    $(this).removeClass("complete-input").addClass("no-input");
+  }
+});
+$(document).on("change", "#material", function() {
+  if ($(this).val() != 0) {
+      $(this).removeClass("no-input").addClass("complete-input");
+    changeElement();
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+      $(".need-clear").val("");
+  }
+});
+function changeElement() {
+    var fileName = "SelMaterialElement.php";
+    var sendData = {
+      material: $("#material").val(),
+    };
+    myAjax.myAjax(fileName, sendData);
+    putEl(ajaxReturnData);
+    $(".clear").removeClass("no-input").addClass("complete-input");
+}
+function putEl(data) {
+  data.forEach(function(trVal) {
+    Object.keys(trVal).forEach(function(tdVal, index) {
+      $("#"+tdVal).val(trVal[tdVal]);
+    });
+  });
+}
+function getNum(a) {
+  if(a!="" && a!=0 && $.isNumeric(a)) {
+    return a;
+  } else return 0;
+}
+function calEl(name, per) {
+  if ($("#"+name+"_ac").val() > $("#"+name+"_max").val()) {
+    $("#"+name+"_add").css("background-color","red");
+    $("#"+name+"_max").css("color","red");
+  } else {
+    $("#"+name+"_add").val(Math.round(($("#total_weight").val())* 10*(getNum($("#"+name+"_ex").val()) - getNum($("#"+name+"_ac").val()))/per)/10);
+    $("#"+name+"_add").removeAttr("style");
+    $("#"+name+"_max").removeAttr("style");
+    $("#"+name+"_add").css("font-weight","900");
+    // $("#"+name+"_add").css("color","red");
+  }
+
+  if ($("#"+name+"_ac").val() < $("#"+name+"_min").val()) {
+    $("#"+name+"_min").css("color","red");
+  } else $("#"+name+"_min").removeAttr("style");
+
+  if ($("#"+name+"_ac").val() > $("#"+name+"_ex").val()) {
+    $("#"+name+"_ex").css("color","red");
+  } else $("#"+name+"_ex").removeAttr("style");
+
+  if (getNum($("#"+name+"_ac").val()) == 0) {
+    $("#"+name+"_add").val(0);
+  }
+}
+$(document).on("keyup change", ".caculating", function() {
+  if($.isNumeric($(this).val())){
+    $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+    $(this).removeClass("complete-input").addClass("no-input");
+    return;
+  }
+  calEl("si", 25);
+  calEl("mg", 100);
+  calEl("cu", 32);
+  calEl("mn", 10);
+  calEl("cr", 5);
+});
 function getFileUpload(fileN) {
   document.getElementById("file_area").innerHTML = ``;
   var file_data = $("#file_upload_"+fileN).prop('files')[0];

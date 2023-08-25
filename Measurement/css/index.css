@@ -29,6 +29,9 @@ body {
 }
 input {
   text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 46px;
 }
 #file_upload_1,
 #file_upload_2,
@@ -62,6 +65,7 @@ input {
 }
 .input__title {
   width: 55px;
+  justify-content: center;
 }
 .input_title input {
   height: 20px;
@@ -75,7 +79,12 @@ input {
   height: 22px;
 }
 #file_area {
-  width: 100%;
+  width: 70%;
+  height: 415px;
+  transform-origin: bottom;
+}
+#caculating_area {
+  width: 30%;
   height: 415px;
   transform-origin: bottom;
 }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Measurement File</title>
+    <link rel="stylesheet" href="../Lib/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+
+  <body>
+    <header>Measurement File Page</header>
+
+<div class="main__wrapper">
+<div class="top__wrapper">
+<div class="left__wrapper">
+  <table id="file_list__table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Ngày đo</th>
+        <th>Lần 1</th>
+        <th>Lần 2</th>
+        <th>Lần 3</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="right__wrapper">
+  <div class="input-block__outer">
+    <div class="input__title">Ngày đo</div>
+    <input class="save-data need-clear caculating time-input" type="date" id="mea_date">
+  </div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 1
+  </div>
+  <div>
+    <input type="file" id="file_upload_1" class="need-clear no-input caculating">
+    <label id="file_url_1" for="file_upload_1">No file</label>
+  </div>
+  <button id="preview__button_1" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 2
+  </div>
+  <div>
+    <input type="file" id="file_upload_2" class="need-clear no-input caculating">
+    <label id="file_url_2" for="file_upload_2">No file</label>
+  </div>
+  <button id="preview__button_2" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div class="input-block__outer file_outer">
+  <div class="input__title file_title">
+    Lần đo 3
+  </div>
+  <div>
+    <input type="file" id="file_upload_3" class="need-clear no-input caculating">
+    <label id="file_url_3" for="file_upload_3">No file</label>
+  </div>
+  <button id="preview__button_3" disabled class="input__title aluminium_ingot_title">
+    Xem
+  </button>
+</div>
+<div style="flex-direction: row; display: flex;">
+  <button id="save__button" disabled>Save</button>
+</div>
+</div>
+</div>
+<div class="bottom__wrapper">
+  <div id="file_area"></div>
+  <div id="caculating_area">
+    <div class="input-block__outer">
+      <div class="input__title">
+        Vật liệu
+      </div>
+        <select id="material" class="no-input caculating">
+          <option value="0">--</option>
+          <option value="1">6061</option>
+          <option value="2">6063</option>
+          <option value="3">6N01A</option>
+          <option value="4">6N01</option>
+        </select>
+        <input id="total_weight" value="9300" class="need-clear caculating"/>
+    </div>
+    
+    <div class="input-block__outer">
+      <div class="input__title">
+        Cu
+      </div>
+        <input id="cu_ac" class="no-input need-value caculating"/>
+        <input id="cu_ex" class="need-clear no-input clear caculating"/>
+        <input id="cu_min" disabled class="need-clear caculating"/>
+        <input id="cu_max" disabled class="need-clear caculating"/>
+        <input id="cu_add" disabled class="need-clear caculating"/>
+    </div>
+
+    <div class="input-block__outer">
+      <div class="input__title">
+        Si
+      </div>
+        <input id="si_ac" class="no-input need-value caculating"/>
+        <input id="si_ex" class="need-clear no-input clear caculating"/>
+        <input id="si_min" disabled class="need-clear caculating"/>
+        <input id="si_max" disabled class="need-clear caculating"/>
+        <input id="si_add" disabled class="need-clear caculating"/>
+    </div>
+
+    <div class="input-block__outer">
+      <div class="input__title">
+        Mg
+      </div>
+        <input id="mg_ac" class="no-input need-value caculating"/>
+        <input id="mg_ex" class="need-clear no-input clear caculating"/>
+        <input id="mg_min" disabled class="need-clear caculating"/>
+        <input id="mg_max" disabled class="need-clear caculating"/>
+        <input id="mg_add" disabled class="need-clear caculating"/>
+    </div>
+
+    <div class="input-block__outer">
+      <div class="input__title">
+        Mn
+      </div>
+        <input id="mn_ac" class="no-input need-value caculating"/>
+        <input id="mn_ex" class="need-clear no-input clear caculating"/>
+        <input id="mn_min" disabled class="need-clear caculating"/>
+        <input id="mn_max" disabled class="need-clear caculating"/>
+        <input id="mn_add" disabled class="need-clear caculating"/>
+    </div>
+
+    <div class="input-block__outer">
+      <div class="input__title">
+        Cr
+      </div>
+        <input id="cr_ac" class="no-input need-value caculating"/>
+        <input id="cr_ex" class="need-clear no-input clear caculating"/>
+        <input id="cr_min" disabled class="need-clear caculating"/>
+        <input id="cr_max" disabled class="need-clear caculating"/>
+        <input id="cr_add" disabled class="need-clear caculating"/>
+    </div>
+  </div>
+</div>
+</div>
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
+  </body>
+</html>

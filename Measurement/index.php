@@ -1,3 +1,3 @@
 <?php
-  readfile("Measurement.html");
+  readfile("MeasurementV2.html");
 ?>

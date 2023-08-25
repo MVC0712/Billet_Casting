@@ -1,4 +1,5 @@
 <?php
+require_once("config.php");
 class DBHandler {
     private $db;
     function __construct() {
@@ -8,10 +9,8 @@ class DBHandler {
         return $this->db;
     }
     private function connect_database() {
-        define('USER', 'webuser');
-        define('PASSWORD', '');
         try {
-            $connection_string = 'mysql:host=localhost;dbname=billet_casting;charset=utf8';
+            $connection_string = DRIVER.':host='.HOST.';dbname='.DBNAME.';charset=utf8';
             $connection_array = array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
