@@ -206,47 +206,47 @@ function getFileUpload(fileN) {
   var file_data = $("#file_upload_"+fileN).prop('files')[0];
   if (file_data) {
     var fileType = file_data.name.substr(file_data.name.lastIndexOf(".") + 1, 3);
-  var reader = new FileReader(file_data);
-  reader.readAsDataURL(file_data);
-  reader.onload = function () {
-    switch (fileType) {
-      case "pdf":
-      case "PDF":
-        $("<object>")
-          .attr("data", reader.result + "#toolbar=0&navpanes=0")
-          .attr("type", "application/pdf")
-          .appendTo("#file_area");
-        break;
-      case "jpg":
-      case "JPG":
-        $("<object>")
-          .attr("data", reader.result)
-          .attr("type", "image/jpeg")
-          .appendTo("#file_area");
-        break;
-    }
+    var reader = new FileReader(file_data);
+    reader.readAsDataURL(file_data);
+    reader.onload = function () {
+      switch (fileType) {
+        case "pdf":
+        case "PDF":
+          $("<object>")
+            .attr("data", reader.result + "#toolbar=0&navpanes=0")
+            .attr("type", "application/pdf")
+            .appendTo("#file_area");
+          break;
+        case "jpg":
+        case "JPG":
+          $("<object>")
+            .attr("data", reader.result)
+            .attr("type", "image/jpeg")
+            .appendTo("#file_area");
+          break;
+      }
   };
 } else {
-var filename = $("#file_url_"+fileN).html();
-var fileType = filename.substr(filename.lastIndexOf(".") + 1, 3);
-switch (fileType) {
-  case "pdf":
-  case "PDF":
-    $("<object>")
-      .attr(
-        "data",
-        "../FileUpload/MeasurenFIle/" + filename + "#toolbar=0&navpanes=0")
-      .attr("type", "application/pdf")
-      .appendTo("#file_area");
-    break;
-  case "jpg":
-  case "JPG":
-    $("<object>")
-      .attr("data", "../FileUpload/MeasurenFIle/" + filename)
-      .attr("type", "image/jpeg")
-      .appendTo("#file_area");
-    break;
-};
+  var filename = $("#file_url_"+fileN).html();
+  var fileType = filename.substr(filename.lastIndexOf(".") + 1, 3);
+  switch (fileType) {
+    case "pdf":
+    case "PDF":
+      $("<object>")
+        .attr(
+          "data",
+          "../FileUpload/MeasurenFIle/" + filename + "#toolbar=0&navpanes=0")
+        .attr("type", "application/pdf")
+        .appendTo("#file_area");
+      break;
+    case "jpg":
+    case "JPG":
+      $("<object>")
+        .attr("data", "../FileUpload/MeasurenFIle/" + filename)
+        .attr("type", "image/jpeg")
+        .appendTo("#file_area");
+      break;
+  };
 }
 };
 function ajaxFileUpload(fileN) {
