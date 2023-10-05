@@ -461,7 +461,27 @@ function getTableData(tableTrObj) {
 
 $(document).on("click", "#error_table tbody tr td button", function (e) {
   console.log($(this).parent().parent());
-  if ($(this).parent().parent().hasClass("selected-record")) {
-    $(this).parent().parent().remove();
+  // if ($(this).parent().parent().hasClass("selected-record")) {
+  //   $(this).parent().parent().remove();
+  // }
+
+  switch ($("#add_error").text()) {
+    case "Save":
+      if ($(this).parent().parent().hasClass("selected-record")) {
+        $(this).parent().parent().remove();
+      }
+    break;
+    case "Add":
+      if ($(this).parent().parent().hasClass("selected-record")) {
+        let sendData = new Object();
+        fileName = "DeleteError.php";
+        sendData = {
+          error_id: $("#selected__error td:nth-child(1)").text(),
+        };
+        myAjax.myAjax(fileName, sendData);
+        $(this).parent().parent().remove();
+      }
+    break;
   }
+
 });

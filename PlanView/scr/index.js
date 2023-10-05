@@ -2,6 +2,7 @@ let ajaxReturnData;
 let ajaxReturnData1;
 let ajaxReturnData2;
 let ctx = document.getElementById('chart_area').getContext('2d');
+let chart = null;
 const myAjax = {
   myAjax: function (fileName, sendData) {
     $.ajax({
@@ -61,7 +62,7 @@ function makeSummaryTable() {
     myAjax.myAjax(fileName, sendObj);
     fillTableBody(ajaxReturnData, $("#summary__table tbody"));
     // Total();
-    drawChart();
+    // drawChart();
 }
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -97,14 +98,20 @@ $(document).on("click", "#summary__table tbody td", function(e) {
 $(document).on("change", "#std", function() {
     renderHead($('div#table'), new Date($("#std").val()), new Date($("#end").val()));
     makeSummaryTable();
+    deleteChart(chart);
+    drawChart();
 });
 $(document).on("change", "#end", function() {
     renderHead($('div#table'), new Date($("#std").val()), new Date($("#end").val()));
     makeSummaryTable();
+    deleteChart(chart);
+    drawChart();
 });
 $(function() {
     renderHead($('div#table'), new Date($("#std").val()), new Date($("#end").val()));
     makeSummaryTable();
+    deleteChart(chart);
+    drawChart();
 });
 var weekday = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -172,7 +179,7 @@ function Total() {
   });
 };
 
-function drawChart() {
+function drawChartData() {
   var fileName = "SelForChart.php";
   var sendObj = new Object();
   sendObj["start_s"] = $('#std').val();
@@ -220,7 +227,7 @@ function drawChart() {
   for (var d = new Date($("#std").val()); d <= new Date($("#end").val()); d.setDate(d.getDate() + 1)) {
       daysOfYear.push(getDate(new Date(d)));
   }
-  var data = {
+  return data = {
     labels: daysOfYear,
     datasets: [{
         label: "Actual (ton)",
@@ -310,7 +317,10 @@ function drawChart() {
       },
     ]
   };
-  var options = {
+};
+
+function drawChartOption() {
+  return options = {
     spanGaps: false,
     pointHoverBorderWidth: 2,
     pointRadius: 4,
@@ -336,8 +346,19 @@ function drawChart() {
       },
     }
   };
-  new Chart(ctx, {
-    data: data,
-    options: options
-  });
 };
+
+function deleteChart(chart) {
+  chart.destroy();
+};
+
+function drawChart() {
+  data = drawChartData();
+  option = drawChartOption();
+  chart = new Chart(ctx, {
+    data: data,
+    option: option
+  })
+};
+
+drawChart()

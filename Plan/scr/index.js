@@ -385,26 +385,34 @@ $(function(){
         text-align: center;
       }
       tr {
-        font-size: xx-small;
-      }
+        font-size: xx-small;      }
       table {
         padding: 0;
         margin: 0;
         border-spacing: 0;
+        border-right: 1px solid black;
       }
       tr, td {
-        border: 1px solid black;
         padding: 0;
         margin: 0;
         border-spacing: 0;
+        text-align: center;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
       }
 
 		</style>
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>In giấy báo cáo lò ${code}</title>
+  </head>
     <div class="page dp-f fd-r fh">
       <div style="height: 100%; width: 5%;"></div>
       <div class="dp-f fd-c fh" style="width: 95%;">
         <div style="height: 2%"></div>
-      <div class="dp-f fd-r abd fw" style="height: 3%">
+      <div class="dp-f fd-r bd fw" style="height: 3%">
         <div class="t-ct" style="font-size:x-large; width: 80%; height: 100%">
           SẢN XUẤT ĐÚC BILLET
         </div>
@@ -781,7 +789,7 @@ $(function(){
             </table>
           </div>
           <div class="abd dp-f fd-c" style="height: 100%; width: 30%">
-            <div class="bd" style="height: 60%; width: 100%">
+            <div class="abd" style="height: 60%; width: 100%; font-size: xx-small; border-bottom: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
               Ghi chú:
             </div>
             <div style="height: 40%; width: 100%">
@@ -810,8 +818,8 @@ $(function(){
           <table style="height: 100%; width: 100%;">
             <tr>
               <td rowspan="20" style="width: 20px;">ĐÁNH GIÁ CHẤT LƯỢNG VÀ CẮT</td>
-              <td rowspan=2 style="width: 100px;">Hạng mục kiểm tra</td>
-              <td rowspan=2 style="width: 80px;">Dụng cụ đo đạc</td>
+              <td rowspan=2 style="width: 50px;">Hạng mục kiểm tra</td>
+              <td rowspan=2 style="width: 50px;">Dụng cụ đo đạc</td>
               <td rowspan=2 style="width: 40px;">Vị trí</td>
               <td colspan="13">Vị trí trên bàn đúc</td>
             </tr>
