@@ -17,11 +17,18 @@ try {
         ELSE '5'
     END AS origin,
     CASE 
-        WHEN LEFT(code_name, 3) = 'N11' THEN CASE 
+        WHEN LEFT(code_name, 3) = 'N11' AND LEFT(code_name, 6) = 'N11-NG' THEN CASE 
                                                 WHEN material_type_id = 1 THEN '1'
                                                 WHEN material_type_id = 2 THEN '2'
                                                 WHEN material_type_id = 3 THEN '4'
                                                 WHEN material_type_id = 4 THEN '3'
+                                                ELSE '5'
+                                            END
+        WHEN LEFT(code_name, 3) = 'N11' AND LEFT(code_name, 6) = 'N11-DI' THEN CASE 
+                                                WHEN material_type_id = 1 THEN '5'
+                                                WHEN material_type_id = 2 THEN '6'
+                                                WHEN material_type_id = 3 THEN '8'
+                                                WHEN material_type_id = 4 THEN '7'
                                                 ELSE '5'
                                             END
         WHEN LEFT(code_name, 3) = 'N14' THEN CASE 

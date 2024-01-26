@@ -11,7 +11,7 @@ try {
     $sql = "SELECT 
     id, material_name_type
     FROM
-        billet_casting.m_material_name_type
+        m_material_name_type
     WHERE
         material_name_id = '$material_name_id';)";
     $stmt = $dbh->getInstance()->prepare($sql);

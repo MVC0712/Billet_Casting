@@ -427,7 +427,7 @@ $(document).on("keyup", "#code_name", function() {
   checkAdd();
 });
 $(document).on("keyup", "#weight", function() {
-  if (20 < $(this).val() && $(this).val()<3000 && $.isNumeric($(this).val())) {
+  if (2 < $(this).val() && $(this).val()<3000 && $.isNumeric($(this).val())) {
     $(this).removeClass("no-input").addClass("complete-input");
   } else {
     $(this).removeClass("complete-input").addClass("no-input");
@@ -456,6 +456,9 @@ function changeOrigin() {
     break;
     case "V33":
       $("#code_name").val("V33-NG-")
+    break;
+    case "N97":
+      $("#code_name").val("N97-NG-")
     break;
   }
   $("#code_name").removeClass("complete-input").addClass("no-input").focus();
