@@ -20,6 +20,7 @@
             <button id="mea_file">Measurement File</button>
             <button id="import">Import</button>
             <button id="export">Export</button>
+            <button id="summary">Summary</button>
       </div>
       <div>
         <table id="summary_table" style="height: 450px;">
@@ -101,6 +102,9 @@
       });
       $(document).on("click", "#export", function () {
         window.open("/Billet_Casting/Exportbillet");
+      });
+      $(document).on("click", "#summary", function () {
+        window.open("/Billet_Casting/CastingSummary");
       });
       </script>
       <script>

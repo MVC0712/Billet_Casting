@@ -46,7 +46,7 @@ $(function () {
   $("#export_end_date").val(formatDate(MonthLastDate));
   makeCastingTable();
   makeSummaryTable();
-  makeStockTable();
+  makeStockTable2();
 });
 function makeCastingTable() {
   var fileName = "SelImport.php";
@@ -66,12 +66,14 @@ function makeSummaryTable() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
 };
-function makeStockTable() {
+function makeStockTable2() {
   var fileName = "SelStock.php";
   var sendData = {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#stock_table tbody"));
+  calTotalQty();
+  calTotalWeight();
 };
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
@@ -242,7 +244,7 @@ $(document).on("click", "#save__button", function () {
   $("#add__table tbody tr").remove();
   $("#export_date").val("").removeClass("complete-input").addClass("no-input");
   checkSave();
-  makeStockTable();
+  makeStockTable2();
 });
 $(document).on("click", "#add__table tbody tr", function (e) {
   if (!$(this).hasClass("add-record")) {
@@ -288,3 +290,34 @@ $(document).on("click", "#delete-dialog-delete__button", function () {
   deleteDialog.close();
   makeSummaryTable();
 });
+
+function calTotalQty() {
+  var total = 0;
+  $("#stock_table tbody tr").each(function (index, element) {
+      total += parseInt($(this).find("td:nth-child(2)").html());
+  });
+  $("#qty").html(total);
+};
+function calTotalWeight() {
+  var total = 0;
+  $("#stock_table tbody tr").each(function (index, element) {
+      total += parseInt($(this).find("td:nth-child(3)").html());
+  });
+  $("#weight").html(total);
+};
+
+function makeStockTable2() {
+  var fileName = "SelStockSum.php";
+  var sendData = {
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#sum"));
+
+  var fileName = "SelStock.php";
+  var sendData = {
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#stock_table tbody"));
+  calTotalQty();
+  calTotalWeight();
+};

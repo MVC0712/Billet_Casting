@@ -51,7 +51,7 @@ body {
   width: 35px;
 }
 #add__table tbody {
-  height: 350px;
+  height: 340px;
   width: 245px;
   overflow: auto;
 }
@@ -164,17 +164,20 @@ button {
   height:20px;
 }
 #stock_table tbody {
-  height: 150px;
+  height: 155px;
   overflow: auto;
 }
 #stock_table th:nth-child(1),
 #stock_table td:nth-child(1) {
-  width: 120px;
+  width: 110px;
 }
 #stock_table th:nth-child(2),
 #stock_table td:nth-child(2) {
-  width: 40px;
-  text-align: center;
+  width: 50px;
+}
+#stock_table th:nth-child(3),
+#stock_table td:nth-child(3) {
+  width: 80px;
 }
 .update-sel {
   background-color: #e4f500;

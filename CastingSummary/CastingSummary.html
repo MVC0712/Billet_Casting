@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casting summary</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header>
+      Casting summary 
+      <div>
+        <input id="export_start_date" type="date"/>→
+        <input id="export_end_date" type="date"/>
+      </div>
+    </header>
+  <div class="summary__wrapper">
+    <div>
+      <table id="casting__table">
+        <thead>
+          <tr><th colspan="20">Casting</th></tr>
+          <tr>
+            <th>TT In ①</th>
+            <th>TT ingot</th>
+            <th>TT cast NG</th>
+            <th>TT Exd In</th>
+            <th>TT alloy</th>
+            <th>Billet long ②</th>
+            <th>Billet OK ③</th>
+            <th>③/②</th>
+            <th>③/①</th>
+            <th>Gas</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="homo__table">
+        <thead>
+          <tr><th colspan="20">Homogenzing</th></tr>
+          <tr>
+            <th>Gas</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="stock_table">
+        <thead>
+          <tr><th colspan="20">Stock material</th></tr>
+          <tr>
+            <th>Material Type</th>
+            <th>Qty</th>
+            <th>Weight (Kg)</th>
+            </tr>
+            <tr>
+            <th>Totals</th>
+            <th id="qty"></th>
+            <th id="weight"></th>
+          </tr>
+        </thead>
+        <thead id="sum">
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../Lib/jquery.min.js"></script>
+  <script src="./scr/index.js"></script>
+  </body>
+</html>
