@@ -66,15 +66,6 @@ function makeSummaryTable() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#summary__table tbody"));
 };
-function makeStockTable2() {
-  var fileName = "SelStock.php";
-  var sendData = {
-  };
-  myAjax.myAjax(fileName, sendData);
-  fillTableBody(ajaxReturnData, $("#stock_table tbody"));
-  calTotalQty();
-  calTotalWeight();
-};
 function fillTableBody(data, tbodyDom) {
   $(tbodyDom).empty();
   data.forEach(function(trVal) {
@@ -291,21 +282,6 @@ $(document).on("click", "#delete-dialog-delete__button", function () {
   makeSummaryTable();
 });
 
-function calTotalQty() {
-  var total = 0;
-  $("#stock_table tbody tr").each(function (index, element) {
-      total += parseInt($(this).find("td:nth-child(2)").html());
-  });
-  $("#qty").html(total);
-};
-function calTotalWeight() {
-  var total = 0;
-  $("#stock_table tbody tr").each(function (index, element) {
-      total += parseInt($(this).find("td:nth-child(3)").html());
-  });
-  $("#weight").html(total);
-};
-
 function makeStockTable2() {
   var fileName = "SelStockSum.php";
   var sendData = {
@@ -313,11 +289,15 @@ function makeStockTable2() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#sum"));
 
+  var fileName = "SelStockTotal.php";
+  var sendData = {
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#total"));
+
   var fileName = "SelStock.php";
   var sendData = {
   };
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#stock_table tbody"));
-  calTotalQty();
-  calTotalWeight();
 };

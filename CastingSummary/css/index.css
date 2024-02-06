@@ -148,6 +148,18 @@ body {
 #homo__table td:nth-child(3) {
   width: 80px;
 }
+#export__table tbody {
+  height:30px;
+  overflow: auto;
+}
+#export__table th:nth-child(1),
+#export__table td:nth-child(1),
+#export__table th:nth-child(2),
+#export__table td:nth-child(2),
+#export__table th:nth-child(3),
+#export__table td:nth-child(3) {
+  width: 80px;
+}
 #stock_table tbody {
   height: 155px;
   overflow: auto;
