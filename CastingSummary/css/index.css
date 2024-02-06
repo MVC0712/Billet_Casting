@@ -176,9 +176,15 @@ body {
 #stock_table td:nth-child(3) {
   width: 80px;
 }
-.update-sel {
-  background-color: #e4f500;
+#die__table tbody {
+  height: 90px;
+  overflow: auto;
 }
-#code_input {
-  width: 55px;
+#die__table th:nth-child(1),
+#die__table td:nth-child(1),
+#die__table th:nth-child(2),
+#die__table td:nth-child(2),
+#die__table th:nth-child(3),
+#die__table td:nth-child(3) {
+  width: 80px;
 }

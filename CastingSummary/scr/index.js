@@ -39,6 +39,7 @@ $(function () {
   makeHomoTable();
   makeStockTable();
   makeExportTable();
+  makeDieTable();
 });
 function makeCastingTable() {
   var fileName = "SelMeltingData.php";
@@ -67,29 +68,6 @@ function makeExportTable() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#export__table tbody"));
 };
-function fillTableBody(data, tbodyDom) {
-  $(tbodyDom).empty();
-  data.forEach(function(trVal) {
-      let newTr = $("<tr>");
-      Object.keys(trVal).forEach(function(tdVal, index) {
-          $("<td>").html(trVal[tdVal]).appendTo(newTr);
-      });
-      $(newTr).appendTo(tbodyDom);
-  });
-};
-
-$(document).on("change", "#export_start_date", function() {
-  makeCastingTable();
-  makeHomoTable();
-  makeStockTable();
-  makeExportTable();
-});
-$(document).on("change", "#export_end_date", function() {
-  makeCastingTable();
-  makeHomoTable();
-  makeStockTable();
-  makeExportTable();
-});
 function makeStockTable() {
   var fileName = "SelStockSum.php";
   var sendData = {
@@ -109,3 +87,37 @@ function makeStockTable() {
   myAjax.myAjax(fileName, sendData);
   fillTableBody(ajaxReturnData, $("#stock_table tbody"));
 };
+function makeDieTable() {
+  var fileName = "SelDieData.php";
+  var sendData = {
+    start: $("#export_start_date").val(),
+    end: $("#export_end_date").val(),
+  };
+  myAjax.myAjax(fileName, sendData);
+  fillTableBody(ajaxReturnData, $("#die__table tbody"));
+};
+function fillTableBody(data, tbodyDom) {
+  $(tbodyDom).empty();
+  data.forEach(function(trVal) {
+      let newTr = $("<tr>");
+      Object.keys(trVal).forEach(function(tdVal, index) {
+          $("<td>").html(trVal[tdVal]).appendTo(newTr);
+      });
+      $(newTr).appendTo(tbodyDom);
+  });
+};
+
+$(document).on("change", "#export_start_date", function() {
+  makeCastingTable();
+  makeHomoTable();
+  makeStockTable();
+  makeExportTable();
+  makeDieTable();
+});
+$(document).on("change", "#export_end_date", function() {
+  makeCastingTable();
+  makeHomoTable();
+  makeStockTable();
+  makeExportTable();
+  makeDieTable();
+});
