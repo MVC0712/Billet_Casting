@@ -21,7 +21,7 @@ $import_material_id = $_POST['import_material_id'];
 try {
     $sql = "INSERT INTO t_add_material (t_casting, material, material_type, weight, note, import_material_id
       ) VALUES (
-          '$t_casting', '$material', '$material_type', '$weight', '$note',, '$import_material_id'
+          '$t_casting', '$material', '$material_type', '$weight', '$note', '$import_material_id'
       )";
     $stmt = $dbh->getInstance()->prepare($sql);
     $stmt->execute();

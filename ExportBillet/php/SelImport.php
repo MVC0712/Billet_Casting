@@ -32,9 +32,8 @@ try {
                 ELSE '--'
             END,
             '-A',
-            m_material_type.material_type,
-            ':',
-            quantity) AS lbm,
+            m_material_type.material_type) AS lbm,
+            quantity,
     CASE
         WHEN billet_length = 1 THEN 1200
         ELSE 600
@@ -50,7 +49,7 @@ WHERE
             import_id
         FROM
             t_export)
-            AND t_casting.code LIKE '%$code_input%' OR material_type LIKE '%$code_input%'
+            AND (t_casting.code LIKE '%$code_input%' OR material_type LIKE '%$code_input%' OR billet_length LIKE '%$code_input%')
             
 ORDER BY t_casting.code DESC";
     $stmt = $dbh->getInstance()->prepare($sql);
