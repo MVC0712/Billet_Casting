@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print Material Label</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header>Print Material Label</header>
+    <div class="summary__wrapper">
+        <table id="material_table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Origin</th>
+              <td><select id="origin" class="cc">
+                <option value="N11NG">Đùn NG</option>
+                <option value="N11DI">Đùn Discard</option>
+                <option value="V44">Cylinder NG</option>
+                <option value="V33">AP Teach NG</option>
+                <option value="N97">Treatment NG</option>
+                <option value="N14NG">Đúc NG</option>
+                <option value="N14HE">Đúc HE</option>
+              </select></td>
+            </tr>
+            <tr>
+              <th>From</th>
+              <td><input id="from" class="number-input"/></td>
+            </tr>
+            <tr>
+              <th>Quantity</th>
+              <td><input id="quantity" class="no-input save-data need-clear number-input cc"/></td>
+            </tr>
+            <tr>
+              <th colspan="2"><button disabled id="print">Print</button></th>
+            </tr>
+          </tbody>
+        </table>
+      <div id="pdf_area" style="width: 80%;">
+      </div>
+    </div>
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/index.js"></script>
+  </body>
+</html>

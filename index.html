@@ -21,6 +21,7 @@
             <button id="import">Import</button>
             <button id="export">Export</button>
             <button id="summary">Summary</button>
+            <button id="print">PrintMaterialLabel</button>
       </div>
       <div>
         <table id="summary_table" style="height: 450px;">
@@ -67,45 +68,42 @@
         $(document).on("click", "#import_material", function () {
           window.open("/Billet_Casting/ImportMaterial");
         });
-
         $(document).on("click", "#plan", function () {
           window.open("/Billet_Casting/Plan");
         });
-
         $(document).on("click", "#plan_view", function () {
           window.open("/Billet_Casting/PlanView");
         });
-
         $(document).on("click", "#mold_history", function () {
           window.open("/Billet_Casting/MolDHistory");
+        })
+        $(document).on("click", "#daily_input", function () {
+          window.open("/Billet_Casting/DailyReport");
         });
-  
-      $(document).on("click", "#daily_input", function () {
-        window.open("/Billet_Casting/DailyReport");
-      });
-
-      $(document).on("click", "#homogenizing_input", function () {
-        window.open("/Billet_Casting/Homo");
-      });
-
-      $(document).on("click", "#cutting_input", function () {
-        window.open("/Billet_Casting/Cutting");
-      });
-      $(document).on("click", "#warehouse_input", function () {
-        window.open("/Billet_Casting/Warehouse");
-      });
-      $(document).on("click", "#mea_file", function () {
-        window.open("/Billet_Casting/Measurement");
-      });
-      $(document).on("click", "#import", function () {
-        window.open("/Billet_Casting/Importbillet");
-      });
-      $(document).on("click", "#export", function () {
-        window.open("/Billet_Casting/Exportbillet");
-      });
-      $(document).on("click", "#summary", function () {
-        window.open("/Billet_Casting/CastingSummary");
-      });
+        $(document).on("click", "#homogenizing_input", function () {
+          window.open("/Billet_Casting/Homo");
+        });
+        $(document).on("click", "#cutting_input", function () {
+          window.open("/Billet_Casting/Cutting");
+        });
+        $(document).on("click", "#warehouse_input", function () {
+          window.open("/Billet_Casting/Warehouse");
+        });
+        $(document).on("click", "#mea_file", function () {
+          window.open("/Billet_Casting/Measurement");
+        });
+        $(document).on("click", "#import", function () {
+          window.open("/Billet_Casting/Importbillet");
+        });
+        $(document).on("click", "#export", function () {
+          window.open("/Billet_Casting/Exportbillet");
+        });
+        $(document).on("click", "#summary", function () {
+          window.open("/Billet_Casting/CastingSummary");
+        });
+        $(document).on("click", "#print", function () {
+          window.open("/Billet_Casting/PrintMaterialLabel");
+        });
       </script>
       <script>
         let fileName;
@@ -140,8 +138,6 @@
           };
           var a = formatDate(MonthFirstDate);
           var b = formatDate(MonthLastDate);
-          // $("#start").val(a);
-          // $("#end").val(b);
           makeSummaryTable();
         });
         function makeSummaryTable() {
