@@ -30,28 +30,28 @@ $(document).on("change", "#origin", function() {
 function changeOrigin() {
   switch ($("#origin").val()) {
     case "N11NG":
-      var origin_code ="N11-NG-";
+      origin_code ="N11-NG-";
     break;
     case "N11DI":
-      var origin_code ="N11-DI-";
+      origin_code ="N11-DI-";
     break;
     case "N14NG":
-      var origin_code ="N14-NG-";
+      origin_code ="N14-NG-";
     break;
     case "N14HE":
-      var origin_code ="N14-HE-";
+      origin_code ="N14-HE-";
     break;
     case "V44":
-      var origin_code ="V44-NG-";
+      origin_code ="V44-NG-";
     break;
     case "V33":
-      var origin_code ="V33-NG-";
+      origin_code ="V33-NG-";
     break;
     case "N97":
-      var origin_code ="N97-NG-";
+      origin_code ="N97-NG-";
     break;
     case "0":
-      var origin_code ="0"
+      origin_code ="0"
     break;
   }
   let fileName = "CheckLastNumber.php";
@@ -61,6 +61,7 @@ function changeOrigin() {
   myAjax.myAjax(fileName, sendData);
   $("#from").val(ajaxReturnData[0].last_numbers + 1);
   $("#quantity").val("").removeClass("complete-input").addClass("no-input");
+  $("#print").attr("disabled", true);
 };
 
 $(document).on("keyup", ".number-input", function() {
@@ -79,7 +80,7 @@ $(document).on("keyup", "#quantity", function() {
 });
 $(function(){
 	$('#print').click(function(){
-		var from = Number($("#from").val()) + 1;
+		var from = Number($("#from").val());
 		var to = Number($("#quantity").val()) + from;
     var html_page = "";
     for (let i = from; i <= to; i += 4) {
@@ -91,7 +92,7 @@ $(function(){
         <div style="display: flex; flex-direction: column; width: 93%; height: 90%; border: 1px solid; justify-content: space-around; margin-left: 5%; margin-right: 2%;">
           <div style="display: flex; height: 15%; margin-left: 30px;">
             <div>Mã quản lý:</div>
-            <div id="mql">${i}</div>
+            <div id="mql">${origin_code}${i}</div>
           </div>
           <div style="display: flex; height: 55%; align-items: center; padding-top: 10px; justify-content: space-around; margin-left: 30px;">
             <div style="padding-left: 150px;">Mã vật liệu:</div>
@@ -126,7 +127,7 @@ $(function(){
         <div style="display: flex; flex-direction: column; width: 93%; height: 90%; border: 1px solid; justify-content: space-around; margin-left: 5%; margin-right: 2%;">
           <div style="display: flex; height: 15%; margin-left: 30px;">
             <div>Mã quản lý:</div>
-            <div id="mql">${i + 1}</div>
+            <div id="mql">${origin_code}${i + 1}</div>
           </div>
           <div style="display: flex; height: 55%; align-items: center; padding-top: 10px; justify-content: space-around; margin-left: 30px;">
             <div style="padding-left: 150px;">Mã vật liệu:</div>
@@ -161,7 +162,7 @@ $(function(){
         <div style="display: flex; flex-direction: column; width: 93%; height: 90%; border: 1px solid; justify-content: space-around; margin-left: 5%; margin-right: 2%;">
           <div style="display: flex; height: 15%; margin-left: 30px;">
             <div>Mã quản lý:</div>
-            <div id="mql">${i + 2}</div>
+            <div id="mql">${origin_code}${i + 2}</div>
           </div>
           <div style="display: flex; height: 55%; align-items: center; padding-top: 10px; justify-content: space-around; margin-left: 30px;">
             <div style="padding-left: 150px;">Mã vật liệu:</div>
@@ -196,7 +197,7 @@ $(function(){
         <div style="display: flex; flex-direction: column; width: 93%; height: 90%; border: 1px solid; justify-content: space-around; margin-left: 5%; margin-right: 2%;">
           <div style="display: flex; height: 15%; margin-left: 30px;">
             <div>Mã quản lý:</div>
-            <div id="mql">${i + 3}</div>
+            <div id="mql">${origin_code}${i + 3}</div>
           </div>
           <div style="display: flex; height: 55%; align-items: center; padding-top: 10px; justify-content: space-around; margin-left: 30px;">
             <div style="padding-left: 150px;">Mã vật liệu:</div>
