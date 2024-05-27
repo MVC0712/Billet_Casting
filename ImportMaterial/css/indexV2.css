@@ -1,0 +1,279 @@
+body {
+  margin: 4px;
+  border: solid 1px #0000cc;
+  display: flex;
+  flex-direction: column;
+  height: calc(600px - 2px);
+  width: calc(1000px - 2px);
+}
+select,
+input {
+  border: solid 1px #0000cc;
+  padding: 0;
+  height: 20px;
+  text-align: left;
+}
+.add-record {
+  background-color: aqua;
+}
+#import_date,
+#import_start_date,
+#import_end_date {
+  width: 100px;
+}
+.quantity {
+  background-color: aqua;
+}
+.summary__wrapper {
+  height: calc(598px - 2px);
+  display: flex;
+  align-content: space-around;
+  justify-content: space-around;
+  flex-direction: row;
+}
+#material_table tbody {
+  height: 195px;
+  width: 160px;
+  overflow: auto;
+}
+#material_table th:nth-child(1),
+#material_table td:nth-child(1) {
+  width: 50px;
+  text-align: left;
+}
+#material_table th:nth-child(2),
+#material_table td:nth-child(2) {
+  width: 100px;
+}
+#material_table th:nth-child(2) select,
+#material_table td:nth-child(2) select,
+#material_table th:nth-child(2) input,
+#material_table td:nth-child(2) input {
+  width: 100px;
+}
+tbody th {
+  background-color: #0000ff;
+  border: solid 1px white;
+  color: white;
+  text-align: center;
+  font-size: 9pt;
+  font-weight: normal;
+}
+#add__table tbody {
+  height: 170px;
+  width: 370px;
+  overflow: auto;
+}
+
+#add__table th:nth-child(1),
+#add__table td:nth-child(1) {
+  width: 100px;
+}
+#add__table td:nth-child(1) input
+{
+  width: 97px;
+  border: none;
+}
+#add__table th:nth-child(2),
+#add__table td:nth-child(2) {
+  width: 60px;
+}
+#add__table td:nth-child(2) select
+{
+  width: 57px;
+  border: none;
+}
+#add__table th:nth-child(3),
+#add__table td:nth-child(3) {
+  width: 50px;
+}
+#add__table td:nth-child(3) input
+{
+  width: 47px;
+  border: none;
+}
+#add__table th:nth-child(4),
+#add__table td:nth-child(4) {
+  width: 100px;
+}
+#add__table td:nth-child(4) input
+{
+  width: 97px;
+  border: none;
+}
+#add__table th:nth-child(5),
+#add__table td:nth-child(5) {
+  width: 20px;
+}
+#add__table td:nth-child(5) button {
+  width: 20px;
+  text-align: left;
+  border: none;
+  margin: 0;
+}
+#summary__table tbody {
+  height: 298px;
+  width: 450px;
+  overflow: auto;
+}
+#summary__table th:nth-child(1),
+#summary__table td:nth-child(1) {
+  display: none;
+}
+#summary__table th:nth-child(2),
+#summary__table td:nth-child(2) {
+  width: 70px;
+}
+#summary__table th:nth-child(3),
+#summary__table td:nth-child(3) {
+  width: 50px;
+}
+#summary__table th:nth-child(4),
+#summary__table td:nth-child(4) {
+  width: 100px;
+}
+#summary__table th:nth-child(5),
+#summary__table td:nth-child(5) {
+  width: 50px;
+}
+#summary__table th:nth-child(6),
+#summary__table td:nth-child(6) {
+  width: 40px;
+}
+#summary__table th:nth-child(7),
+#summary__table td:nth-child(7) {
+  width: 105px;
+}
+#summary__table td:nth-child(7) input {
+  width: 102px;
+  text-align: left;
+  border: none;
+}
+#summary__table th:nth-child(8),
+#summary__table td:nth-child(8) {
+  width: 30px;
+}
+.class1 {
+  display: inline-block;
+  align-items:center;
+}
+.input1 {
+  display: inline-block;
+  width: 200px;
+  padding-left: 20px;
+}
+button {
+  width:90px;
+  height:20px;
+  margin:auto;
+}
+.update-sel {
+  background-color: #e4f500;
+}
+#staff_id {
+  width: 180px;
+}
+#staff_id select { text-align-last: right; }
+#staff_id option { direction: rtl; }
+
+#remain__table tbody {
+  height: 230px;
+  width: 275px;
+  overflow: auto;
+}
+#remain__table th:nth-child(1),
+#remain__table td:nth-child(1) {
+  display: none;
+}
+#remain__table th:nth-child(2),
+#remain__table td:nth-child(2) {
+  width: 65px;
+}
+#remain__table th:nth-child(3),
+#remain__table td:nth-child(3) {
+  width: 90px;
+}
+#remain__table th:nth-child(4),
+#remain__table td:nth-child(4) {
+  width: 50px;
+}
+#remain__table th:nth-child(5),
+#remain__table td:nth-child(5) {
+  width: 40px;
+}
+#remain__table th:nth-child(6),
+#remain__table td:nth-child(6) {
+  width: 40px;
+}
+#remain__table th:nth-child(7),
+#remain__table td:nth-child(7),
+#remain__table th:nth-child(8),
+#remain__table td:nth-child(8) {
+  width: 30px;
+}
+#remain__table th:nth-child(9),
+#remain__table td:nth-child(9) {
+  width: 120px;
+}
+
+#summary_remain__table tbody {
+  height: 140px;
+  width: 275px;
+  overflow: auto;
+}
+#summary_remain__table th:nth-child(1),
+#summary_remain__table td:nth-child(1) {
+  width: 65px;
+}
+#summary_remain__table th:nth-child(2),
+#summary_remain__table td:nth-child(2) {
+  width: 65px;
+}
+#summary_remain__table th:nth-child(3),
+#summary_remain__table td:nth-child(3) {
+  width: 90px;
+}
+
+#summary_input__table tbody {
+  height: 140px;
+  width: 275px;
+  overflow: auto;
+}
+#summary_input__table th:nth-child(1),
+#summary_input__table td:nth-child(1) {
+  width: 65px;
+}
+#summary_input__table th:nth-child(2),
+#summary_input__table td:nth-child(2) {
+  width: 65px;
+}
+#summary_input__table th:nth-child(3),
+#summary_input__table td:nth-child(3) {
+  width: 90px;
+}
+
+#alloy_remain__table tbody {
+  height: 550px;
+  width: 190px;
+  overflow: auto;
+}
+#alloy_remain__table th:nth-child(1),
+#alloy_remain__table td:nth-child(1) {
+  width: 65px;
+}
+#alloy_remain__table th:nth-child(2),
+#alloy_remain__table td:nth-child(2) {
+  width: 50px;
+}
+#alloy_remain__table th:nth-child(3),
+#alloy_remain__table td:nth-child(3) {
+  width: 50px;
+}
+#alloy_remain__table th:nth-child(4),
+#alloy_remain__table td:nth-child(4) {
+  width: 50px;
+}
+#alloy_remain__table th:nth-child(5),
+#alloy_remain__table td:nth-child(5) {
+  width: 40px;
+}

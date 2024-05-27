@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Material</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/indexV2.css" />
+  </head>
+  <body>
+    <header>Import Material</header>
+    <div class="summary__wrapper">
+      <div style="display: flex; flex-direction:column;">
+      <div style="display: flex;">
+      <dialog class="dialog__wrapper" id="delete__dialog">
+        Do you want to Delete?
+        <button id="delete-dialog-cancel__button">Cancel</button>
+        <button id="delete-dialog-delete__button">Delete</button>
+      </dialog>
+      <div>
+        <table id="material_table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Origin</th>
+              <td><select id="material_origin">
+                <option value="N11">Đùn</option>
+                <option value="V44">Cylinder</option>
+                <option value="V33">AP Teach</option>
+                <option value="N97">Treatment</option>
+                <option value="N14">Đúc</option>
+              </select></td>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <td><select id="origin">
+                <option value="N11_NG">Đùn NG</option> 
+                <option value="N11_DI">Đùn Discard</option>
+                <option value="V44_NG">Cylinder NG</option>
+                <option value="V33_NG">AP Teach NG</option>
+                <option value="N97_NG">Treatment NG</option>
+                <option value="N14_NG">Đúc NG</option>
+                <option value="N14_HE">Đúc HE</option>
+                <option value="N14_IN">Đúc Ingot</option>
+                <option value="N14_CR">Đúc Cr</option>
+                <option value="N14_CU">Đúc Cu</option>
+                <option value="N14_MG">Đúc Mg</option>
+                <option value="N14_MN">Đúc Mn</option>
+                <option value="N14_SI">Đúc Si</option>
+              </select></td>
+            </tr>
+            <tr>
+              <th>Code</th>
+              <td><input id="code_name" value="N11-NG-" class="no-input save-data need-clear text-input regex-text"/></td>
+            </tr>
+            <tr>
+              <th>Material</th>
+              <td><select class="no-input save-data need-clear select-input" id="material_id"></select></td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td><input id="weight" class="no-input save-data need-clear number-input"/></td>
+            </tr>
+            <tr>
+              <th>Note</th>
+              <td><input id="note" class="save-data need-clear"/></td>
+            </tr>
+            <tr>
+              <th>Staff</th>
+              <td><select class="no-input save-data need-clear select-input" id="staff_id"></select></td>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <td><input type="date" id="import_date" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <button disabled id="add__button">Add</button>
+      </div>
+      <div>
+        <table id="add__table">
+          <thead>
+            <tr>
+              <th>Code name</th>
+              <th>Material</th>
+              <th>Weight</th>
+              <th>Note</th>
+              <th>RM</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button disabled id="save__button">Save</button>
+      </div>
+    </div>
+    <div>
+      <input id="import_start_date" type="date"/>→
+      <input id="import_end_date" type="date"/>
+      <input id="search_summary_input" style="width: 120px">
+    </div>
+      <table id="summary__table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imp date</th>
+            <th>Name</th>
+            <th>Code name</th>
+            <th>Material</th>
+            <th>Weight</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div style="width:fit-content">
+      <table id="remain__table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imp date</th>
+            <th><input id="search_remain_input" style="width: 90px; height:18px;border: 0"></th>
+            <th>Material</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="summary_remain__table">
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Material</th>
+            <th>Weight remain</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <table id="summary_input__table">
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Material</th>
+            <th>Weight input</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div style="width:fit-content">
+      <table id="alloy_remain__table">
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th><input id="search_alloy_remain_input" style="width: 50px; height:18px;border: 0"></th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+    <script src="../Lib/jquery.min.js"></script>
+    <script src="./scr/indexV2.js"></script>
+  </body>
+</html>
