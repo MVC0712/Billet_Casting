@@ -509,46 +509,131 @@ function changeOrigin() {
   switch ($("#origin").val()) {
     case "N11_NG":
       $("#code_name").val("N11-NG-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "N11_DI":
       $("#code_name").val("N11-DI-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "N14_NG":
-      $("#code_name").val("N14-NG-")
+      $("#code_name").val("N14-NG-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "N14_HE":
-      $("#code_name").val("N14-HE-")
+      $("#code_name").val("N14-HE-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "N14_IN":
-      $("#code_name").val("N14-IG-")
+      $("#code_name").val("N14-IG-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "N14_CR":
-      $("#code_name").val("N14-CR-")
+      $("#code_name").val("N14-CR-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "N14_CU":
-      $("#code_name").val("N14-CU-")
+      $("#code_name").val("N14-CU-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "N14_MG":
-      $("#code_name").val("N14-MG-")
+      $("#code_name").val("N14-MG-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "N14_MN":
-      $("#code_name").val("N14-MN-")
+      $("#code_name").val("N14-MN-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "N14_SI":
-      $("#code_name").val("N14-SI-")
+      $("#code_name").val("N14-SI-");
+      $("#material_id option[value='1']").hide();
+      $("#material_id option[value='2']").hide();
+      $("#material_id option[value='3']").hide();
+      $("#material_id option[value='4']").hide();
+      $("#material_id option[value='10']").show();
     break;
     case "V44_NG":
-      $("#code_name").val("V44-NG-")
+      $("#code_name").val("V44-NG-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "V33_NG":
-      $("#code_name").val("V33-NG-")
+      $("#code_name").val("V33-NG-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
     case "N97_NG":
-      $("#code_name").val("N97-NG-")
+      $("#code_name").val("N97-NG-");
+      $("#material_id option[value='1']").show();
+      $("#material_id option[value='2']").show();
+      $("#material_id option[value='3']").show();
+      $("#material_id option[value='4']").show();
+      $("#material_id option[value='10']").hide();
     break;
   }
   $("#code_name").removeClass("complete-input").addClass("no-input").focus();
 };
+$(function() {
+  var interval = $("#origin option").clone();
+  $("#material_origin").on("change", function() {
+    var val = this.value;
+    $("#origin").html( 
+      interval.filter(function() { 
+        return this.value.indexOf( val + "_" ) === 0; 
+      })
+    );
+    switch ($("#material_origin").val()) {
+      case "N14":
+        $("#material_id option[value='10']").show();
+      break;
+      default:
+        $("#material_id option[value='10']").hide();
+    }
+    changeOrigin();
+  }).change();
+});
+
 function resetValue() {
   $("#note").val("");
   $("#weight").val("").removeClass("complete-input").addClass("no-input");
@@ -556,7 +641,6 @@ function resetValue() {
   checkAdd();
 };
 function inputCheck(val) {
-  // sampleInput = "N11-NG-12345";
   let regexp = /^[A-Z]{1}[0-9]{2}-[N|D|H|I|C|M|S][G|I|E|N|R|U|N|I]-[0-9]+$/;
   return regexp.test(val);
 };
@@ -592,7 +676,6 @@ $(document).on("click", "#save__button", function () {
   makeSummaryTable();
   makeSummaryInputTable();
   $("#add__table tbody tr").remove();
-  // $("#code_name").val("N11-NG-").removeClass("complete-input").addClass("no-input");
   $("#material_id").val(0).removeClass("complete-input").addClass("no-input");
   $("#weight").val("").removeClass("complete-input").addClass("no-input");
   $("#staff_id").val(0).removeClass("complete-input").addClass("no-input");
@@ -671,21 +754,7 @@ $(document).on("change", "#summary__table tbody tr", function () {
     id: $("#update__tr td:nth-child(1)").html(),
     note: $("#update__tr td:nth-child(7) input").val(),
   };
-  console.log(sendData);
   myAjax.myAjax(fileName, sendData);
   makeSummaryTable();
   makeSummaryInputTable();
-});
-
-$(function() {
-  var interval = $("#origin option").clone();
-  $("#material_origin").on("change", function() {
-      var val = this.value;
-      $("#origin").html( 
-        interval.filter(function() { 
-          return this.value.indexOf( val + "_" ) === 0; 
-        })
-      );
-    changeOrigin();
-  }).change();
 });
