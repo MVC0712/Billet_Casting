@@ -17,7 +17,7 @@
             ELSE 'N97'
         END AS origin,
         material_type,
-        SUM(weight) AS weight
+        ROUND(SUM(weight), 1) AS weight
     FROM
         t_import_material
             LEFT JOIN

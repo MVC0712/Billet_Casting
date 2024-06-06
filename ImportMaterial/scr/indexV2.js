@@ -91,7 +91,7 @@ function remakeSummaryRemainTable() {
     $(this).find("td").each(function (index, element) {
       if (index == 1 ) {
         if ($(this).html()=="Ingot/Alloy") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - ttt);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - ttt).toFixed(1));
         }
       }
     });
@@ -123,21 +123,21 @@ function remakeSummaryAlloyRemainTable() {
     $(this).find("td").each(function (index, element) {
       if (index == 1 ) {
         if ($(this).html()=="IG") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - IG);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - IG).toFixed(1));
         } else if ($(this).html()=="CR") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - CR);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - CR).toFixed(1));
         } else if ($(this).html()=="CU") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - CU);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - CU).toFixed(1));
         } else if ($(this).html()=="MG") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - MG);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - MG).toFixed(1));
         } else if ($(this).html()=="MN") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - MN);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - MN).toFixed(1));
         } else if ($(this).html()=="SI") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - SI);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - SI).toFixed(1));
         } else if ($(this).html()=="TI") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - TI);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - TI).toFixed(1));
         } else if ($(this).html()=="ZN") {
-          $(this).closest('td').next('td').text(Number($(this).closest('td').next('td').text()) - ZN);
+          $(this).closest('td').next('td').text((Number($(this).closest('td').next('td').text()) - ZN).toFixed(1));
         } else {
 
         }

@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(600px - 2px);
-  width: calc(1000px - 2px);
+  width: calc(1050px - 2px);
 }
 select,
 input {
@@ -113,7 +113,7 @@ tbody th {
 }
 #summary__table tbody {
   height: 298px;
-  width: 450px;
+  width: 530px;
   overflow: auto;
 }
 #summary__table th:nth-child(1),
@@ -122,23 +122,23 @@ tbody th {
 }
 #summary__table th:nth-child(2),
 #summary__table td:nth-child(2) {
-  width: 70px;
+  width: 80px;
 }
 #summary__table th:nth-child(3),
 #summary__table td:nth-child(3) {
-  width: 50px;
+  width: 60px;
 }
 #summary__table th:nth-child(4),
 #summary__table td:nth-child(4) {
-  width: 100px;
+  width: 120px;
 }
 #summary__table th:nth-child(5),
 #summary__table td:nth-child(5) {
-  width: 50px;
+  width: 70px;
 }
 #summary__table th:nth-child(6),
 #summary__table td:nth-child(6) {
-  width: 40px;
+  width: 60px;
 }
 #summary__table th:nth-child(7),
 #summary__table td:nth-child(7) {
@@ -178,7 +178,7 @@ button {
 
 #remain__table tbody {
   height: 230px;
-  width: 275px;
+  width: 315px;
   overflow: auto;
 }
 #remain__table th:nth-child(1),
@@ -195,15 +195,15 @@ button {
 }
 #remain__table th:nth-child(4),
 #remain__table td:nth-child(4) {
-  width: 50px;
+  width: 70px;
 }
 #remain__table th:nth-child(5),
 #remain__table td:nth-child(5) {
-  width: 40px;
+  width: 60px;
 }
 #remain__table th:nth-child(6),
 #remain__table td:nth-child(6) {
-  width: 40px;
+  width: 60px;
 }
 #remain__table th:nth-child(7),
 #remain__table td:nth-child(7),
@@ -227,7 +227,7 @@ button {
 }
 #summary_remain__table th:nth-child(2),
 #summary_remain__table td:nth-child(2) {
-  width: 65px;
+  width: 70px;
 }
 #summary_remain__table th:nth-child(3),
 #summary_remain__table td:nth-child(3) {
@@ -245,7 +245,7 @@ button {
 }
 #summary_input__table th:nth-child(2),
 #summary_input__table td:nth-child(2) {
-  width: 65px;
+  width: 70px;
 }
 #summary_input__table th:nth-child(3),
 #summary_input__table td:nth-child(3) {
@@ -267,7 +267,7 @@ button {
 }
 #alloy_remain__table th:nth-child(3),
 #alloy_remain__table td:nth-child(3) {
-  width: 50px;
+  width: 60px;
 }
 #alloy_remain__table th:nth-child(4),
 #alloy_remain__table td:nth-child(4) {

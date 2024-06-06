@@ -14,7 +14,7 @@
             ELSE 'N97'
         END AS origin,
         material_type,
-        SUM(weight) AS weight
+        ROUND(SUM(weight), 1) AS weight
     FROM
         t_import_material
             LEFT JOIN
@@ -30,6 +30,7 @@
                 note
             FROM
                 t_add_material)
+        AND material_type_id != 10
     GROUP BY material_type_id , origin
     ORDER BY origin ASC , material_type ASC;";
         $stmt = $dbh->getInstance()->prepare($sql);

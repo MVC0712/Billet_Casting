@@ -6,7 +6,7 @@
     }
     try {
         $sql = "SELECT 
-        SUM(t10000.tt_ppig) AS IG,
+        ROUND(SUM(t10000.tt_ppig), 1) AS IG,
         ROUND(SUM(input_cr_1 + input_cr_2), 1) AS CR,
         ROUND(SUM(input_cu_1 + input_cu_2), 1) AS CU,
         ROUND(SUM(input_mg_1 + input_mg_2), 1) AS MG,

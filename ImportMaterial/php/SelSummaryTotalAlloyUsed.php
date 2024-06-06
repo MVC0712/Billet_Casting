@@ -6,7 +6,7 @@
     }
     try {
         $sql = "SELECT 
-        SUM(t10000.tt_ppig) + 
+        ROUND(SUM(t10000.tt_ppig) + 
         SUM(input_cr_1 + input_cr_2) + 
         SUM(input_cr_1 + input_cr_2) + 
         SUM(input_cu_1 + input_cu_2) + 
@@ -14,7 +14,7 @@
         SUM(input_mn_1 + input_mn_2) + 
         SUM(input_si_1 + input_si_2) + 
         SUM(input_ti_b_1 + input_ti_b_1) + 
-        SUM(input_zn_1 + input_zn_2) AS TTT
+        SUM(input_zn_1 + input_zn_2), 1) AS TTT
     FROM
         t_casting
             LEFT JOIN
