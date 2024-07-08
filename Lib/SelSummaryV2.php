@@ -21,11 +21,11 @@ try {
     TIME_FORMAT(t_casting.melting_start, '%H:%i') AS melting_start,
     TIME_FORMAT(t_casting.casting_end, '%H:%i') AS casting_end,
     m_material_type.material_type,
-    SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
+    ROUND(SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
       input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + 
-      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)) AS total_input,
+      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)), 1) AS total_input,
     t10000.tt_ppig,
-    t10.weight - t10000.tt_ppig,
+    ROUND((t10.weight - t10000.tt_ppig), 1),
     ROUND(SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t100000.tt_pphk, 0)), 1) AS total_input_hk,
     ROUND(SUM(input_cr_1 + input_cr_2),1) AS input_cr,
     ROUND(SUM(input_cu_1 + input_cu_2),1) AS input_cu,

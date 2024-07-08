@@ -819,12 +819,12 @@ function checkInput() {
 };
 function checkUpdate() {
   let check = true;
-  $(".top__wrapper input .save-data").each(function() {
+  $(".top__wrapper input.save-data").each(function() {
     if ($(this).val() == "") {
       check = false;
     }
   });
-  $(".top__wrapper select .save-data").each(function() {
+  $(".top__wrapper select.save-data").each(function() {
     if ($(this).val() == 0) {
       check = false;
     }
@@ -850,7 +850,6 @@ function calTotal(id, type) {
   $("#material_table tbody tr").each(function (index, element) {
     if ($(this).find("td:nth-child(2) select").val() == type) {
       total += parseInt($(this).find("td:nth-child(4) input").val());
-// console.log(total);
     }
     $("#" + id).html(total);
   });
@@ -893,7 +892,6 @@ $(document).on("keyup", "#material_note", function() {
   }
 });
 function inputCheck(val) {
-  // sampleInput = "N11-NG-12345";
   let regexp = /^[A-Z]{1}[0-9]{2}-[N|D|H][G|I|E]-[0-9]+$/;
   return regexp.test(val);
 };
@@ -970,7 +968,7 @@ function activateStep(step) {
 
 function checkActivateStep() {
   var step = "all";
-  $(".step_1 .save-data").each(function (index, element) {
+  $(".step_1.save-data").each(function (index, element) {
     if ($(this).hasClass("no-input")) {
       step = "step_1";
       console.log($(this).attr("id"), 1)
