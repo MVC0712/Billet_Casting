@@ -1,0 +1,186 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+input {
+  text-align: left;
+}
+.left__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 24%;
+  height: 100%;
+}
+#file_upload {
+  /* width: 270px; */
+  display: none;
+}
+#file_upload + label {
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+  border: solid 1px #0000ff;
+  width: 300px;
+  height: 20px;
+}
+#preview__button {
+  width: 50px;
+  margin: 0;
+}
+.button__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* width: 100%;
+  height: 100%; */
+  margin-top: 10px;
+}
+#save__button,
+#update__button {
+  width: 50px;
+  height: 22px;
+  margin: 0;
+}
+.input-block__outer {
+  height: 25px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+#data__table {
+  width: 600px;
+}
+
+#data__table tbody {
+  height: 265px;
+  overflow: hidden;
+}
+
+#data__table tbody #selected__row {
+  background-color: #6db8ff;
+}
+
+#data__table tr th:nth-child(1),
+#data__table tr td:nth-child(1) {
+  display: none;
+}
+#data__table tr th:nth-child(2),
+#data__table tr td:nth-child(2) {
+  width: 55px;
+  text-align: left;
+  border: solid 2px rgb(0, 0, 0);
+}
+#data__table tr th:nth-child(n+3),
+#data__table tr td:nth-child(n+3) {
+  width: 40px;
+  text-align: center;
+  border: solid 2px rgb(0, 0, 0);
+}
+#data__table tr td:nth-child(n+3) input,
+#data__table tr td:nth-child(n+3) select {
+  width: 38px;
+  text-align: center;
+  border: none;
+  border-bottom: solid 1px rgb(0, 0, 0);
+  padding: 0;
+}
+#data__table tr td:nth-child(n+3) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#data__table tr td div:nth-child(1) {
+  border-bottom: solid 2px rgb(0, 0, 0);
+  width: 40px;
+}
+#casting__table tbody {
+  height: 540px;
+  /* width: 480px; */
+  overflow: auto;
+}
+#casting__table thead tr th:nth-child(1),
+#casting__table tbody tr td:nth-child(1) {
+  display: none;
+}
+#casting__table thead tr th:nth-child(2),
+#casting__table tbody tr td:nth-child(2) {
+  width: 30px;
+}
+#casting__table thead tr th:nth-child(3),
+#casting__table tbody tr td:nth-child(3) {
+  width: 38px;
+}
+#casting__table thead tr th:nth-child(4),
+#casting__table tbody tr td:nth-child(4) {
+  width: 58px;
+}
+#casting__table thead tr th:nth-child(5),
+#casting__table tbody tr td:nth-child(5) {
+  width: 35px;
+}
+
+#scrap_table {
+  margin-left: 20px;
+}
+#scrap_table tbody {
+  height: 123px;
+  width: 330px;
+  overflow: auto;
+}
+#add_scrap_table {
+  width: 250px;
+  height: 20px;
+  margin-left: 20px;
+}
+#scrap_table thead tr th:nth-child(1),
+#scrap_table tbody tr td:nth-child(1){
+  display: none;
+}
+#scrap_table thead tr th:nth-child(2),
+#scrap_table tbody tr td:nth-child(2),
+#add_scrap_table thead tr th:nth-child(1) {
+  width: 100px;
+}
+#scrap_table thead tr th:nth-child(3),
+#scrap_table tbody tr td:nth-child(3),
+#add_scrap_table thead tr th:nth-child(2) {
+  width: 100px;
+}
+#scrap_table thead tr th:nth-child(4),
+#scrap_table tbody tr td:nth-child(4),
+#add_scrap_table thead tr th:nth-child(3) {
+  width: 100px;
+}
+#scrap_table tbody tr td:nth-child(2) input,
+#add_scrap_table thead tr th:nth-child(1) input  {
+  width: 90px;
+}
+#scrap_table tbody tr td:nth-child(3) input,
+#add_scrap_table thead tr th:nth-child(2) input {
+  width: 96px;
+}
+#scrap_table tbody tr td:nth-child(4) input,
+#add_scrap_table thead tr th:nth-child(3) input {
+  width: 96px;
+  padding: 0;
+}
+#add_scrap {
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+}
+#staff_id {
+  width: 200px;
+}
+.staff_id_title {
+  width: 150px;
+}
+.staff_id_outer {
+  width: 300px;
+  margin-right: 10px;
+}

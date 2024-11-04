@@ -968,24 +968,23 @@ function activateStep(step) {
 
 function checkActivateStep() {
   var step = "all";
-  $(".step_1.save-data").each(function (index, element) {
-    if ($(this).hasClass("no-input")) {
+  $(".step_1 .save-data").each(function (index, element) {
+    if (($(this).val() == "") || ($(this).val() == 0)) {
       step = "step_1";
       console.log($(this).attr("id"), 1)
     }
   });
   $(".step_2 input.save-data").each(function (index, element) {
-    if ($(this).hasClass("no-input")) {
+    if ($(this).val() == "") {
       step = "step_2";
       console.log($(this).attr("id"), 2)
     }
   });
   $(".step_3 input.save-data").each(function (index, element) {
-    if ($(this).hasClass("no-input")) {
+    if ($(this).val() == "") {
       step = "step_3";
       console.log($(this).attr("id"), 3)
     }
   });
-
   return step;
 };
