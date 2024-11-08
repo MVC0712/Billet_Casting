@@ -11,15 +11,17 @@ try {
             ROUND(m_dimention.dimention * 25.4, 0),
             '-',
             CASE
-                WHEN billet_length = 1 THEN 1200
-                WHEN billet_length = 2 THEN 600
-                ELSE 600
+                WHEN t_import.billet_length = 1 THEN 1200
+                WHEN t_import.billet_length = 2 THEN 600
+                WHEN t_import.billet_length = 3 THEN 6000
+                ELSE t_import.billet_length
             END) AS mtname,
     SUM(t_import.quantity) AS quantity,
     SUM(t_import.quantity) * CASE
-        WHEN billet_length = 1 THEN 132
-        WHEN billet_length = 2 THEN 66
-        ELSE 66
+        WHEN t_import.billet_length = 1 THEN 132
+        WHEN t_import.billet_length = 2 THEN 66
+        WHEN t_import.billet_length = 3 THEN 660
+        ELSE t_import.billet_length
     END AS W
 FROM
     billet_casting.t_import

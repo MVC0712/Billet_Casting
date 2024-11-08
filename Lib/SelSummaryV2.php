@@ -27,21 +27,23 @@ try {
     t10000.tt_ppig,
     ROUND((t10.weight - t10000.tt_ppig), 1),
     ROUND(SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t100000.tt_pphk, 0)), 1) AS total_input_hk,
-    ROUND(SUM(input_cr_1 + input_cr_2),1) AS input_cr,
-    ROUND(SUM(input_cu_1 + input_cu_2),1) AS input_cu,
-    ROUND(SUM(input_fe_1 + input_fe_2),1) AS input_fe,
-    ROUND(SUM(input_mg_1 + input_mg_2),1) AS input_mg,
-    ROUND(SUM(input_mn_1 + input_mn_2),1) AS input_mn,
-    ROUND(SUM(input_si_1 + input_si_2),1) AS input_si,
-    ROUND(SUM(input_ti_b_1 + input_ti_b_1),1) AS input_ti,
-    ROUND(SUM(input_zn_1 + input_zn_2),1) AS input_zn,
-    ROUND(tc.total_output,1) AS total_output,
-    tc.tt1200*132 + tc.tt600*66 AS total_ok,
-    tt1200, tt600, 
-    CONCAT(ROUND(((tc.tt1200*132 + tc.tt600*66)/tc.total_output)*100,1), '%') AS OkOutPut,
-    CONCAT(ROUND(((tc.tt1200*132 + tc.tt600*66)/SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
+    ROUND(SUM(input_cr_1 + input_cr_2), 1) AS input_cr,
+    ROUND(SUM(input_cu_1 + input_cu_2), 1) AS input_cu,
+    ROUND(SUM(input_fe_1 + input_fe_2), 1) AS input_fe,
+    ROUND(SUM(input_mg_1 + input_mg_2), 1) AS input_mg,
+    ROUND(SUM(input_mn_1 + input_mn_2), 1) AS input_mn,
+    ROUND(SUM(input_si_1 + input_si_2), 1) AS input_si,
+    ROUND(SUM(input_ti_b_1 + input_ti_b_1), 1) AS input_ti,
+    ROUND(SUM(input_zn_1 + input_zn_2), 1) AS input_zn,
+    ROUND(tc.total_output, 1) AS total_output,
+    ROUND(SUM(IFNULL(tc.tt1200, 0)*132 + IFNULL(tc.tt600, 0)*66 + IFNULL(tc.tt6000, 0)*660), 1) AS total_ok,
+    tc.tt1200,
+    tc.tt600,
+    tc.tt6000,
+    CONCAT(ROUND(((IFNULL(tc.tt1200, 0)*132 + IFNULL(tc.tt600, 0)*66 + IFNULL(tc.tt6000, 0)*660)/tc.total_output)*100, 1), '%') AS OkOutPut,
+    CONCAT(ROUND(((IFNULL(tc.tt1200, 0)*132 + IFNULL(tc.tt600, 0)*66 + IFNULL(tc.tt6000, 0)*660)/SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
       input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + 
-      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)))*100,1),'%') AS OkTotal,
+      input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)))*100, 1), '%') AS OkTotal,
       (melting_gas_end-melting_gas_start)
 FROM
     t_casting
@@ -50,24 +52,25 @@ FROM
             SUM(A2L + A3L + B1L + B2L + B3L + B4L + C1L + C2L + C3L + C4L + D2L + D3L)/1000*111 AS total_output,
             SUM(A2Q12 + A3Q12 + B1Q12 + B2Q12 + B3Q12 + B4Q12 + C1Q12 + C2Q12 + C3Q12 + C4Q12 + D2Q12 + D3Q12) AS tt1200,
             SUM(A2Q6 + A3Q6 + B1Q6 + B2Q6 + B3Q6 + B4Q6 + C1Q6 + C2Q6 + C3Q6 + C4Q6 + D2Q6 + D3Q6) AS tt600,
-            CASE WHEN A2S = 3 THEN SUM(A2Q6 + A2Q12) ELSE 0 END AS a2ttt,
-            CASE WHEN A3S = 3 THEN SUM(A3Q6 + A3Q12) ELSE 0 END AS a3ttt,
-            CASE WHEN B1S = 3 THEN SUM(B1Q6 + B1Q12) ELSE 0 END AS b1ttt,
-            CASE WHEN B2S = 3 THEN SUM(B2Q6 + B2Q12) ELSE 0 END AS b2ttt,
-            CASE WHEN B3S = 3 THEN SUM(B3Q6 + B3Q12) ELSE 0 END AS b3ttt,
-            CASE WHEN B4S = 3 THEN SUM(B4Q6 + B4Q12) ELSE 0 END AS b4ttt,
-            CASE WHEN C1S = 3 THEN SUM(C1Q6 + C1Q12) ELSE 0 END AS c1ttt,
-            CASE WHEN C2S = 3 THEN SUM(C2Q6 + C2Q12) ELSE 0 END AS c2ttt,
-            CASE WHEN C3S = 3 THEN SUM(C3Q6 + C3Q12) ELSE 0 END AS c3ttt,
-            CASE WHEN C4S = 3 THEN SUM(C4Q6 + C4Q12) ELSE 0 END AS c4ttt,
-            CASE WHEN D2S = 3 THEN SUM(D2Q6 + D2Q12) ELSE 0 END AS d2ttt,
-            CASE WHEN D3S = 3 THEN SUM(D3Q6 + D3Q12) ELSE 0 END AS d3ttt
+            SUM(A2Q60 + A3Q60 + B1Q60 + B2Q60 + B3Q60 + B4Q60 + C1Q60 + C2Q60 + C3Q60 + C4Q60 + D2Q60 + D3Q60) AS tt6000,
+            CASE WHEN A2S = 3 THEN SUM(IFNULL(A2Q6, 0) + IFNULL(A2Q60, 0) + IFNULL(A2Q12, 0)) ELSE 0 END AS a2ttt,
+            CASE WHEN A3S = 3 THEN SUM(IFNULL(A3Q6, 0) + IFNULL(A3Q60, 0) + IFNULL(A3Q12, 0)) ELSE 0 END AS a3ttt,
+            CASE WHEN B1S = 3 THEN SUM(IFNULL(B1Q6, 0) + IFNULL(B1Q60, 0) + IFNULL(B1Q12, 0)) ELSE 0 END AS b1ttt,
+            CASE WHEN B2S = 3 THEN SUM(IFNULL(B2Q6, 0) + IFNULL(B2Q60, 0) + IFNULL(B2Q12, 0)) ELSE 0 END AS b2ttt,
+            CASE WHEN B3S = 3 THEN SUM(IFNULL(B3Q6, 0) + IFNULL(B3Q60, 0) + IFNULL(B3Q12, 0)) ELSE 0 END AS b3ttt,
+            CASE WHEN B4S = 3 THEN SUM(IFNULL(B4Q6, 0) + IFNULL(B4Q60, 0) + IFNULL(B4Q12, 0)) ELSE 0 END AS b4ttt,
+            CASE WHEN C1S = 3 THEN SUM(IFNULL(C1Q6, 0) + IFNULL(C1Q60, 0) + IFNULL(C1Q12, 0)) ELSE 0 END AS c1ttt,
+            CASE WHEN C2S = 3 THEN SUM(IFNULL(C2Q6, 0) + IFNULL(C2Q60, 0) + IFNULL(C2Q12, 0)) ELSE 0 END AS c2ttt,
+            CASE WHEN C3S = 3 THEN SUM(IFNULL(C3Q6, 0) + IFNULL(C3Q60, 0) + IFNULL(C3Q12, 0)) ELSE 0 END AS c3ttt,
+            CASE WHEN C4S = 3 THEN SUM(IFNULL(C4Q6, 0) + IFNULL(C4Q60, 0) + IFNULL(C4Q12, 0)) ELSE 0 END AS c4ttt,
+            CASE WHEN D2S = 3 THEN SUM(IFNULL(D2Q6, 0) + IFNULL(D2Q60, 0) + IFNULL(D2Q12, 0)) ELSE 0 END AS d2ttt,
+            CASE WHEN D3S = 3 THEN SUM(IFNULL(D3Q6, 0) + IFNULL(D3Q60, 0) + IFNULL(D3Q12, 0)) ELSE 0 END AS d3ttt
             FROM t_cutting 
             GROUP BY  tcid            
         ) tc ON tc.tcid = t_casting.id
         LEFT JOIN
     (SELECT 
-        t_add_material.t_casting AS cid, SUM(weight) weight
+        t_add_material.t_casting AS cid, SUM(IFNULL(weight, 0)) AS weight
     FROM
         t_add_material
     GROUP BY t_add_material.t_casting) t10 ON t_casting.id = t10.cid

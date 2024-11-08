@@ -179,6 +179,9 @@ function makeBilletLength(seletedId) {
   },{
     "id": "2",
     "length": "600",
+  },{
+    "id": "3",
+    "length": "6000",
   }];
   length.forEach(function(element) {
     if (element["id"] == seletedId) {

@@ -9,8 +9,10 @@ $end = $_POST['end'];
 try {
     $sql = "SELECT 
     SUM(CASE
-        WHEN billet_length = 1 THEN 132 * t_import.quantity
-        ELSE 66 * t_import.quantity
+        WHEN t_import.billet_length = 1 THEN 132 * t_import.quantity
+        WHEN t_import.billet_length = 2 THEN 66 * t_import.quantity
+        WHEN t_import.billet_length = 3 THEN 660 * t_import.quantity
+        ELSE t_import.billet_length
     END) AS w
 FROM
     billet_casting.t_export

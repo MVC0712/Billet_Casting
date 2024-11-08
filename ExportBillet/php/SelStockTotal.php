@@ -10,7 +10,9 @@ try {
     SUM(t_import.quantity) AS quantity,
     SUM(CASE
         WHEN billet_length = 1 THEN 132 * t_import.quantity
-        ELSE 66 * t_import.quantity
+        WHEN billet_length = 2 THEN 66 * t_import.quantity
+        WHEN billet_length = 3 THEN 660 * t_import.quantity
+        ELSE billet_length
     END) AS ww
 FROM
     billet_casting.t_import

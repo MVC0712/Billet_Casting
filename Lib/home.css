@@ -1,12 +1,12 @@
 body {
-  width: calc(1100px - 2px);
+  width: calc(1150px - 2px);
 }
 #summary_table {
   margin-left: 5px;
 }
 #summary_table tbody {
   height: 480px;
-  width: 1090px;
+  width: 1140px;
   overflow: auto;
 }
 #summary_table thead tr th:nth-child(1),
@@ -80,11 +80,13 @@ body {
 #summary_table thead tr th:nth-child(23),
 #summary_table tbody tr td:nth-child(23),
 #summary_table thead tr th:nth-child(24),
-#summary_table tbody tr td:nth-child(24) {
-  width: 45px;
-}
+#summary_table tbody tr td:nth-child(24),
 #summary_table thead tr th:nth-child(25),
 #summary_table tbody tr td:nth-child(25) {
+  width: 45px;
+}
+#summary_table thead tr th:nth-child(26),
+#summary_table tbody tr td:nth-child(26) {
   width: 30px;
 }
  header div button {

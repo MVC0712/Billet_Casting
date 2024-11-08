@@ -115,7 +115,7 @@ body {
 }
 
 #summary__table tbody {
-  height: 500px;
+  height: 532px;
   width: 380px;
   overflow: auto;
 }
@@ -169,7 +169,8 @@ button {
   height:20px;
 }
 #stock_table tbody {
-  height: 155px;
+  /* height: 155px; */
+  width: 265px;
   overflow: auto;
 }
 #stock_table th:nth-child(1),

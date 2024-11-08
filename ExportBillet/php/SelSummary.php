@@ -34,7 +34,9 @@ try {
     m_material_type.material_type,
     CASE
         WHEN billet_length = 1 THEN 1200
-        ELSE 600
+        WHEN billet_length = 2 THEN 600
+        WHEN billet_length = 3 THEN 6000
+        ELSE '---'
     END AS billet_length,
     t_import.quantity,
     t_export.note
