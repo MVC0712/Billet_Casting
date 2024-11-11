@@ -3,8 +3,7 @@ let inputData = new Object();
 let fileName;
 let sendData = new Object();
 let ajaxReturnData;
-const regex = /^[LTT0-9][0-9]$/;
-// console.log(regex.test('L3')); // true
+const regex = /^[PT0-9][0-9]$/;
 
 let pos = [{id: 0, type: "--"},
           {id: 1, type: "A2"},
