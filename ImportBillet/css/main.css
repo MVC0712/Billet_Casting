@@ -102,6 +102,7 @@ tbody tr.selected-record {
 .input-required {
   /* background-color: #ffd1bf; */
 }
+.regex,
 .no-input {
   background-color: #d6d283;
 }

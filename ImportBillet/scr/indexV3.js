@@ -3,6 +3,8 @@ let inputData = new Object();
 let fileName;
 let sendData = new Object();
 let ajaxReturnData;
+const regex = /^[LTT0-9][0-9]$/;
+// console.log(regex.test('L3')); // true
 
 let pos = [{id: 0, type: "--"},
           {id: 1, type: "A2"},
@@ -145,7 +147,7 @@ $(document).on("click", "#casting_table tbody tr", function (e) {
 
       $("<td>").html(codeid).appendTo(newTr);
       $("<td>").html(code).appendTo(newTr);
-      $("<td>").append(makeInput("")).appendTo(newTr);
+      $("<td>").append(makeInputRegex("")).appendTo(newTr);
       $("<td>").html(material).appendTo(newTr);
       $("<td>").append(makeBilletLength(0).addClass("no-input len-input")).appendTo(newTr);
       $("<td>").append(makeBilletPos("0")).appendTo(newTr);
@@ -166,6 +168,12 @@ function makeInput(qty) {
   let targetDom = $("<input>");
   targetDom.attr("type", "text");
   targetDom.val(qty).addClass("no-input number-input");
+  return targetDom;
+}
+function makeInputRegex(qty) {
+  let targetDom = $("<input>");
+  targetDom.attr("type", "text");
+  targetDom.val(qty).addClass("no-input regex");
   return targetDom;
 }
 function makeBilletLength(seletedId) {
@@ -278,6 +286,14 @@ function getTableData(tableTrObj) {
 };
 $(document).on("keyup", ".number-input", function() {
   if($.isNumeric($(this).val())){
+      $(this).removeClass("no-input").addClass("complete-input");
+  } else {
+      $(this).removeClass("complete-input").addClass("no-input");
+  }
+  checkSave();
+});
+$(document).on("keyup", ".regex", function() {
+  if(regex.test($(this).val())){
       $(this).removeClass("no-input").addClass("complete-input");
   } else {
       $(this).removeClass("complete-input").addClass("no-input");
