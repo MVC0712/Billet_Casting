@@ -12,7 +12,8 @@ try {
     CONCAT(t_casting.code,
             '.',
             CASE
-                WHEN bundle <= 9 THEN CONCAT(0, bundle)
+                WHEN bundle REGEXP '^[0-9]+$' AND bundle <= 9 THEN CONCAT(0, bundle)
+                WHEN bundle REGEXP '^[0-9]+$' AND bundle > 9 THEN bundle
                 ELSE bundle
             END,
             '.',
