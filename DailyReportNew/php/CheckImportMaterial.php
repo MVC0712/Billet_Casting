@@ -31,11 +31,18 @@ try {
                                                 WHEN material_type_id = 4 THEN '7'
                                                 ELSE '5'
                                             END
-        WHEN LEFT(code_name, 3) = 'N14' THEN CASE 
+        WHEN LEFT(code_name, 3) = 'N14' AND LEFT(code_name, 6) = 'N11-HE' THEN CASE 
+                                                WHEN material_type_id = 1 THEN '9'
+                                                WHEN material_type_id = 2 THEN '10'
+                                                WHEN material_type_id = 3 THEN '11'
+                                                WHEN material_type_id = 4 THEN '12'
+                                                ELSE '5'
+                                            END
+        WHEN LEFT(code_name, 3) = 'N14' AND LEFT(code_name, 6) = 'N11-NG' THEN CASE 
                                                 WHEN material_type_id = 1 THEN '13'
                                                 WHEN material_type_id = 2 THEN '14'
-                                                WHEN material_type_id = 3 THEN '16'
-                                                WHEN material_type_id = 4 THEN '15'
+                                                WHEN material_type_id = 3 THEN '15'
+                                                WHEN material_type_id = 4 THEN '16'
                                                 ELSE '5'
                                             END
         ELSE                                CASE
