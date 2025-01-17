@@ -16,9 +16,9 @@ try {
     ROUND(SUM(t10.weight) - SUM(t10000.tt_ppig),1) AS tong_gc_dun,
     ROUND(SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t100000.tt_pphk, 0)), 1) AS tong_hop_kim,
     ROUND(SUM(tc.total_output),1) AS tong_bl_dai,
-    SUM(tc.tt1200)*132 + SUM(tc.tt600)*66 AS tong_bl_ok,
-    CONCAT(ROUND(((IFNULL(tc.tt1200, 0)*132 + IFNULL(tc.tt600, 0)*66 + IFNULL(tc.tt6000, 0)*660)/tc.total_output)*100, 1), '%') AS OkOutPut,
-    CONCAT(ROUND(((IFNULL(tc.tt1200, 0)*132 + IFNULL(tc.tt600, 0)*66 + IFNULL(tc.tt6000, 0)*660)/SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
+    SUM(tc.tt1200)*132 + SUM(tc.tt600)*66 + SUM(tc.tt6000)*660 AS tong_bl_ok,
+    CONCAT(ROUND(((SUM(tc.tt1200)*132 + SUM(tc.tt600)*66 + SUM(tc.tt6000)*660)/SUM(tc.total_output))*100, 1), '%') AS OkOutPut,
+    CONCAT(ROUND(((SUM(tc.tt1200)*132 + SUM(tc.tt600)*66 + SUM(tc.tt6000)*660)/SUM(input_cr_1 + input_cr_2 + input_cu_1 + input_cu_2 + input_fe_1 + input_fe_2 + 
       input_mg_1 + input_mg_2 + input_mn_1 + input_mn_2 + input_si_1 + input_si_2 + 
       input_ti_b_1 + input_ti_b_2 + input_zn_1 + input_zn_2 + IFNULL(t10.weight, 0)))*100,1),'%') AS OkTotal,
       SUM(melting_gas_end - melting_gas_start) AS gas_used
